@@ -286,7 +286,7 @@ export function LeadForm({ variant }: { variant: Variant }) {
         {variant === "residential" ? site.hero.primaryCta.label : "Request a Quote"}
       </Btn>
       <p className="mt-3 text-xs text-muted-foreground">
-        Proposal preview — form connection is completed after launch approval.
+        Preview form — activated when the website goes live.
       </p>
     </form>
   );
