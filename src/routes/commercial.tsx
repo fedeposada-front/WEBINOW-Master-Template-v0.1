@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { site } from "@/config/site";
 
 import heroImg from "@/assets/hero-commercial.jpg";
 import residentialImg from "@/assets/residential-block.jpg";
@@ -158,6 +159,18 @@ const faqs = [
 ];
 
 function CommercialHome() {
+  if (!site.features.commercialEnabled) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-background px-6 text-center">
+        <div className="max-w-lg">
+          <p className="eyebrow">WEBINOW preview</p>
+          <h1 className="display-xl mt-4 text-4xl">Commercial variant is not enabled for this prospect.</h1>
+          <a href="/" className="mt-8 inline-block font-semibold text-signal">Return to the active proposal →</a>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="theme-commercial min-h-screen bg-background font-sans">
       <UtilityBar variant="commercial" />
