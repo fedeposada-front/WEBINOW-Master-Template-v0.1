@@ -1,22 +1,19 @@
 import { Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 
-export const PHONE_DISPLAY = "(555) 214-8800";
-export const PHONE_HREF = "tel:+15552148800";
-export const COMPANY = "Northline Plumbing";
+import {
+  COMPANY,
+  PHONE_DISPLAY,
+  PHONE_HREF,
+  site,
+  siteNavItems,
+} from "@/config/site";
 
-type Variant = "residential" | "commercial";
+export { COMPANY, PHONE_DISPLAY, PHONE_HREF };
 
-const NAV = [
-  { label: "Residential", to: "/" },
-  { label: "Commercial", to: "/commercial" },
-  { label: "Services", to: "#services" },
-  { label: "Projects", to: "#projects" },
-  { label: "Reviews", to: "#reviews" },
-  { label: "About", to: "#about" },
-  { label: "Service Areas", to: "#areas" },
-  { label: "Contact", to: "#contact" },
-];
+export type Variant = "residential" | "commercial";
+
+const NAV = siteNavItems();
 
 export function Container({
   children,
@@ -45,6 +42,7 @@ export function Section({
     muted: "bg-surface-2 text-foreground",
     ink: "bg-ink text-ink-foreground",
   } as const;
+
   return (
     <section id={id} className={`${tones[tone]} py-20 sm:py-28 ${className}`}>
       <Container>{children}</Container>
@@ -70,7 +68,7 @@ export function SectionHeading({
   invert?: boolean;
 }) {
   return (
-    <div className={`${align === "center" ? "mx-auto max-w-3xl text-center" : "max-w-3xl"}`}>
+    <div className={align === "center" ? "mx-auto max-w-3xl text-center" : "max-w-3xl"}>
       {eyebrow ? (
         <p className={`eyebrow ${invert ? "text-signal" : ""}`}>{eyebrow}</p>
       ) : null}
@@ -97,7 +95,14 @@ type BtnProps = {
   className?: string;
 };
 
-export function Btn({ children, href, to, kind = "primary", size = "md", className = "" }: BtnProps) {
+export function Btn({
+  children,
+  href,
+  to,
+  kind = "primary",
+  size = "md",
+  className = "",
+}: BtnProps) {
   const base =
     "inline-flex items-center justify-center gap-2 rounded-sm font-display font-semibold uppercase tracking-[0.09em] transition-colors duration-150";
   const sizes = { md: "px-5 py-3 text-[0.78rem]", lg: "px-7 py-4 text-sm" } as const;
@@ -110,24 +115,40 @@ export function Btn({ children, href, to, kind = "primary", size = "md", classNa
     ghost: "text-foreground hover:text-signal",
   } as const;
   const cls = `${base} ${sizes[size]} ${kinds[kind]} ${className}`;
-  if (to) return <Link to={to} className={cls}>{children}</Link>;
-  return <a href={href ?? "#contact"} className={cls}>{children}</a>;
+
+  if (to) {
+    return (
+      <Link to={to} className={cls}>
+        {children}
+      </Link>
+    );
+  }
+
+  return (
+    <a href={href ?? "#contact"} className={cls}>
+      {children}
+    </a>
+  );
 }
 
 export function UtilityBar({ variant }: { variant: Variant }) {
+  const message =
+    variant === "commercial"
+      ? "Commercial HVAC conversations"
+      : `${site.business.vertical} service · ${site.business.city}`;
+
   return (
     <div className="bg-ink text-ink-foreground">
       <Container className="flex flex-wrap items-center justify-between gap-2 py-2.5 text-[0.74rem] tracking-wide">
         <p className="font-medium">
-          {variant === "residential"
-            ? "Same-Day Service Available"
-            : "24-Hour Commercial Emergency Response"}
+          {message}
           <span className="mx-2 text-ink-foreground/35">|</span>
-          <span className="text-ink-foreground/70">
-            Serving [Primary Service Area] &amp; surrounding communities
-          </span>
+          <span className="text-ink-foreground/70">{site.business.serviceArea}</span>
         </p>
-        <a href={PHONE_HREF} className="font-display font-semibold uppercase tracking-[0.12em] text-signal">
+        <a
+          href={PHONE_HREF}
+          className="font-display font-semibold uppercase tracking-[0.12em] text-signal"
+        >
           Call {PHONE_DISPLAY}
         </a>
       </Container>
@@ -136,16 +157,17 @@ export function UtilityBar({ variant }: { variant: Variant }) {
 }
 
 export function SiteNav({ variant }: { variant: Variant }) {
-  const cta = variant === "residential" ? "Schedule Service" : "Request a Quote";
+  const cta = variant === "residential" ? site.hero.primaryCta.label : "Request a Quote";
+
   return (
     <header className="sticky top-0 z-40 border-b border-hairline bg-surface/95 backdrop-blur">
       <Container className="flex h-[76px] items-center justify-between gap-6">
-        <Link to="/" className="flex items-center gap-3">
-          <span className="flex h-9 w-9 items-center justify-center rounded-sm bg-ink font-display text-sm font-bold text-ink-foreground">
-            N
+        <Link to="/" className="flex min-w-0 items-center gap-3">
+          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-sm bg-ink font-display text-xs font-bold text-ink-foreground">
+            {site.brand.mark}
           </span>
-          <span className="font-display text-base font-bold uppercase tracking-[0.14em]">
-            Northline
+          <span className="truncate font-display text-sm font-bold uppercase tracking-[0.1em] sm:text-base">
+            {site.brand.shortName}
           </span>
         </Link>
 
@@ -201,7 +223,7 @@ export function MobileActionBar({ variant }: { variant: Variant }) {
         href="#contact"
         className="bg-signal py-4 text-center font-display text-[0.8rem] font-semibold uppercase tracking-[0.12em] text-signal-foreground"
       >
-        {variant === "residential" ? "Schedule Service" : "Request Quote"}
+        {variant === "residential" ? site.hero.primaryCta.label : "Request Quote"}
       </a>
     </div>
   );
@@ -214,13 +236,19 @@ export function LeadForm({ variant }: { variant: Variant }) {
     { label: "Email", type: "email" },
     { label: "ZIP / City", type: "text" },
   ];
+
+  const options =
+    variant === "residential"
+      ? site.contact.formOptions
+      : ["Service call", "Maintenance", "Project work", "Other"];
+
   return (
     <form
       onSubmit={(e) => e.preventDefault()}
       className="rounded-sm border border-hairline bg-surface p-6 shadow-card sm:p-8"
     >
       <p className="font-display text-lg font-bold">
-        {variant === "residential" ? "Request service" : "Start a project conversation"}
+        {variant === "residential" ? site.contact.formTitle : "Start a project conversation"}
       </p>
       <div className="mt-6 grid gap-4 sm:grid-cols-2">
         {fields.map((f) => (
@@ -236,20 +264,11 @@ export function LeadForm({ variant }: { variant: Variant }) {
         ))}
         <label className="block sm:col-span-2">
           <span className="text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">
-            {variant === "residential" ? "Service Needed" : "Project / Service Type"}
+            Service Needed
           </span>
           <select className="mt-2 w-full rounded-sm border border-input bg-background px-3 py-2.5 text-sm outline-none focus:border-signal">
-            {(variant === "residential"
-              ? ["Emergency", "Drain cleaning", "Leak repair", "Water heater", "Sewer line", "Other"]
-              : [
-                  "Service call",
-                  "Preventative maintenance",
-                  "Tenant improvement",
-                  "New construction",
-                  "Other",
-                ]
-            ).map((o) => (
-              <option key={o}>{o}</option>
+            {options.map((option) => (
+              <option key={option}>{option}</option>
             ))}
           </select>
         </label>
@@ -264,47 +283,23 @@ export function LeadForm({ variant }: { variant: Variant }) {
         </label>
       </div>
       <Btn kind="signal" size="lg" className="mt-6 w-full" href="#contact">
-        {variant === "residential" ? "Schedule Service" : "Request a Commercial Quote"}
+        {variant === "residential" ? site.hero.primaryCta.label : "Request a Quote"}
       </Btn>
       <p className="mt-3 text-xs text-muted-foreground">
-        Layout concept only — form is not connected.
+        Proposal preview — form connection is completed after launch approval.
       </p>
     </form>
   );
 }
 
 export function SiteFooter({ variant }: { variant: Variant }) {
+  const serviceLinks = site.services.slice(0, 6).map((item) => item.title);
+  const areaLinks = site.serviceAreas.areas.slice(0, 6);
+
   const cols = [
-    {
-      title: "Residential",
-      links: [
-        "Emergency Plumbing",
-        "Drain Cleaning",
-        "Leak Detection & Repair",
-        "Water Heaters",
-        "Sewer Lines",
-        "Repiping",
-      ],
-    },
-    {
-      title: "Commercial",
-      links: [
-        "Service & Repair",
-        "Preventative Maintenance",
-        "Tenant Improvements",
-        "New Construction",
-        "Backflow & Testing",
-        "Hydro Jetting",
-      ],
-    },
-    {
-      title: "Company",
-      links: ["About", "Our Team", "Projects", "Reviews", "Financing", "Careers"],
-    },
-    {
-      title: "Service Areas",
-      links: ["[City]", "[City]", "[City]", "[City]", "[City]", "All Service Areas"],
-    },
+    { title: "Services", links: serviceLinks },
+    { title: "Company", links: ["About", "Contact"] },
+    { title: "Service Area", links: areaLinks },
   ];
 
   return (
@@ -313,12 +308,12 @@ export function SiteFooter({ variant }: { variant: Variant }) {
         <div className="flex flex-col gap-8 border-b border-hairline-inverse pb-12 md:flex-row md:items-end md:justify-between">
           <h2 className="display-xl max-w-xl text-3xl sm:text-4xl">
             {variant === "residential"
-              ? "Need a plumber today?"
-              : "Have a project or property to discuss?"}
+              ? site.contact.title
+              : "Have a property or project to discuss?"}
           </h2>
           <div className="flex flex-wrap gap-3">
             <Btn kind="signal" size="lg" href="#contact">
-              {variant === "residential" ? "Schedule Service" : "Request a Commercial Quote"}
+              {site.hero.primaryCta.label}
             </Btn>
             <Btn kind="outline-invert" size="lg" href={PHONE_HREF}>
               Call {PHONE_DISPLAY}
@@ -326,29 +321,29 @@ export function SiteFooter({ variant }: { variant: Variant }) {
           </div>
         </div>
 
-        <div className="grid gap-10 py-12 md:grid-cols-2 lg:grid-cols-5">
-          <div className="lg:col-span-1">
+        <div className="grid gap-10 py-12 md:grid-cols-2 lg:grid-cols-4">
+          <div>
             <p className="font-display text-base font-bold uppercase tracking-[0.14em]">
               {COMPANY}
             </p>
             <dl className="mt-5 space-y-2 text-sm text-ink-foreground/70">
               <div>{PHONE_DISPLAY}</div>
-              <div>service@northlineplumbing.com</div>
-              <div>Mon–Fri 7:00a–6:00p</div>
-              <div>Emergency service after hours</div>
-              <div>License #[000000] · Bonded &amp; Insured</div>
+              {site.business.email ? <div>{site.business.email}</div> : null}
+              <div>{site.business.city}, {site.business.region}</div>
+              {site.footer.hours ? <div>{site.footer.hours}</div> : null}
             </dl>
           </div>
+
           {cols.map((col) => (
             <div key={col.title}>
               <p className="font-display text-xs font-semibold uppercase tracking-[0.16em] text-signal">
                 {col.title}
               </p>
               <ul className="mt-4 space-y-2 text-sm text-ink-foreground/70">
-                {col.links.map((l, i) => (
-                  <li key={`${col.title}-${i}`}>
-                    <a href="#services" className="hover:text-ink-foreground">
-                      {l}
+                {col.links.map((label) => (
+                  <li key={label}>
+                    <a href="#contact" className="hover:text-ink-foreground">
+                      {label}
                     </a>
                   </li>
                 ))}
@@ -358,14 +353,10 @@ export function SiteFooter({ variant }: { variant: Variant }) {
         </div>
 
         <div className="flex flex-col gap-3 border-t border-hairline-inverse pt-8 text-xs text-ink-foreground/55 sm:flex-row sm:items-center sm:justify-between">
-          <p>© {new Date().getFullYear()} {COMPANY}. Layout concept for proposal purposes.</p>
-          <div className="flex gap-5">
-            <a href="#contact" className="hover:text-ink-foreground">Privacy</a>
-            <a href="#contact" className="hover:text-ink-foreground">Accessibility</a>
-            <a href="#contact" className="hover:text-ink-foreground">Facebook</a>
-            <a href="#contact" className="hover:text-ink-foreground">Instagram</a>
-            <a href="#contact" className="hover:text-ink-foreground">LinkedIn</a>
-          </div>
+          <p>
+            © {new Date().getFullYear()} {COMPANY}. {site.footer.note ?? ""}
+          </p>
+          <p>WEBINOW proposal preview</p>
         </div>
       </Container>
       <div className="h-14 lg:hidden" />
@@ -374,6 +365,8 @@ export function SiteFooter({ variant }: { variant: Variant }) {
 }
 
 export function VariantSwitch({ variant }: { variant: Variant }) {
+  if (!site.features.commercialEnabled) return null;
+
   return (
     <div className="fixed bottom-20 right-4 z-50 hidden items-center gap-1 rounded-sm border border-hairline bg-surface p-1 shadow-lift lg:bottom-5 lg:flex">
       <span className="px-2 text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
