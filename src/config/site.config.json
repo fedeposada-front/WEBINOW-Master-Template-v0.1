@@ -14,8 +14,8 @@
     "phoneHref": "tel:+18333024080",
     "email": null,
     "city": "Hialeah",
-    "region": "South Florida",
-    "serviceArea": "Hialeah and nearby South Florida communities",
+    "region": "Florida",
+    "serviceArea": "Hialeah, Florida",
     "websiteUrl": "http://www.comfort-sos.com/"
   },
   "features": {
@@ -24,7 +24,7 @@
   },
   "seo": {
     "title": "HVAC Service in Hialeah, FL | Comfort SOS Corporation",
-    "description": "Comfort SOS Corporation is an HVAC business in Hialeah, Florida. Call directly to discuss heating and cooling service needs."
+    "description": "Comfort SOS Corporation provides HVAC and air-conditioning services in Hialeah, Florida. Call (833) 302-4080 to discuss service needs."
   },
   "theme": {
     "background": "oklch(0.985 0.004 90)",
@@ -42,9 +42,9 @@
     "ring": "oklch(0.68 0.19 45)"
   },
   "hero": {
-    "eyebrow": "Heating & Cooling · Hialeah, Florida",
+    "eyebrow": "HVAC & AC Service · Hialeah, Florida",
     "title": "A clearer way to get help with your comfort system.",
-    "body": "Local heating and cooling service for Hialeah and nearby communities. Call Comfort SOS directly to discuss your service needs.",
+    "body": "Local HVAC and air-conditioning service in Hialeah. Call Comfort SOS directly to discuss your service needs.",
     "primaryCta": {
       "label": "Request Service",
       "href": "#contact"
@@ -53,17 +53,17 @@
       "label": "Call (833) 302-4080",
       "href": "tel:+18333024080"
     },
-    "proofLine": "HVAC · Hialeah, Florida · Direct phone contact",
+    "proofLine": "4.9 Google rating · 96 reviews · Open 24 hours",
     "imageAlt": "HVAC service concept for Comfort SOS Corporation"
   },
   "trust": [
     {
-      "value": "Hialeah",
-      "label": "Florida"
+      "value": "4.9 ★",
+      "label": "96 Google reviews"
     },
     {
-      "value": "HVAC",
-      "label": "Heating & cooling"
+      "value": "24/7",
+      "label": "Open 24 hours"
     },
     {
       "value": "(833) 302-4080",
@@ -73,20 +73,20 @@
   "audiences": [],
   "services": [
     {
-      "title": "Cooling Service",
-      "body": "Discuss cooling-system issues and service needs directly with Comfort SOS."
+      "title": "Air Conditioning Repair",
+      "body": "Get help with air-conditioning repair needs and confirm service availability directly with Comfort SOS."
     },
     {
-      "title": "Heating Service",
-      "body": "Call to describe your heating-system needs and confirm service availability."
+      "title": "HVAC Service",
+      "body": "Discuss heating, cooling, and general HVAC service needs for your property."
     },
     {
-      "title": "System Care",
-      "body": "Ask about ongoing HVAC system care and the next recommended step for your property."
+      "title": "Dryer Vent Cleaning",
+      "body": "Ask about dryer vent cleaning service and current appointment availability."
     },
     {
       "title": "Service Requests",
-      "body": "Describe the issue, share your location, and confirm the appropriate service response."
+      "body": "Describe the issue, share your location, and confirm the appropriate next step."
     }
   ],
   "whyUs": {
@@ -137,27 +137,27 @@
   "about": {
     "eyebrow": "About",
     "title": "Comfort SOS Corporation.",
-    "body": "Comfort SOS Corporation is an HVAC business based in Hialeah, Florida. Call directly to confirm service availability for your property.",
+    "body": "Comfort SOS Corporation is an HVAC contractor based at 2345 W 80th St Unit 14 in Hialeah, Florida.",
     "facts": [
       {
-        "label": "Business",
-        "value": "HVAC"
+        "label": "Google rating",
+        "value": "4.9 ★ · 96 reviews"
       },
       {
-        "label": "Location",
-        "value": "Hialeah, FL"
+        "label": "Hours",
+        "value": "Open 24 hours"
       },
       {
-        "label": "Phone",
-        "value": "(833) 302-4080"
+        "label": "Address",
+        "value": "2345 W 80th St Unit 14, Hialeah, FL"
       }
     ],
     "imageAlt": "Comfort SOS Corporation team and service concept"
   },
   "serviceAreas": {
     "eyebrow": "Service area",
-    "title": "Based in Hialeah.",
-    "intro": "Contact Comfort SOS directly to confirm service availability for your address.",
+    "title": "Serving Hialeah.",
+    "intro": "Comfort SOS is based in Hialeah, Florida. Call directly to confirm service availability for your address.",
     "areas": [
       "Hialeah"
     ]
@@ -201,7 +201,7 @@
     ]
   },
   "footer": {
-    "hours": null,
+    "hours": "Open 24 hours",
     "note": "Website concept for proposal purposes."
   },
   "dataQuality": {
@@ -210,18 +210,21 @@
       "business.vertical",
       "business.phone",
       "business.city",
-      "business.websiteUrl"
+      "business.address",
+      "business.websiteUrl",
+      "google.rating",
+      "google.reviewCount",
+      "business.hours",
+      "business.categories"
     ],
     "needsReview": [
-      "service scope",
-      "service coverage beyond Hialeah",
-      "hours",
       "email",
       "licenses",
       "certifications",
-      "reviews",
+      "individual review content",
       "warranties",
-      "pricing"
+      "pricing",
+      "service coverage beyond Hialeah"
     ]
   }
 }
