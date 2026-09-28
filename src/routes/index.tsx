@@ -65,16 +65,15 @@ function ResidentialHome() {
           </div>
 
           <div className="relative overflow-hidden rounded-sm bg-ink p-8 text-ink-foreground shadow-lift sm:p-10">
-            <p className="eyebrow text-signal">WEBINOW concept</p>
-            <p className="display-xl mt-5 text-4xl">Built around the next customer action.</p>
+            <p className="eyebrow text-signal">Local HVAC service</p>
+            <p className="display-xl mt-5 text-4xl">Comfort starts with a clear next step.</p>
             <p className="mt-5 text-base leading-relaxed text-ink-foreground/70">
-              This proposal uses only verified business details from the current prospect record.
-              Unverified claims such as licenses, reviews, warranties, pricing and years in business
-              are intentionally excluded.
+              Based in Hialeah, Comfort SOS gives local customers a direct way to ask about heating
+              and cooling service needs.
             </p>
             <div className="mt-10 border-t border-hairline-inverse pt-6">
               <p className="text-xs uppercase tracking-[0.14em] text-ink-foreground/50">
-                Verified contact
+                Call Comfort SOS
               </p>
               <a href={PHONE_HREF} className="mt-2 block font-display text-3xl font-bold text-signal">
                 {PHONE_DISPLAY}
@@ -101,7 +100,7 @@ function ResidentialHome() {
         <SectionHeading
           eyebrow="Services"
           title="A clearer service path."
-          intro="This proof keeps service categories broad until Comfort SOS confirms its exact service scope."
+          intro="Start with the type of heating or cooling help you need, then contact Comfort SOS to confirm availability."
         />
         <div className="mt-14 grid gap-px overflow-hidden rounded-sm bg-hairline sm:grid-cols-2 lg:grid-cols-4">
           {site.services.map((service) => (
@@ -114,24 +113,6 @@ function ResidentialHome() {
               </a>
             </article>
           ))}
-        </div>
-      </Section>
-
-      <Section tone="page">
-        <div className="grid gap-14 lg:grid-cols-[0.9fr_1.1fr]">
-          <SectionHeading
-            eyebrow={site.whyUs.eyebrow}
-            title={site.whyUs.title}
-            intro={site.whyUs.intro}
-          />
-          <div className="grid gap-x-10 gap-y-9 sm:grid-cols-2">
-            {site.whyUs.items.map((item) => (
-              <div key={item.title}>
-                <h3 className="font-display text-lg font-bold">{item.title}</h3>
-                <p className="mt-2 text-muted-foreground">{item.body}</p>
-              </div>
-            ))}
-          </div>
         </div>
       </Section>
 
@@ -170,32 +151,22 @@ function ResidentialHome() {
       </Section>
 
       <Section id="about" tone="muted">
-        <div className="grid gap-12 lg:grid-cols-[1fr_1fr] lg:items-center">
-          <div>
-            <SectionHeading
-              eyebrow={site.about.eyebrow}
-              title={site.about.title}
-              intro={site.about.body}
-            />
-            <dl className="mt-8 grid grid-cols-1 gap-6 text-sm sm:grid-cols-3">
-              {site.about.facts.map((fact) => (
-                <div key={fact.label}>
-                  <dt className="text-xs uppercase tracking-[0.12em] text-muted-foreground">
-                    {fact.label}
-                  </dt>
-                  <dd className="mt-1 font-semibold">{fact.value}</dd>
-                </div>
-              ))}
-            </dl>
-          </div>
-          <div className="rounded-sm border border-hairline bg-surface p-8 shadow-card">
-            <p className="eyebrow">Data quality</p>
-            <h3 className="mt-4 font-display text-2xl font-bold">No invented proof.</h3>
-            <p className="mt-3 text-muted-foreground">
-              Reviews, licenses, warranties, pricing, certifications and operating hours stay out
-              of the public proof until they are verified.
-            </p>
-          </div>
+        <div className="max-w-4xl">
+          <SectionHeading
+            eyebrow={site.about.eyebrow}
+            title={site.about.title}
+            intro={site.about.body}
+          />
+          <dl className="mt-8 grid grid-cols-1 gap-6 text-sm sm:grid-cols-3">
+            {site.about.facts.map((fact) => (
+              <div key={fact.label} className="border-t border-hairline pt-4">
+                <dt className="text-xs uppercase tracking-[0.12em] text-muted-foreground">
+                  {fact.label}
+                </dt>
+                <dd className="mt-1 font-semibold">{fact.value}</dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </Section>
 
@@ -205,9 +176,9 @@ function ResidentialHome() {
           title={site.serviceAreas.title}
           intro={site.serviceAreas.intro}
         />
-        <div className="mt-10 grid gap-px bg-hairline sm:grid-cols-3">
+        <div className="mt-10 flex flex-wrap gap-3">
           {site.serviceAreas.areas.map((area) => (
-            <div key={area} className="bg-background p-6">
+            <div key={area} className="min-w-48 border border-hairline bg-background p-6">
               <p className="font-display text-base font-semibold">{area}</p>
               <p className="mt-1 text-xs text-muted-foreground">Confirm availability by phone</p>
             </div>
