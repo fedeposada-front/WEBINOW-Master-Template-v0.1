@@ -1,0 +1,227 @@
+{
+  "id": "comfort-sos-corporation-hialeah-fl",
+  "mode": "proposal",
+  "variant": "residential",
+  "brand": {
+    "name": "Comfort SOS Corporation",
+    "shortName": "Comfort SOS",
+    "mark": "CS",
+    "logoUrl": null
+  },
+  "business": {
+    "vertical": "HVAC",
+    "phoneDisplay": "(833) 302-4080",
+    "phoneHref": "tel:+18333024080",
+    "email": null,
+    "city": "Hialeah",
+    "region": "South Florida",
+    "serviceArea": "Hialeah and nearby South Florida communities",
+    "websiteUrl": "http://www.comfort-sos.com/"
+  },
+  "features": {
+    "commercialEnabled": false,
+    "showReviews": false
+  },
+  "seo": {
+    "title": "HVAC Service in Hialeah, FL | Comfort SOS Corporation",
+    "description": "Comfort SOS Corporation is an HVAC business in Hialeah, Florida. Call directly to discuss heating and cooling service needs."
+  },
+  "theme": {
+    "background": "oklch(0.985 0.004 90)",
+    "foreground": "oklch(0.24 0.035 258)",
+    "surface": "oklch(1 0 0)",
+    "surface2": "oklch(0.96 0.005 250)",
+    "ink": "oklch(0.22 0.045 258)",
+    "inkForeground": "oklch(0.97 0.005 250)",
+    "primary": "oklch(0.22 0.045 258)",
+    "accent": "oklch(0.68 0.19 45)",
+    "accentForeground": "oklch(0.16 0.03 258)",
+    "signal": "oklch(0.68 0.19 45)",
+    "signalForeground": "oklch(0.16 0.03 258)",
+    "border": "oklch(0.9 0.008 252)",
+    "ring": "oklch(0.68 0.19 45)"
+  },
+  "hero": {
+    "eyebrow": "Heating & Cooling · Hialeah, Florida",
+    "title": "A clearer way to get help with your comfort system.",
+    "body": "Local heating and cooling service for Hialeah and nearby communities. Call Comfort SOS directly to discuss your service needs.",
+    "primaryCta": {
+      "label": "Request Service",
+      "href": "#contact"
+    },
+    "secondaryCta": {
+      "label": "Call (833) 302-4080",
+      "href": "tel:+18333024080"
+    },
+    "proofLine": "HVAC · Hialeah, Florida · Direct phone contact",
+    "imageAlt": "HVAC service concept for Comfort SOS Corporation"
+  },
+  "trust": [
+    {
+      "value": "Hialeah",
+      "label": "Florida"
+    },
+    {
+      "value": "HVAC",
+      "label": "Heating & cooling"
+    },
+    {
+      "value": "(833) 302-4080",
+      "label": "Call directly"
+    }
+  ],
+  "audiences": [],
+  "services": [
+    {
+      "title": "Cooling Service",
+      "body": "Discuss cooling-system issues and service needs directly with Comfort SOS."
+    },
+    {
+      "title": "Heating Service",
+      "body": "Call to describe your heating-system needs and confirm service availability."
+    },
+    {
+      "title": "System Care",
+      "body": "Ask about ongoing HVAC system care and the next recommended step for your property."
+    },
+    {
+      "title": "Service Requests",
+      "body": "Describe the issue, share your location, and confirm the appropriate service response."
+    }
+  ],
+  "whyUs": {
+    "eyebrow": "Built for local customers",
+    "title": "Make the next step obvious.",
+    "intro": "A service website should quickly answer three questions: who you are, where you work, and how to contact you.",
+    "items": [
+      {
+        "title": "Direct Contact",
+        "body": "The main phone number stays visible across desktop and mobile."
+      },
+      {
+        "title": "Local Clarity",
+        "body": "Hialeah is presented clearly so visitors understand where the business is based."
+      },
+      {
+        "title": "Simple Service Path",
+        "body": "Visitors can move from service information to a request without searching through the site."
+      },
+      {
+        "title": "Mobile First",
+        "body": "Primary actions remain easy to reach on smaller screens."
+      }
+    ]
+  },
+  "reviews": [],
+  "process": {
+    "eyebrow": "What happens next",
+    "title": "A simple path from problem to conversation.",
+    "steps": [
+      {
+        "number": "1",
+        "title": "Tell Us What You Need",
+        "body": "Call or use the service request form and describe the issue."
+      },
+      {
+        "number": "2",
+        "title": "Confirm the Details",
+        "body": "Share your location and the system or comfort issue you need help with."
+      },
+      {
+        "number": "3",
+        "title": "Plan the Next Step",
+        "body": "Comfort SOS can confirm availability and the appropriate next action."
+      }
+    ]
+  },
+  "about": {
+    "eyebrow": "About",
+    "title": "Comfort SOS Corporation.",
+    "body": "Comfort SOS Corporation is an HVAC business based in Hialeah, Florida. Call directly to confirm service availability for your property.",
+    "facts": [
+      {
+        "label": "Business",
+        "value": "HVAC"
+      },
+      {
+        "label": "Location",
+        "value": "Hialeah, FL"
+      },
+      {
+        "label": "Phone",
+        "value": "(833) 302-4080"
+      }
+    ],
+    "imageAlt": "Comfort SOS Corporation team and service concept"
+  },
+  "serviceAreas": {
+    "eyebrow": "Service area",
+    "title": "Based in Hialeah.",
+    "intro": "Contact Comfort SOS directly to confirm service availability for your address.",
+    "areas": [
+      "Hialeah"
+    ]
+  },
+  "faq": {
+    "eyebrow": "FAQ",
+    "title": "Start with the essentials.",
+    "items": [
+      {
+        "question": "How do I request service?",
+        "answer": "Call Comfort SOS at (833) 302-4080 or use the service request form on this page."
+      },
+      {
+        "question": "Where is Comfort SOS based?",
+        "answer": "Comfort SOS Corporation is based in Hialeah, Florida."
+      },
+      {
+        "question": "Do you serve my area?",
+        "answer": "Call directly with your address to confirm current service availability."
+      },
+      {
+        "question": "What information should I have ready?",
+        "answer": "Share your location and a short description of the heating or cooling issue you need help with."
+      }
+    ]
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "title": "Tell Comfort SOS what you need.",
+    "body": "Share a few details about the issue and your location, or call directly for the fastest conversation.",
+    "primaryCta": {
+      "label": "Call (833) 302-4080",
+      "href": "tel:+18333024080"
+    },
+    "formTitle": "Request service",
+    "formOptions": [
+      "Cooling",
+      "Heating",
+      "System care",
+      "Other HVAC need"
+    ]
+  },
+  "footer": {
+    "hours": null,
+    "note": "Website concept for proposal purposes."
+  },
+  "dataQuality": {
+    "verifiedFields": [
+      "business.name",
+      "business.vertical",
+      "business.phone",
+      "business.city",
+      "business.websiteUrl"
+    ],
+    "needsReview": [
+      "service scope",
+      "service coverage beyond Hialeah",
+      "hours",
+      "email",
+      "licenses",
+      "certifications",
+      "reviews",
+      "warranties",
+      "pricing"
+    ]
+  }
+}
