@@ -216,9 +216,11 @@ export function SiteNav({ variant }: { variant: Variant }) {
           >
             {PHONE_DISPLAY}
           </a>
-          <Btn kind="signal" href="#contact">
-            {cta}
-          </Btn>
+          <div className="hidden sm:block">
+            <Btn kind="signal" href={site.hero.primaryCta.href}>
+              {cta}
+            </Btn>
+          </div>
         </div>
       </Container>
     </header>
@@ -235,7 +237,7 @@ export function MobileActionBar({ variant }: { variant: Variant }) {
         Call Now
       </a>
       <a
-        href="#contact"
+        href={variant === "residential" ? site.hero.primaryCta.href : "#contact"}
         className="bg-signal py-4 text-center font-display text-[0.8rem] font-semibold uppercase tracking-[0.12em] text-signal-foreground"
       >
         {variant === "residential" ? site.hero.primaryCta.label : "Request Quote"}
@@ -327,7 +329,7 @@ export function SiteFooter({ variant }: { variant: Variant }) {
               : "Have a property or project to discuss?"}
           </h2>
           <div className="flex flex-wrap gap-3">
-            <Btn kind="signal" size="lg" href="#contact">
+            <Btn kind="signal" size="lg" href={site.hero.primaryCta.href}>
               {site.hero.primaryCta.label}
             </Btn>
             <Btn kind="outline-invert" size="lg" href={PHONE_HREF}>
