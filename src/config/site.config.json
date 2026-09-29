@@ -6,7 +6,7 @@
     "name": "Comfort SOS Corporation",
     "shortName": "Comfort S.O.S.",
     "mark": "CS",
-    "logoUrl": "/clients/comfort-sos/logo.png",
+    "logoUrl": "/brand/logo.png",
     "logoAlt": "Comfort S.O.S. logo mark"
   },
   "business": {
@@ -221,7 +221,6 @@
       "brand.logo"
     ],
     "needsReview": [
-      "official brand guidelines / exact color specs",
       "client-owned photography",
       "email",
       "licenses",
@@ -235,6 +234,10 @@
   "media": {
     "heroImageUrl": "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1600&q=85",
     "heroImageAlt": "HVAC technician servicing an air-conditioning system",
-    "heroImagePosition": "center"
+    "heroImagePosition": "center",
+    "wideImageUrl": null,
+    "wideImageAlt": "Local home service professional on site",
+    "featureImageUrl": null,
+    "featureImageAlt": "Home comfort system service"
   }
 }
