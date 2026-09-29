@@ -64,20 +64,28 @@ function ResidentialHome() {
             </p>
           </div>
 
-          <div className="relative overflow-hidden rounded-sm bg-ink p-8 text-ink-foreground shadow-lift sm:p-10">
-            <p className="eyebrow text-signal">Local HVAC service</p>
-            <p className="display-xl mt-5 text-4xl">Comfort starts with a clear next step.</p>
-            <p className="mt-5 text-base leading-relaxed text-ink-foreground/70">
-              Based in Hialeah, Comfort SOS gives local customers a direct way to ask about heating
-              and cooling service needs.
-            </p>
-            <div className="mt-10 border-t border-hairline-inverse pt-6">
-              <p className="text-xs uppercase tracking-[0.14em] text-ink-foreground/50">
-                Call Comfort SOS
+          <div className="relative min-h-[430px] overflow-hidden rounded-sm bg-ink shadow-lift">
+            {site.media.heroImageUrl ? (
+              <img
+                src={site.media.heroImageUrl}
+                alt={site.media.heroImageAlt}
+                className="absolute inset-0 h-full w-full object-cover"
+                style={{ objectPosition: site.media.heroImagePosition }}
+              />
+            ) : null}
+            <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/35 to-transparent" />
+            <div className="absolute inset-x-0 bottom-0 p-7 text-ink-foreground sm:p-9">
+              <p className="eyebrow text-signal">Local HVAC service</p>
+              <p className="display-xl mt-3 max-w-md text-3xl sm:text-4xl">
+                Comfort starts with a clear next step.
               </p>
-              <a href={PHONE_HREF} className="mt-2 block font-display text-3xl font-bold text-signal">
-                {PHONE_DISPLAY}
-              </a>
+              <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-ink-foreground/80">
+                <span>4.9 Google rating</span>
+                <span>Open 24 hours</span>
+                <a href={PHONE_HREF} className="font-semibold text-signal">
+                  {PHONE_DISPLAY}
+                </a>
+              </div>
             </div>
           </div>
         </Container>
