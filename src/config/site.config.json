@@ -238,6 +238,8 @@
     "wideImageUrl": null,
     "wideImageAlt": "Local home service professional on site",
     "featureImageUrl": null,
-    "featureImageAlt": "Home comfort system service"
+    "featureImageAlt": "Home comfort system service",
+    "wideImagePosition": "50% 28%",
+    "featureImagePosition": "center"
   }
 }
