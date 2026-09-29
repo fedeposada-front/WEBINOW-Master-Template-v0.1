@@ -137,14 +137,15 @@ function ResidentialHome() {
       </Section>
 
       {/* Full-bleed image CTA: the deliberate break in rhythm Gonzalo asked for */}
-      <section className="relative min-h-[68vh] overflow-hidden bg-ink text-ink-foreground">
+      <section className="relative min-h-[58vh] overflow-hidden bg-ink text-ink-foreground sm:min-h-[64vh]">
         <img
           src={wideImage}
           alt={site.media.wideImageAlt}
           className="absolute inset-0 h-full w-full object-cover"
+          style={{ objectPosition: site.media.wideImagePosition }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/75 to-ink/20" />
-        <Container className="relative flex min-h-[68vh] items-end py-14 sm:py-20">
+        <div className="absolute inset-0 bg-gradient-to-r from-ink/95 via-ink/68 to-ink/10" />
+        <Container className="relative flex min-h-[58vh] items-end py-14 sm:min-h-[64vh] sm:py-20">
           <div className="max-w-3xl">
             <p className="eyebrow text-signal">Available when you need help</p>
             <h2 className="display-xl mt-5 text-5xl sm:text-6xl lg:text-7xl">
@@ -199,6 +200,7 @@ function ResidentialHome() {
               src={featureImage}
               alt={site.media.featureImageAlt}
               className="absolute inset-0 h-full w-full object-cover"
+              style={{ objectPosition: site.media.featureImagePosition }}
             />
           </div>
 
@@ -234,7 +236,7 @@ function ResidentialHome() {
               <p className="mt-5 font-display text-sm font-semibold uppercase tracking-[0.16em] text-ink-foreground/55">
                 Miami-Dade · Florida
               </p>
-              <h2 className="display-xl mt-3 text-[18vw] leading-[0.78] text-ink-foreground sm:text-[9rem] lg:text-[11rem]">
+              <h2 className="display-xl mt-3 text-6xl leading-[0.9] text-ink-foreground sm:text-7xl lg:text-8xl">
                 Hialeah
               </h2>
             </div>
