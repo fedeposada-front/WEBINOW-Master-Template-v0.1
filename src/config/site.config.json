@@ -6,7 +6,8 @@
     "name": "Comfort SOS Corporation",
     "shortName": "Comfort SOS",
     "mark": "CS",
-    "logoUrl": null
+    "logoUrl": null,
+    "logoAlt": "Comfort SOS Corporation"
   },
   "business": {
     "vertical": "HVAC",
@@ -16,7 +17,8 @@
     "city": "Hialeah",
     "region": "Florida",
     "serviceArea": "Hialeah, Florida",
-    "websiteUrl": "http://www.comfort-sos.com/"
+    "websiteUrl": "http://www.comfort-sos.com/",
+    "bookingUrl": "https://book.housecallpro.com/book/comfort-sos-corp/ff8ca93a80754ab6935205e239ba4f56"
   },
   "features": {
     "commercialEnabled": false,
@@ -31,62 +33,62 @@
     "foreground": "oklch(0.24 0.035 258)",
     "surface": "oklch(1 0 0)",
     "surface2": "oklch(0.96 0.005 250)",
-    "ink": "oklch(0.22 0.045 258)",
+    "ink": "oklch(0.205 0.055 252)",
     "inkForeground": "oklch(0.97 0.005 250)",
-    "primary": "oklch(0.22 0.045 258)",
-    "accent": "oklch(0.68 0.19 45)",
-    "accentForeground": "oklch(0.16 0.03 258)",
-    "signal": "oklch(0.68 0.19 45)",
-    "signalForeground": "oklch(0.16 0.03 258)",
+    "primary": "oklch(0.205 0.055 252)",
+    "accent": "oklch(0.67 0.145 220)",
+    "accentForeground": "oklch(0.14 0.025 252)",
+    "signal": "oklch(0.67 0.145 220)",
+    "signalForeground": "oklch(0.14 0.025 252)",
     "border": "oklch(0.9 0.008 252)",
-    "ring": "oklch(0.68 0.19 45)"
+    "ring": "oklch(0.67 0.145 220)"
   },
   "hero": {
     "eyebrow": "HVAC & AC Service · Hialeah, Florida",
     "title": "A clearer way to get help with your comfort system.",
     "body": "Local HVAC and air-conditioning service in Hialeah. Call Comfort SOS directly to discuss your service needs.",
     "primaryCta": {
-      "label": "Request Service",
-      "href": "#contact"
+      "label": "Book Service",
+      "href": "https://book.housecallpro.com/book/comfort-sos-corp/ff8ca93a80754ab6935205e239ba4f56"
     },
     "secondaryCta": {
       "label": "Call (833) 302-4080",
       "href": "tel:+18333024080"
     },
-    "proofLine": "4.9 Google rating · 96 reviews · Open 24 hours",
+    "proofLine": "4.9 Google rating · Open 24 hours · Hialeah, Florida",
     "imageAlt": "HVAC service concept for Comfort SOS Corporation"
   },
   "trust": [
     {
       "value": "4.9 ★",
-      "label": "96 Google reviews"
+      "label": "Google rating"
     },
     {
       "value": "24/7",
       "label": "Open 24 hours"
     },
     {
-      "value": "(833) 302-4080",
-      "label": "Call directly"
+      "value": "Hialeah",
+      "label": "Miami-Dade"
     }
   ],
   "audiences": [],
   "services": [
     {
       "title": "Air Conditioning Repair",
-      "body": "Get help with air-conditioning repair needs and confirm service availability directly with Comfort SOS."
+      "body": "Air-conditioning repair support for cooling problems that need professional attention."
     },
     {
       "title": "HVAC Service",
-      "body": "Discuss heating, cooling, and general HVAC service needs for your property."
+      "body": "Heating, cooling and general HVAC service for homes and properties in the Hialeah area."
     },
     {
       "title": "Dryer Vent Cleaning",
-      "body": "Ask about dryer vent cleaning service and current appointment availability."
+      "body": "Dryer vent cleaning is listed among Comfort SOS Corporation's current service categories."
     },
     {
-      "title": "Service Requests",
-      "body": "Describe the issue, share your location, and confirm the appropriate next step."
+      "title": "24/7 Availability",
+      "body": "The current Google business listing shows Comfort SOS open 24 hours, seven days a week."
     }
   ],
   "whyUs": {
@@ -141,7 +143,7 @@
     "facts": [
       {
         "label": "Google rating",
-        "value": "4.9 ★ · 96 reviews"
+        "value": "4.9 ★"
       },
       {
         "label": "Hours",
@@ -189,8 +191,8 @@
     "title": "Tell Comfort SOS what you need.",
     "body": "Share a few details about the issue and your location, or call directly for the fastest conversation.",
     "primaryCta": {
-      "label": "Call (833) 302-4080",
-      "href": "tel:+18333024080"
+      "label": "Book Service",
+      "href": "https://book.housecallpro.com/book/comfort-sos-corp/ff8ca93a80754ab6935205e239ba4f56"
     },
     "formTitle": "Request service",
     "formOptions": [
@@ -218,6 +220,9 @@
       "business.categories"
     ],
     "needsReview": [
+      "client logo / official brand assets",
+      "official brand color palette",
+      "client-owned photography",
       "email",
       "licenses",
       "certifications",
@@ -226,5 +231,10 @@
       "pricing",
       "service coverage beyond Hialeah"
     ]
+  },
+  "media": {
+    "heroImageUrl": "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1600&q=85",
+    "heroImageAlt": "HVAC technician servicing an air-conditioning system",
+    "heroImagePosition": "center"
   }
 }
