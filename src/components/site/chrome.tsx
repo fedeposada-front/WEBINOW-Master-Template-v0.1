@@ -164,11 +164,16 @@ export function SiteNav({ variant }: { variant: Variant }) {
       <Container className="flex h-[76px] items-center justify-between gap-6">
         <Link to="/" className="flex min-w-0 items-center gap-3">
           {site.brand.logoUrl ? (
-            <img
-              src={site.brand.logoUrl}
-              alt={site.brand.logoAlt}
-              className="h-10 max-w-[180px] object-contain object-left"
-            />
+            <>
+              <img
+                src={site.brand.logoUrl}
+                alt={site.brand.logoAlt}
+                className="h-10 w-[68px] shrink-0 rounded-sm bg-white object-contain object-center"
+              />
+              <span className="truncate font-display text-sm font-bold uppercase tracking-[0.08em] sm:text-base">
+                {site.brand.shortName}
+              </span>
+            </>
           ) : (
             <>
               <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-sm bg-ink font-display text-xs font-bold text-ink-foreground">
