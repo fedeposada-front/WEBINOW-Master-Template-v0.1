@@ -170,11 +170,13 @@ function ResidentialHome() {
       {/* Process */}
       <Section tone="page">
         <div className="grid gap-12 lg:grid-cols-[0.72fr_1.28fr]">
-          <SectionHeading
-            eyebrow={site.process.eyebrow}
-            title={site.process.title}
-            intro="One clear path from the first question to the next action."
-          />
+          <div className="lg:sticky lg:top-32 lg:self-start">
+            <SectionHeading
+              eyebrow={site.process.eyebrow}
+              title={site.process.title}
+              intro="One clear path from the first question to the next action."
+            />
+          </div>
           <div className="space-y-0">
             {site.process.steps.map((step, index) => (
               <div
