@@ -163,12 +163,22 @@ export function SiteNav({ variant }: { variant: Variant }) {
     <header className="sticky top-0 z-40 border-b border-hairline bg-surface/95 backdrop-blur">
       <Container className="flex h-[76px] items-center justify-between gap-6">
         <Link to="/" className="flex min-w-0 items-center gap-3">
-          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-sm bg-ink font-display text-xs font-bold text-ink-foreground">
-            {site.brand.mark}
-          </span>
-          <span className="truncate font-display text-sm font-bold uppercase tracking-[0.1em] sm:text-base">
-            {site.brand.shortName}
-          </span>
+          {site.brand.logoUrl ? (
+            <img
+              src={site.brand.logoUrl}
+              alt={site.brand.logoAlt}
+              className="h-10 max-w-[180px] object-contain object-left"
+            />
+          ) : (
+            <>
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-sm bg-ink font-display text-xs font-bold text-ink-foreground">
+                {site.brand.mark}
+              </span>
+              <span className="truncate font-display text-sm font-bold uppercase tracking-[0.1em] sm:text-base">
+                {site.brand.shortName}
+              </span>
+            </>
+          )}
         </Link>
 
         <nav className="hidden items-center gap-6 xl:flex">
