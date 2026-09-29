@@ -45,8 +45,8 @@
   },
   "hero": {
     "eyebrow": "HVAC & AC Service · Hialeah, Florida",
-    "title": "A clearer way to get help with your comfort system.",
-    "body": "Local HVAC and air-conditioning service in Hialeah. Call Comfort SOS directly to discuss your service needs.",
+    "title": "HVAC help when your comfort can't wait.",
+    "body": "AC repair, installation, duct cleaning and general HVAC service in Hialeah. Book online or call Comfort SOS to get started.",
     "primaryCta": {
       "label": "Book Service",
       "href": "https://book.housecallpro.com/book/comfort-sos-corp/ff8ca93a80754ab6935205e239ba4f56"
@@ -55,7 +55,7 @@
       "label": "Call (833) 302-4080",
       "href": "tel:+18333024080"
     },
-    "proofLine": "4.9 Google rating · Open 24 hours · Hialeah, Florida",
+    "proofLine": "Florida Certified Air Conditioning Contractor · License CAC1819197",
     "imageAlt": "HVAC service concept for Comfort SOS Corporation"
   },
   "trust": [
@@ -64,31 +64,31 @@
       "label": "Google rating"
     },
     {
-      "value": "24/7",
-      "label": "Open 24 hours"
+      "value": "CAC1819197",
+      "label": "Florida certified"
     },
     {
-      "value": "Hialeah",
-      "label": "Miami-Dade"
+      "value": "Since 2017",
+      "label": "Licensed in Florida"
     }
   ],
   "audiences": [],
   "services": [
     {
-      "title": "Air Conditioning Repair",
-      "body": "Cooling problems diagnosed and repaired with a clear next step for getting your system back on track."
+      "title": "AC Repair",
+      "body": "Get help diagnosing and repairing air-conditioning problems so you can get your home comfortable again."
+    },
+    {
+      "title": "AC Installation",
+      "body": "Ask about air-conditioning installation and replacement options for your home or property."
+    },
+    {
+      "title": "Duct Cleaning",
+      "body": "Professional duct cleaning for customers who need help with airflow and cleaner HVAC delivery."
     },
     {
       "title": "HVAC Service",
       "body": "Heating, cooling and general HVAC service for homes and properties in the Hialeah area."
-    },
-    {
-      "title": "Dryer Vent Cleaning",
-      "body": "Professional dryer vent cleaning to help keep airflow clear and your system working efficiently."
-    },
-    {
-      "title": "24/7 Availability",
-      "body": "Open 24 hours for customers who need to discuss an urgent heating or cooling issue."
     }
   ],
   "whyUs": {
@@ -117,37 +117,37 @@
   "reviews": [],
   "process": {
     "eyebrow": "What happens next",
-    "title": "A simple path from problem to conversation.",
+    "title": "From the first call to the next step.",
     "steps": [
       {
         "number": "1",
-        "title": "Tell Us What You Need",
-        "body": "Call or use the service request form and describe the issue."
+        "title": "Book or Call",
+        "body": "Use online booking or call Comfort SOS and tell us what you need help with."
       },
       {
         "number": "2",
-        "title": "Confirm the Details",
-        "body": "Share your location and the system or comfort issue you need help with."
+        "title": "Share the Details",
+        "body": "Tell us your location, the system involved and what is happening."
       },
       {
         "number": "3",
-        "title": "Plan the Next Step",
-        "body": "Comfort SOS can confirm availability and the appropriate next action."
+        "title": "Confirm the Visit",
+        "body": "Comfort SOS confirms availability and the appropriate service step."
       }
     ]
   },
   "about": {
     "eyebrow": "About",
     "title": "Comfort SOS Corporation.",
-    "body": "Comfort SOS Corporation is an HVAC contractor based at 2345 W 80th St Unit 14 in Hialeah, Florida.",
+    "body": "Comfort SOS Corporation is a Florida Certified Air Conditioning Contractor serving Hialeah. Florida license CAC1819197 has been active since 2017.",
     "facts": [
       {
-        "label": "Google rating",
-        "value": "4.9 ★"
+        "label": "License",
+        "value": "CAC1819197"
       },
       {
-        "label": "Hours",
-        "value": "Open 24 hours"
+        "label": "Licensed since",
+        "value": "2017"
       },
       {
         "label": "Address",
@@ -166,7 +166,7 @@
   },
   "faq": {
     "eyebrow": "FAQ",
-    "title": "Start with the essentials.",
+    "title": "Before you book.",
     "items": [
       {
         "question": "How do I request service?",
@@ -188,8 +188,8 @@
   },
   "contact": {
     "eyebrow": "Contact",
-    "title": "Tell Comfort SOS what you need.",
-    "body": "Share a few details about the issue and your location, or call directly for the fastest conversation.",
+    "title": "Need HVAC help?",
+    "body": "Use the live booking link to request service, or call Comfort SOS directly if you'd rather speak with someone.",
     "primaryCta": {
       "label": "Book Service",
       "href": "https://book.housecallpro.com/book/comfort-sos-corp/ff8ca93a80754ab6935205e239ba4f56"
