@@ -147,7 +147,7 @@ export function UtilityBar({ variant }: { variant: Variant }) {
         </p>
         <a
           href={PHONE_HREF}
-          className="font-display font-semibold uppercase tracking-[0.12em] text-signal"
+          className="font-display font-semibold uppercase tracking-[0.12em] text-ink-foreground sm:text-signal"
         >
           Call {PHONE_DISPLAY}
         </a>
@@ -170,7 +170,7 @@ export function SiteNav({ variant }: { variant: Variant }) {
                 alt={site.brand.logoAlt}
                 className="h-10 w-[68px] shrink-0 rounded-sm bg-white object-contain object-center"
               />
-              <span className="truncate font-display text-sm font-bold uppercase tracking-[0.08em] sm:text-base">
+              <span className="hidden truncate font-display text-sm font-bold uppercase tracking-[0.08em] sm:block sm:text-base">
                 {site.brand.shortName}
               </span>
             </>
@@ -310,13 +310,22 @@ export function LeadForm({ variant }: { variant: Variant }) {
 }
 
 export function SiteFooter({ variant }: { variant: Variant }) {
-  const serviceLinks = site.services.slice(0, 6).map((item) => item.title);
-  const areaLinks = site.serviceAreas.areas.slice(0, 6);
-
   const cols = [
-    { title: "Services", links: serviceLinks },
-    { title: "Company", links: ["About", "Contact"] },
-    { title: "Service Area", links: areaLinks },
+    {
+      title: "Services",
+      links: site.services.slice(0, 6).map((item) => ({ label: item.title, href: "#services" })),
+    },
+    {
+      title: "Company",
+      links: [
+        { label: "About", href: "#about" },
+        { label: "Contact", href: "#contact" },
+      ],
+    },
+    {
+      title: "Service Area",
+      links: site.serviceAreas.areas.slice(0, 6).map((area) => ({ label: area, href: "#areas" })),
+    },
   ];
 
   return (
@@ -357,10 +366,10 @@ export function SiteFooter({ variant }: { variant: Variant }) {
                 {col.title}
               </p>
               <ul className="mt-4 space-y-2 text-sm text-ink-foreground/70">
-                {col.links.map((label) => (
-                  <li key={label}>
-                    <a href="#contact" className="hover:text-ink-foreground">
-                      {label}
+                {col.links.map((link) => (
+                  <li key={link.label}>
+                    <a href={link.href} className="hover:text-ink-foreground">
+                      {link.label}
                     </a>
                   </li>
                 ))}
