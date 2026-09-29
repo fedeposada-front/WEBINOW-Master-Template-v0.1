@@ -135,7 +135,7 @@ export function UtilityBar({ variant }: { variant: Variant }) {
   const message =
     variant === "commercial"
       ? "Commercial HVAC conversations"
-      : `${site.business.vertical} service · ${site.business.city}`;
+      : `${site.business.vertical} service`;
 
   return (
     <div className="bg-ink text-ink-foreground">
