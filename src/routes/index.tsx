@@ -6,7 +6,6 @@ import {
   Btn,
   Container,
   FaqList,
-  LeadForm,
   MobileActionBar,
   PHONE_DISPLAY,
   PHONE_HREF,
@@ -76,9 +75,7 @@ function ResidentialHome() {
               </Btn>
             </div>
             <div className="mt-10 flex flex-wrap gap-x-7 gap-y-3 border-t border-hairline-inverse pt-5 text-sm text-ink-foreground/72">
-              <span>4.9 Google rating</span>
-              <span>Open 24 hours</span>
-              <span>Hialeah, Florida</span>
+              <span>{site.hero.proofLine}</span>
               <a href={PHONE_HREF} className="font-semibold text-signal">
                 {PHONE_DISPLAY}
               </a>
@@ -108,7 +105,7 @@ function ResidentialHome() {
             <SectionHeading
               eyebrow="Services"
               title="A clearer service path."
-              intro="Start with the type of heating or cooling help you need, then contact Comfort SOS to confirm availability."
+              intro="Choose the service that matches what you need, then book online or call Comfort SOS directly."
             />
             <div className="mt-8">
               <Btn kind="outline" href="#contact">Request service</Btn>
@@ -119,7 +116,7 @@ function ResidentialHome() {
             {site.services.map((service, index) => (
               <a
                 key={service.title}
-                href="#contact"
+                href={site.hero.primaryCta.href}
                 className="group grid gap-4 border-b border-hairline py-8 transition-colors hover:bg-surface-2 sm:grid-cols-[72px_0.75fr_1.25fr_auto] sm:items-start sm:px-4"
               >
                 <span className="font-display text-sm font-bold text-signal">
@@ -149,11 +146,10 @@ function ResidentialHome() {
           <div className="max-w-3xl">
             <p className="eyebrow text-signal">Available when you need help</p>
             <h2 className="display-xl mt-5 text-5xl sm:text-6xl lg:text-7xl">
-              Your comfort system should not make you wait.
+              Need HVAC help? Start here.
             </h2>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-foreground/75">
-              Comfort SOS is listed as open 24 hours. Start with a quick call or book service online
-              and confirm the right next step for your property.
+              Book service online or call Comfort SOS directly to get the right next step for your property.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Btn kind="signal" size="lg" href={site.hero.primaryCta.href}>
@@ -267,7 +263,7 @@ function ResidentialHome() {
       {/* Contact */}
       <section id="contact" className="bg-surface py-20 sm:py-28">
         <Container>
-          <div className="grid gap-12 lg:grid-cols-[0.78fr_1.22fr] lg:items-start">
+          <div className="grid gap-12 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
             <div className="lg:sticky lg:top-32">
               <p className="eyebrow">{site.contact.eyebrow}</p>
               <h2 className="display-xl mt-4 max-w-xl text-5xl sm:text-6xl">
@@ -276,7 +272,14 @@ function ResidentialHome() {
               <p className="mt-6 max-w-lg text-lg leading-relaxed text-muted-foreground">
                 {site.contact.body}
               </p>
-              <div className="mt-8 flex flex-wrap gap-3">
+            </div>
+
+            <div className="border-t border-hairline pt-8 sm:pt-10">
+              <p className="font-display text-2xl font-bold">Choose how you want to start.</p>
+              <p className="mt-3 max-w-xl text-base leading-relaxed text-muted-foreground">
+                Online booking uses Comfort SOS's current Housecall Pro booking flow. Prefer to talk first? Call directly.
+              </p>
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <Btn kind="signal" size="lg" href={site.contact.primaryCta.href}>
                   {site.contact.primaryCta.label}
                 </Btn>
@@ -284,8 +287,17 @@ function ResidentialHome() {
                   Call {PHONE_DISPLAY}
                 </Btn>
               </div>
+              <dl className="mt-10 grid gap-6 border-t border-hairline pt-7 text-sm sm:grid-cols-2">
+                <div>
+                  <dt className="text-xs uppercase tracking-[0.12em] text-muted-foreground">Florida license</dt>
+                  <dd className="mt-2 font-display text-lg font-semibold">CAC1819197</dd>
+                </div>
+                <div>
+                  <dt className="text-xs uppercase tracking-[0.12em] text-muted-foreground">Based in</dt>
+                  <dd className="mt-2 font-display text-lg font-semibold">Hialeah, Florida</dd>
+                </div>
+              </dl>
             </div>
-            <LeadForm variant="residential" />
           </div>
         </Container>
       </section>
