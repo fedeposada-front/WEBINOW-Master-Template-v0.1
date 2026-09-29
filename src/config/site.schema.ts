@@ -45,6 +45,10 @@ export const siteSchema = z.object({
     heroImageUrl: z.string().nullable(),
     heroImageAlt: z.string().min(1),
     heroImagePosition: z.string().min(1),
+    wideImageUrl: z.string().nullable(),
+    wideImageAlt: z.string().min(1),
+    featureImageUrl: z.string().nullable(),
+    featureImageAlt: z.string().min(1),
   }),
   seo: z.object({
     title: z.string().min(1),
