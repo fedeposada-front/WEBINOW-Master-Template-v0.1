@@ -24,6 +24,7 @@ export const siteSchema = z.object({
     shortName: z.string().min(1),
     mark: z.string().min(1).max(4),
     logoUrl: z.string().nullable(),
+    logoAlt: z.string().min(1),
   }),
   business: z.object({
     vertical: z.string().min(1),
@@ -34,10 +35,16 @@ export const siteSchema = z.object({
     region: z.string().min(1),
     serviceArea: z.string().min(1),
     websiteUrl: z.string().nullable(),
+    bookingUrl: z.string().nullable(),
   }),
   features: z.object({
     commercialEnabled: z.boolean(),
     showReviews: z.boolean(),
+  }),
+  media: z.object({
+    heroImageUrl: z.string().nullable(),
+    heroImageAlt: z.string().min(1),
+    heroImagePosition: z.string().min(1),
   }),
   seo: z.object({
     title: z.string().min(1),
