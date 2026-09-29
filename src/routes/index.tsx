@@ -47,50 +47,41 @@ function ResidentialHome() {
       <UtilityBar variant="residential" />
       <SiteNav variant="residential" />
 
-      {/* Editorial hero */}
-      <section className="overflow-hidden bg-surface">
-        <Container className="grid min-h-[76vh] gap-10 py-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center lg:py-16">
-          <div className="relative z-10">
-            <p className="eyebrow">{site.hero.eyebrow}</p>
-            <h1 className="display-xl mt-5 max-w-4xl text-5xl sm:text-6xl lg:text-[4.9rem]">
+      {/* Full-bleed editorial hero */}
+      <section className="relative min-h-[calc(100svh-112px)] overflow-hidden bg-ink text-ink-foreground">
+        <img
+          src={heroImage}
+          alt={site.media.heroImageAlt}
+          className="absolute inset-0 h-full w-full object-cover"
+          style={{ objectPosition: site.media.heroImagePosition }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-ink/95 via-ink/70 to-ink/15" />
+        <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent" />
+
+        <Container className="relative flex min-h-[calc(100svh-112px)] items-end py-14 sm:py-20 lg:py-24">
+          <div className="max-w-4xl">
+            <p className="eyebrow text-signal">{site.hero.eyebrow}</p>
+            <h1 className="display-xl mt-5 max-w-4xl text-5xl text-ink-foreground sm:text-7xl lg:text-[6.25rem]">
               {site.hero.title}
             </h1>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
+            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-foreground/78 sm:text-xl">
               {site.hero.body}
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Btn kind="signal" size="lg" href={site.hero.primaryCta.href}>
                 {site.hero.primaryCta.label}
               </Btn>
-              <Btn kind="outline" size="lg" href={site.hero.secondaryCta.href}>
+              <Btn kind="outline-invert" size="lg" href={site.hero.secondaryCta.href}>
                 {site.hero.secondaryCta.label}
               </Btn>
             </div>
-            <p className="mt-8 text-sm font-medium text-muted-foreground">
-              {site.hero.proofLine}
-            </p>
-          </div>
-
-          <div className="relative min-h-[520px] overflow-hidden rounded-sm bg-ink shadow-lift lg:min-h-[620px]">
-            <img
-              src={heroImage}
-              alt={site.media.heroImageAlt}
-              className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 hover:scale-[1.015]"
-              style={{ objectPosition: site.media.heroImagePosition }}
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/15 to-transparent" />
-            <div className="absolute inset-x-0 bottom-0 p-7 text-ink-foreground sm:p-10">
-              <p className="eyebrow text-signal">Local HVAC service</p>
-              <p className="display-xl mt-3 max-w-lg text-3xl sm:text-4xl">
-                Comfort starts with a clear next step.
-              </p>
-              <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-ink-foreground/80">
-                <span>4.9 Google rating</span>
-                <span>Open 24 hours</span>
-                <a href={PHONE_HREF} className="font-semibold text-signal">
-                  {PHONE_DISPLAY}
-                </a>
-              </div>
+            <div className="mt-10 flex flex-wrap gap-x-7 gap-y-3 border-t border-hairline-inverse pt-5 text-sm text-ink-foreground/72">
+              <span>4.9 Google rating</span>
+              <span>Open 24 hours</span>
+              <span>Hialeah, Florida</span>
+              <a href={PHONE_HREF} className="font-semibold text-signal">
+                {PHONE_DISPLAY}
+              </a>
             </div>
           </div>
         </Container>
@@ -177,23 +168,26 @@ function ResidentialHome() {
 
       {/* Process */}
       <Section tone="page">
-        <div className="flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
+        <div className="grid gap-12 lg:grid-cols-[0.72fr_1.28fr]">
           <SectionHeading
             eyebrow={site.process.eyebrow}
             title={site.process.title}
+            intro="One clear path from the first question to the next action."
           />
-          <p className="max-w-md text-muted-foreground">
-            One clear path from the first question to the next action.
-          </p>
-        </div>
-        <div className="mt-14 grid gap-px bg-hairline sm:grid-cols-3">
-          {site.process.steps.map((step) => (
-            <div key={step.number} className="bg-background p-8 sm:p-10">
-              <p className="font-display text-6xl font-bold text-signal">{step.number}</p>
-              <h3 className="mt-8 font-display text-xl font-bold">{step.title}</h3>
-              <p className="mt-3 text-muted-foreground">{step.body}</p>
-            </div>
-          ))}
+          <div className="space-y-0">
+            {site.process.steps.map((step, index) => (
+              <div
+                key={step.number}
+                className="grid gap-5 border-t border-hairline py-8 sm:grid-cols-[88px_0.8fr_1.2fr] sm:items-start"
+              >
+                <p className="font-display text-5xl font-bold text-signal">
+                  {String(index + 1).padStart(2, "0")}
+                </p>
+                <h3 className="font-display text-xl font-bold">{step.title}</h3>
+                <p className="max-w-xl text-muted-foreground">{step.body}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </Section>
 
@@ -232,23 +226,34 @@ function ResidentialHome() {
       </Section>
 
       {/* Service area */}
-      <Section id="areas" tone="page">
-        <div className="grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
-          <SectionHeading
-            eyebrow={site.serviceAreas.eyebrow}
-            title={site.serviceAreas.title}
-            intro={site.serviceAreas.intro}
-          />
-          <div className="flex flex-wrap gap-3">
-            {site.serviceAreas.areas.map((area) => (
-              <div key={area} className="min-w-48 border border-hairline bg-surface p-6">
-                <p className="font-display text-base font-semibold">{area}</p>
-                <p className="mt-1 text-xs text-muted-foreground">Confirm availability by phone</p>
+      <section id="areas" className="relative overflow-hidden bg-ink py-20 text-ink-foreground sm:py-28">
+        <Container>
+          <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+            <div>
+              <p className="eyebrow text-signal">{site.serviceAreas.eyebrow}</p>
+              <p className="mt-5 font-display text-sm font-semibold uppercase tracking-[0.16em] text-ink-foreground/55">
+                Miami-Dade · Florida
+              </p>
+              <h2 className="display-xl mt-3 text-[18vw] leading-[0.78] text-ink-foreground sm:text-[9rem] lg:text-[11rem]">
+                Hialeah
+              </h2>
+            </div>
+            <div className="max-w-xl border-t border-hairline-inverse pt-6 lg:mb-2">
+              <p className="text-xl leading-relaxed text-ink-foreground/78">
+                {site.serviceAreas.intro}
+              </p>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Btn kind="signal" size="lg" href={PHONE_HREF}>
+                  Call {PHONE_DISPLAY}
+                </Btn>
+                <Btn kind="outline-invert" size="lg" href={site.hero.primaryCta.href}>
+                  {site.hero.primaryCta.label}
+                </Btn>
               </div>
-            ))}
+            </div>
           </div>
-        </div>
-      </Section>
+        </Container>
+      </section>
 
       <Section tone="muted">
         <SectionHeading eyebrow={site.faq.eyebrow} title={site.faq.title} />
@@ -256,26 +261,30 @@ function ResidentialHome() {
       </Section>
 
       {/* Contact */}
-      <Section id="contact" tone="page">
-        <div className="grid gap-12 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
-          <div>
-            <SectionHeading
-              eyebrow={site.contact.eyebrow}
-              title={site.contact.title}
-              intro={site.contact.body}
-            />
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Btn kind="signal" size="lg" href={site.contact.primaryCta.href}>
-                {site.contact.primaryCta.label}
-              </Btn>
-              <Btn kind="outline" size="lg" href={PHONE_HREF}>
-                Call {PHONE_DISPLAY}
-              </Btn>
+      <section id="contact" className="bg-surface py-20 sm:py-28">
+        <Container>
+          <div className="grid gap-12 lg:grid-cols-[0.78fr_1.22fr] lg:items-start">
+            <div className="lg:sticky lg:top-32">
+              <p className="eyebrow">{site.contact.eyebrow}</p>
+              <h2 className="display-xl mt-4 max-w-xl text-5xl sm:text-6xl">
+                {site.contact.title}
+              </h2>
+              <p className="mt-6 max-w-lg text-lg leading-relaxed text-muted-foreground">
+                {site.contact.body}
+              </p>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Btn kind="signal" size="lg" href={site.contact.primaryCta.href}>
+                  {site.contact.primaryCta.label}
+                </Btn>
+                <Btn kind="outline" size="lg" href={PHONE_HREF}>
+                  Call {PHONE_DISPLAY}
+                </Btn>
+              </div>
             </div>
+            <LeadForm variant="residential" />
           </div>
-          <LeadForm variant="residential" />
-        </div>
-      </Section>
+        </Container>
+      </section>
 
       <SiteFooter variant="residential" />
       <MobileActionBar variant="residential" />
