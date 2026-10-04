@@ -6,16 +6,20 @@ import {
   Btn,
   Container,
   FaqList,
+  LeadForm,
   MobileActionBar,
-  PHONE_DISPLAY,
-  PHONE_HREF,
   Section,
   SectionHeading,
   SiteFooter,
   SiteNav,
   UtilityBar,
 } from "@/components/site/chrome";
-import { site, siteThemeStyle } from "@/config/site";
+import {
+  PRIMARY_CONVERSION,
+  SECONDARY_CONVERSION,
+  site,
+  siteThemeStyle,
+} from "@/config/site";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -46,7 +50,6 @@ function ResidentialHome() {
       <UtilityBar variant="residential" />
       <SiteNav variant="residential" />
 
-      {/* Full-bleed editorial hero */}
       <section className="relative min-h-[calc(100svh-112px)] overflow-hidden bg-ink text-ink-foreground">
         <img
           src={heroImage}
@@ -67,56 +70,60 @@ function ResidentialHome() {
               {site.hero.body}
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Btn kind="signal" size="lg" href={site.hero.primaryCta.href}>
-                {site.hero.primaryCta.label}
+              <Btn kind="signal" size="lg" href={PRIMARY_CONVERSION.href}>
+                {PRIMARY_CONVERSION.label}
               </Btn>
-              <Btn kind="outline-invert" size="lg" href={site.hero.secondaryCta.href}>
-                {site.hero.secondaryCta.label}
+              <Btn kind="outline-invert" size="lg" href={SECONDARY_CONVERSION.href}>
+                {SECONDARY_CONVERSION.label}
               </Btn>
             </div>
-            <div className="mt-10 flex flex-wrap gap-x-7 gap-y-3 border-t border-hairline-inverse pt-5 text-sm text-ink-foreground/72">
-              <span>{site.hero.proofLine}</span>
-              <a href={PHONE_HREF} className="font-semibold text-signal">
-                {PHONE_DISPLAY}
-              </a>
-            </div>
+            {(site.hero.proofLine || SECONDARY_CONVERSION.href) ? (
+              <div className="mt-10 flex flex-wrap gap-x-7 gap-y-3 border-t border-hairline-inverse pt-5 text-sm text-ink-foreground/72">
+                {site.hero.proofLine ? <span>{site.hero.proofLine}</span> : null}
+                <a href={SECONDARY_CONVERSION.href} className="font-semibold text-signal">
+                  {SECONDARY_CONVERSION.label}
+                </a>
+              </div>
+            ) : null}
           </div>
         </Container>
       </section>
 
-      {/* Compact proof strip */}
-      <div className="border-y border-hairline bg-surface-2">
-        <Container className="grid grid-cols-1 divide-hairline sm:grid-cols-3 sm:divide-x">
-          {site.trust.map((item) => (
-            <div key={item.label} className="px-4 py-7 text-center">
-              <p className="font-display text-2xl font-bold">{item.value}</p>
-              <p className="mt-1 text-xs uppercase tracking-[0.12em] text-muted-foreground">
-                {item.label}
-              </p>
-            </div>
-          ))}
-        </Container>
-      </div>
+      {site.features.showTrust && site.trust.length > 0 ? (
+        <div className="border-y border-hairline bg-surface-2">
+          <Container className="grid grid-cols-1 divide-hairline sm:grid-cols-3 sm:divide-x">
+            {site.trust.map((item) => (
+              <div key={item.label} className="px-4 py-7 text-center">
+                <p className="font-display text-2xl font-bold">{item.value}</p>
+                <p className="mt-1 text-xs uppercase tracking-[0.12em] text-muted-foreground">
+                  {item.label}
+                </p>
+              </div>
+            ))}
+          </Container>
+        </div>
+      ) : null}
 
-      {/* Services as an editorial list, not a card grid */}
       <Section id="services" tone="surface">
         <div className="grid gap-14 lg:grid-cols-[0.72fr_1.28fr]">
           <div className="lg:sticky lg:top-32 lg:self-start">
             <SectionHeading
-              eyebrow="Services"
-              title="A clearer service path."
-              intro="Choose the service that matches what you need, then book online or call Comfort SOS directly."
+              eyebrow={site.servicesSection.eyebrow}
+              title={site.servicesSection.title}
+              intro={site.servicesSection.intro}
             />
             <div className="mt-8">
-              <Btn kind="outline" href="#contact">Request service</Btn>
+              <Btn kind="outline" href={PRIMARY_CONVERSION.href}>
+                {PRIMARY_CONVERSION.label}
+              </Btn>
             </div>
           </div>
 
           <div className="border-t border-hairline">
             {site.services.map((service, index) => (
               <a
-                key={service.title}
-                href={site.hero.primaryCta.href}
+                key={service.id}
+                href={PRIMARY_CONVERSION.href}
                 className="group grid gap-4 border-b border-hairline py-8 transition-colors hover:bg-surface-2 sm:grid-cols-[72px_0.75fr_1.25fr_auto] sm:items-start sm:px-4"
               >
                 <span className="font-display text-sm font-bold text-signal">
@@ -133,134 +140,142 @@ function ResidentialHome() {
         </div>
       </Section>
 
-      {/* Full-bleed image CTA: the deliberate break in rhythm Gonzalo asked for */}
-      <section className="relative min-h-[58vh] overflow-hidden bg-ink text-ink-foreground sm:min-h-[64vh]">
-        <img
-          src={wideImage}
-          alt={site.media.wideImageAlt}
-          className="absolute inset-0 h-full w-full object-cover"
-          style={{ objectPosition: site.media.wideImagePosition }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-ink/95 via-ink/68 to-ink/10" />
-        <Container className="relative flex min-h-[58vh] items-end py-14 sm:min-h-[64vh] sm:py-20">
-          <div className="max-w-3xl">
-            <p className="eyebrow text-signal">Available when you need help</p>
-            <h2 className="display-xl mt-5 text-5xl sm:text-6xl lg:text-7xl">
-              Need HVAC help? Start here.
-            </h2>
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-foreground/75">
-              Book service online or call Comfort SOS directly to get the right next step for your property.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Btn kind="signal" size="lg" href={site.hero.primaryCta.href}>
-                {site.hero.primaryCta.label}
-              </Btn>
-              <Btn kind="outline-invert" size="lg" href={PHONE_HREF}>
-                Call {PHONE_DISPLAY}
-              </Btn>
+      {site.features.showWideCta ? (
+        <section className="relative min-h-[58vh] overflow-hidden bg-ink text-ink-foreground sm:min-h-[64vh]">
+          <img
+            src={wideImage}
+            alt={site.media.wideImageAlt}
+            className="absolute inset-0 h-full w-full object-cover"
+            style={{ objectPosition: site.media.wideImagePosition }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-ink/95 via-ink/68 to-ink/10" />
+          <Container className="relative flex min-h-[58vh] items-end py-14 sm:min-h-[64vh] sm:py-20">
+            <div className="max-w-3xl">
+              <p className="eyebrow text-signal">{site.wideCta.eyebrow}</p>
+              <h2 className="display-xl mt-5 text-5xl sm:text-6xl lg:text-7xl">
+                {site.wideCta.title}
+              </h2>
+              <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-foreground/75">
+                {site.wideCta.body}
+              </p>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Btn kind="signal" size="lg" href={PRIMARY_CONVERSION.href}>
+                  {PRIMARY_CONVERSION.label}
+                </Btn>
+                <Btn kind="outline-invert" size="lg" href={SECONDARY_CONVERSION.href}>
+                  {SECONDARY_CONVERSION.label}
+                </Btn>
+              </div>
+            </div>
+          </Container>
+        </section>
+      ) : null}
+
+      {site.features.showProcess && site.process.steps.length > 0 ? (
+        <Section tone="page">
+          <div className="grid gap-12 lg:grid-cols-[0.72fr_1.28fr]">
+            <div className="lg:sticky lg:top-32 lg:self-start">
+              <SectionHeading
+                eyebrow={site.process.eyebrow}
+                title={site.process.title}
+                intro={site.process.intro}
+              />
+            </div>
+            <div className="space-y-0">
+              {site.process.steps.map((step, index) => (
+                <div
+                  key={step.number}
+                  className="grid gap-5 border-t border-hairline py-8 sm:grid-cols-[88px_0.8fr_1.2fr] sm:items-start"
+                >
+                  <p className="font-display text-5xl font-bold text-signal">
+                    {String(index + 1).padStart(2, "0")}
+                  </p>
+                  <h3 className="font-display text-xl font-bold">{step.title}</h3>
+                  <p className="max-w-xl text-muted-foreground">{step.body}</p>
+                </div>
+              ))}
             </div>
           </div>
-        </Container>
-      </section>
+        </Section>
+      ) : null}
 
-      {/* Process */}
-      <Section tone="page">
-        <div className="grid gap-12 lg:grid-cols-[0.72fr_1.28fr]">
-          <div className="lg:sticky lg:top-32 lg:self-start">
-            <SectionHeading
-              eyebrow={site.process.eyebrow}
-              title={site.process.title}
-              intro="One clear path from the first question to the next action."
-            />
-          </div>
-          <div className="space-y-0">
-            {site.process.steps.map((step, index) => (
-              <div
-                key={step.number}
-                className="grid gap-5 border-t border-hairline py-8 sm:grid-cols-[88px_0.8fr_1.2fr] sm:items-start"
-              >
-                <p className="font-display text-5xl font-bold text-signal">
-                  {String(index + 1).padStart(2, "0")}
-                </p>
-                <h3 className="font-display text-xl font-bold">{step.title}</h3>
-                <p className="max-w-xl text-muted-foreground">{step.body}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </Section>
+      {site.features.showAbout ? (
+        <Section id="about" tone="muted">
+          <div className="grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-stretch">
+            <div className="relative min-h-[520px] overflow-hidden rounded-sm bg-ink">
+              <img
+                src={featureImage}
+                alt={site.media.featureImageAlt}
+                className="absolute inset-0 h-full w-full object-cover"
+                style={{ objectPosition: site.media.featureImagePosition }}
+              />
+            </div>
 
-      {/* Image-led company section */}
-      <Section id="about" tone="muted">
-        <div className="grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-stretch">
-          <div className="relative min-h-[520px] overflow-hidden rounded-sm bg-ink">
-            <img
-              src={featureImage}
-              alt={site.media.featureImageAlt}
-              className="absolute inset-0 h-full w-full object-cover"
-              style={{ objectPosition: site.media.featureImagePosition }}
-            />
-          </div>
-
-          <div className="flex flex-col justify-between gap-10 py-2 lg:py-8">
-            <div>
+            <div className="flex flex-col justify-between gap-10 py-2 lg:py-8">
               <SectionHeading
                 eyebrow={site.about.eyebrow}
                 title={site.about.title}
                 intro={site.about.body}
               />
-            </div>
 
-            <dl className="grid gap-6 text-sm">
-              {site.about.facts.map((fact) => (
-                <div key={fact.label} className="border-t border-hairline pt-5">
-                  <dt className="text-xs uppercase tracking-[0.12em] text-muted-foreground">
-                    {fact.label}
-                  </dt>
-                  <dd className="mt-2 font-display text-lg font-semibold">{fact.value}</dd>
-                </div>
-              ))}
-            </dl>
+              {site.about.facts.length > 0 ? (
+                <dl className="grid gap-6 text-sm">
+                  {site.about.facts.map((fact) => (
+                    <div key={fact.label} className="border-t border-hairline pt-5">
+                      <dt className="text-xs uppercase tracking-[0.12em] text-muted-foreground">
+                        {fact.label}
+                      </dt>
+                      <dd className="mt-2 font-display text-lg font-semibold">{fact.value}</dd>
+                    </div>
+                  ))}
+                </dl>
+              ) : null}
+            </div>
           </div>
-        </div>
-      </Section>
+        </Section>
+      ) : null}
 
-      {/* Service area */}
-      <section id="areas" className="relative overflow-hidden bg-ink py-20 text-ink-foreground sm:py-28">
-        <Container>
-          <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
-            <div>
-              <p className="eyebrow text-signal">{site.serviceAreas.eyebrow}</p>
-              <p className="mt-5 font-display text-sm font-semibold uppercase tracking-[0.16em] text-ink-foreground/55">
-                Miami-Dade · Florida
-              </p>
-              <h2 className="display-xl mt-3 text-6xl leading-[0.9] text-ink-foreground sm:text-7xl lg:text-8xl">
-                Hialeah
-              </h2>
-            </div>
-            <div className="max-w-xl border-t border-hairline-inverse pt-6 lg:mb-2">
-              <p className="text-xl leading-relaxed text-ink-foreground/78">
-                {site.serviceAreas.intro}
-              </p>
-              <div className="mt-8 flex flex-wrap gap-3">
-                <Btn kind="signal" size="lg" href={PHONE_HREF}>
-                  Call {PHONE_DISPLAY}
-                </Btn>
-                <Btn kind="outline-invert" size="lg" href={site.hero.primaryCta.href}>
-                  {site.hero.primaryCta.label}
-                </Btn>
+      {site.features.showServiceAreas && site.serviceAreas.areas.length > 0 ? (
+        <section
+          id="areas"
+          className="relative overflow-hidden bg-ink py-20 text-ink-foreground sm:py-28"
+        >
+          <Container>
+            <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+              <div>
+                <p className="eyebrow text-signal">{site.serviceAreas.eyebrow}</p>
+                <p className="mt-5 font-display text-sm font-semibold uppercase tracking-[0.16em] text-ink-foreground/55">
+                  {site.business.serviceArea}
+                </p>
+                <h2 className="display-xl mt-3 text-6xl leading-[0.9] text-ink-foreground sm:text-7xl lg:text-8xl">
+                  {site.serviceAreas.title}
+                </h2>
+              </div>
+              <div className="max-w-xl border-t border-hairline-inverse pt-6 lg:mb-2">
+                <p className="text-xl leading-relaxed text-ink-foreground/78">
+                  {site.serviceAreas.intro}
+                </p>
+                <div className="mt-8 flex flex-wrap gap-3">
+                  <Btn kind="signal" size="lg" href={PRIMARY_CONVERSION.href}>
+                    {PRIMARY_CONVERSION.label}
+                  </Btn>
+                  <Btn kind="outline-invert" size="lg" href={SECONDARY_CONVERSION.href}>
+                    {SECONDARY_CONVERSION.label}
+                  </Btn>
+                </div>
               </div>
             </div>
-          </div>
-        </Container>
-      </section>
+          </Container>
+        </section>
+      ) : null}
 
-      <Section tone="muted">
-        <SectionHeading eyebrow={site.faq.eyebrow} title={site.faq.title} />
-        <FaqList items={faqItems} />
-      </Section>
+      {site.features.showFaq && faqItems.length > 0 ? (
+        <Section tone="muted">
+          <SectionHeading eyebrow={site.faq.eyebrow} title={site.faq.title} />
+          <FaqList items={faqItems} />
+        </Section>
+      ) : null}
 
-      {/* Contact */}
       <section id="contact" className="bg-surface py-20 sm:py-28">
         <Container>
           <div className="grid gap-12 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
@@ -275,28 +290,37 @@ function ResidentialHome() {
             </div>
 
             <div className="border-t border-hairline pt-8 sm:pt-10">
-              <p className="font-display text-2xl font-bold">Choose how you want to start.</p>
+              <p className="font-display text-2xl font-bold">{site.contact.choiceTitle}</p>
               <p className="mt-3 max-w-xl text-base leading-relaxed text-muted-foreground">
-                Online booking uses Comfort SOS's current Housecall Pro booking flow. Prefer to talk first? Call directly.
+                {site.contact.choiceBody}
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <Btn kind="signal" size="lg" href={site.contact.primaryCta.href}>
-                  {site.contact.primaryCta.label}
+                <Btn kind="signal" size="lg" href={PRIMARY_CONVERSION.href}>
+                  {PRIMARY_CONVERSION.label}
                 </Btn>
-                <Btn kind="outline" size="lg" href={PHONE_HREF}>
-                  Call {PHONE_DISPLAY}
+                <Btn kind="outline" size="lg" href={SECONDARY_CONVERSION.href}>
+                  {SECONDARY_CONVERSION.label}
                 </Btn>
               </div>
-              <dl className="mt-10 grid gap-6 border-t border-hairline pt-7 text-sm sm:grid-cols-2">
-                <div>
-                  <dt className="text-xs uppercase tracking-[0.12em] text-muted-foreground">Florida license</dt>
-                  <dd className="mt-2 font-display text-lg font-semibold">CAC1819197</dd>
+
+              {site.contact.facts.length > 0 ? (
+                <dl className="mt-10 grid gap-6 border-t border-hairline pt-7 text-sm sm:grid-cols-2">
+                  {site.contact.facts.map((fact) => (
+                    <div key={fact.label}>
+                      <dt className="text-xs uppercase tracking-[0.12em] text-muted-foreground">
+                        {fact.label}
+                      </dt>
+                      <dd className="mt-2 font-display text-lg font-semibold">{fact.value}</dd>
+                    </div>
+                  ))}
+                </dl>
+              ) : null}
+
+              {site.features.showContactForm ? (
+                <div className="mt-10">
+                  <LeadForm variant="residential" />
                 </div>
-                <div>
-                  <dt className="text-xs uppercase tracking-[0.12em] text-muted-foreground">Based in</dt>
-                  <dd className="mt-2 font-display text-lg font-semibold">Hialeah, Florida</dd>
-                </div>
-              </dl>
+              ) : null}
             </div>
           </div>
         </Container>
