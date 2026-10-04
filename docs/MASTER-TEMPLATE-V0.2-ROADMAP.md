@@ -37,6 +37,8 @@ Do not knowingly carry fixable defects forward just to keep momentum. Validation
 
 ## v0.2B — Remove Client Hardcodes
 
+Status: implemented and structurally reviewed on `refactor/site-config-v0.2`. Runtime/build verification remains the final gate before v0.2C.
+
 Move every client-specific string or action out of React routes and into config.
 
 Priority targets:
