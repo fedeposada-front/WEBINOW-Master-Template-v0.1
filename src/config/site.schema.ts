@@ -1,10 +1,5 @@
 import { z } from "zod";
 
-const ctaSchema = z.object({
-  label: z.string().min(1),
-  href: z.string().min(1),
-});
-
 const conversionActionSchema = z.object({
   type: z.enum(["booking", "phone", "quote", "contact", "external"]),
   label: z.string().min(1),
@@ -17,8 +12,8 @@ const contentCardSchema = z.object({
 });
 
 const serviceSchema = z.object({
-  id: z.string().min(1).optional(),
-  slug: z.string().min(1).optional(),
+  id: z.string().min(1),
+  slug: z.string().min(1),
   title: z.string().min(1),
   body: z.string().min(1),
 });
@@ -26,6 +21,18 @@ const serviceSchema = z.object({
 const faqSchema = z.object({
   question: z.string().min(1),
   answer: z.string().min(1),
+});
+
+const factSchema = z.object({
+  label: z.string().min(1),
+  value: z.string().min(1),
+});
+
+const credentialSchema = z.object({
+  type: z.enum(["license", "certification", "membership", "award", "other"]),
+  label: z.string().min(1),
+  value: z.string().min(1),
+  detail: z.string().nullable(),
 });
 
 const localBusinessTypeSchema = z.enum([
@@ -77,6 +84,7 @@ export const siteSchema = z.object({
       postalCode: z.string().nullable(),
       countryCode: z.string().length(2),
     }),
+    credentials: z.array(credentialSchema),
     websiteUrl: z.string().nullable(),
     bookingUrl: z.string().nullable(),
     mapsUrl: z.string().nullable(),
@@ -85,11 +93,13 @@ export const siteSchema = z.object({
 
   features: z.object({
     commercialEnabled: z.boolean(),
+    showTrust: z.boolean(),
     showReviews: z.boolean(),
     showFaq: z.boolean(),
     showProcess: z.boolean(),
     showServiceAreas: z.boolean(),
     showAbout: z.boolean(),
+    showWideCta: z.boolean(),
     showContactForm: z.boolean(),
   }),
 
@@ -137,10 +147,7 @@ export const siteSchema = z.object({
     eyebrow: z.string().min(1),
     title: z.string().min(1),
     body: z.string().min(1),
-    primaryCta: ctaSchema,
-    secondaryCta: ctaSchema,
-    proofLine: z.string().min(1),
-    imageAlt: z.string().min(1),
+    proofLine: z.string().nullable(),
   }),
 
   trust: z.array(
@@ -148,7 +155,7 @@ export const siteSchema = z.object({
       value: z.string().min(1),
       label: z.string().min(1),
     }),
-  ).min(1),
+  ),
 
   audiences: z.array(
     z.object({
@@ -160,13 +167,25 @@ export const siteSchema = z.object({
     }),
   ),
 
+  servicesSection: z.object({
+    eyebrow: z.string().min(1),
+    title: z.string().min(1),
+    intro: z.string().min(1),
+  }),
+
   services: z.array(serviceSchema).min(1),
+
+  wideCta: z.object({
+    eyebrow: z.string().min(1),
+    title: z.string().min(1),
+    body: z.string().min(1),
+  }),
 
   whyUs: z.object({
     eyebrow: z.string().min(1),
     title: z.string().min(1),
     intro: z.string().min(1),
-    items: z.array(contentCardSchema).min(1),
+    items: z.array(contentCardSchema),
   }),
 
   reviews: z.array(
@@ -180,48 +199,45 @@ export const siteSchema = z.object({
   process: z.object({
     eyebrow: z.string().min(1),
     title: z.string().min(1),
+    intro: z.string().min(1),
     steps: z.array(
       z.object({
         number: z.string().min(1),
         title: z.string().min(1),
         body: z.string().min(1),
       }),
-    ).min(1),
+    ),
   }),
 
   about: z.object({
     eyebrow: z.string().min(1),
     title: z.string().min(1),
     body: z.string().min(1),
-    facts: z.array(
-      z.object({
-        label: z.string().min(1),
-        value: z.string().min(1),
-      }),
-    ).min(1),
-    imageAlt: z.string().min(1),
+    facts: z.array(factSchema),
   }),
 
   serviceAreas: z.object({
     eyebrow: z.string().min(1),
     title: z.string().min(1),
     intro: z.string().min(1),
-    areas: z.array(z.string().min(1)).min(1),
+    areas: z.array(z.string().min(1)),
   }),
 
   faq: z.object({
     eyebrow: z.string().min(1),
     title: z.string().min(1),
-    items: z.array(faqSchema).min(1),
+    items: z.array(faqSchema),
   }),
 
   contact: z.object({
     eyebrow: z.string().min(1),
     title: z.string().min(1),
     body: z.string().min(1),
-    primaryCta: ctaSchema,
+    choiceTitle: z.string().min(1),
+    choiceBody: z.string().min(1),
+    facts: z.array(factSchema),
     formTitle: z.string().min(1),
-    formOptions: z.array(z.string().min(1)).min(1),
+    formOptions: z.array(z.string().min(1)),
   }),
 
   footer: z.object({
