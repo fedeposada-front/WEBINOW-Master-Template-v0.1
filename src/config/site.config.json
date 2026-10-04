@@ -32,6 +32,14 @@
       "postalCode": null,
       "countryCode": "US"
     },
+    "credentials": [
+      {
+        "type": "license",
+        "label": "Florida license",
+        "value": "CAC1819197",
+        "detail": "Florida Certified Air Conditioning Contractor"
+      }
+    ],
     "websiteUrl": "http://www.comfort-sos.com/",
     "bookingUrl": "https://book.housecallpro.com/book/comfort-sos-corp/ff8ca93a80754ab6935205e239ba4f56",
     "mapsUrl": null,
@@ -39,11 +47,13 @@
   },
   "features": {
     "commercialEnabled": false,
+    "showTrust": true,
     "showReviews": false,
     "showFaq": true,
     "showProcess": true,
     "showServiceAreas": true,
     "showAbout": true,
+    "showWideCta": true,
     "showContactForm": false
   },
   "conversion": {
@@ -83,16 +93,7 @@
     "eyebrow": "HVAC & AC Service · Hialeah, Florida",
     "title": "HVAC help when your comfort can't wait.",
     "body": "AC repair, installation, duct cleaning and general HVAC service in Hialeah. Book online or call Comfort SOS to get started.",
-    "primaryCta": {
-      "label": "Book Service",
-      "href": "https://book.housecallpro.com/book/comfort-sos-corp/ff8ca93a80754ab6935205e239ba4f56"
-    },
-    "secondaryCta": {
-      "label": "Call (833) 302-4080",
-      "href": "tel:+18333024080"
-    },
-    "proofLine": "Florida Certified Air Conditioning Contractor · License CAC1819197",
-    "imageAlt": "HVAC service concept for Comfort SOS Corporation"
+    "proofLine": "Florida Certified Air Conditioning Contractor · License CAC1819197"
   },
   "trust": [
     {
@@ -109,6 +110,11 @@
     }
   ],
   "audiences": [],
+  "servicesSection": {
+    "eyebrow": "Services",
+    "title": "A clearer service path.",
+    "intro": "Choose the service that matches what you need, then book online or call Comfort SOS directly."
+  },
   "services": [
     {
       "id": "ac-repair",
@@ -135,6 +141,11 @@
       "body": "Heating, cooling and general HVAC service for homes and properties in the Hialeah area."
     }
   ],
+  "wideCta": {
+    "eyebrow": "Available when you need help",
+    "title": "Need HVAC help? Start here.",
+    "body": "Book service online or call Comfort SOS directly to get the right next step for your property."
+  },
   "whyUs": {
     "eyebrow": "Built for local customers",
     "title": "Make the next step obvious.",
@@ -162,6 +173,7 @@
   "process": {
     "eyebrow": "What happens next",
     "title": "From the first call to the next step.",
+    "intro": "One clear path from the first question to the next action.",
     "steps": [
       {
         "number": "1",
@@ -197,8 +209,7 @@
         "label": "Address",
         "value": "2345 W 80th St Unit 14, Hialeah, FL"
       }
-    ],
-    "imageAlt": "Comfort SOS Corporation team and service concept"
+    ]
   },
   "serviceAreas": {
     "eyebrow": "Service area",
@@ -214,7 +225,7 @@
     "items": [
       {
         "question": "How do I request service?",
-        "answer": "Call Comfort SOS at (833) 302-4080 or use the service request form on this page."
+        "answer": "Call Comfort SOS at (833) 302-4080 or use the live booking option on this page."
       },
       {
         "question": "Where is Comfort SOS based?",
@@ -234,10 +245,18 @@
     "eyebrow": "Contact",
     "title": "Need HVAC help?",
     "body": "Use the live booking link to request service, or call Comfort SOS directly if you'd rather speak with someone.",
-    "primaryCta": {
-      "label": "Book Service",
-      "href": "https://book.housecallpro.com/book/comfort-sos-corp/ff8ca93a80754ab6935205e239ba4f56"
-    },
+    "choiceTitle": "Choose how you want to start.",
+    "choiceBody": "Book online through Comfort SOS's existing service flow, or call directly if you'd rather speak with someone first.",
+    "facts": [
+      {
+        "label": "Florida license",
+        "value": "CAC1819197"
+      },
+      {
+        "label": "Based in",
+        "value": "Hialeah, Florida"
+      }
+    ],
     "formTitle": "Request service",
     "formOptions": [
       "Cooling",
@@ -258,8 +277,8 @@
       "business.city",
       "business.address",
       "business.websiteUrl",
+      "business.credentials",
       "google.rating",
-      "google.reviewCount",
       "business.hours",
       "business.categories",
       "brand.logo"
@@ -267,8 +286,7 @@
     "needsReview": [
       "client-owned photography",
       "email",
-      "licenses",
-      "certifications",
+      "certifications beyond verified license",
       "individual review content",
       "warranties",
       "pricing",
