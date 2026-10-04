@@ -6,7 +6,7 @@ Turn the current Comfort SOS implementation into a reusable, client-agnostic loc
 
 ## v0.2A — Config Contract
 
-Status: implemented on `refactor/site-config-v0.2`.
+Status: implemented and reviewed on `refactor/site-config-v0.2`.
 
 Includes:
 
@@ -22,6 +22,18 @@ Includes:
 - expanded SEO config
 - stable service IDs/slugs
 - proposal/production helpers
+
+
+## Version Gate — Mandatory Review Before Progressing
+
+Before starting any new version or sub-version:
+
+1. review the previous implementation against its definition of done;
+2. check for schema drift, duplicated data, dead flags, hardcoded client data, unsafe assumptions, and obvious regressions;
+3. correct defects immediately when the fix is low-cost and prevents technical debt;
+4. only then continue to the next version.
+
+Do not knowingly carry fixable defects forward just to keep momentum. Validation should stay lightweight and pragmatic: enough to protect scalability without blocking outreach.
 
 ## v0.2B — Remove Client Hardcodes
 
