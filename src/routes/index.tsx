@@ -235,6 +235,27 @@ function ResidentialHome() {
         </Section>
       ) : null}
 
+      {site.features.showReviews && site.reviews.length > 0 ? (
+        <Section id="reviews" tone="surface">
+          <SectionHeading
+            eyebrow="Reviews"
+            title="What customers say."
+            intro="Verified customer feedback can provide the strongest proof when it is available."
+          />
+          <div className="mt-10 grid gap-5 lg:grid-cols-3">
+            {site.reviews.map((review) => (
+              <figure key={`${review.name}-${review.detail}`} className="border-t border-hairline pt-6">
+                <blockquote className="text-lg leading-relaxed">“{review.text}”</blockquote>
+                <figcaption className="mt-5 text-sm text-muted-foreground">
+                  <span className="font-semibold text-foreground">{review.name}</span>
+                  <span className="block">{review.detail}</span>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </Section>
+      ) : null}
+
       {site.features.showServiceAreas && site.serviceAreas.areas.length > 0 ? (
         <section
           id="areas"
