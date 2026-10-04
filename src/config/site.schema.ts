@@ -86,7 +86,6 @@ export const siteSchema = z.object({
     }),
     credentials: z.array(credentialSchema),
     websiteUrl: z.string().nullable(),
-    bookingUrl: z.string().nullable(),
     mapsUrl: z.string().nullable(),
     googlePlaceId: z.string().nullable(),
   }),
@@ -154,16 +153,6 @@ export const siteSchema = z.object({
     z.object({
       value: z.string().min(1),
       label: z.string().min(1),
-    }),
-  ),
-
-  audiences: z.array(
-    z.object({
-      tag: z.string().min(1),
-      title: z.string().min(1),
-      body: z.string().min(1),
-      cta: z.string().min(1),
-      href: z.string().min(1),
     }),
   ),
 
