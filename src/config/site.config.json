@@ -41,7 +41,6 @@
       }
     ],
     "websiteUrl": "http://www.comfort-sos.com/",
-    "bookingUrl": "https://book.housecallpro.com/book/comfort-sos-corp/ff8ca93a80754ab6935205e239ba4f56",
     "mapsUrl": null,
     "googlePlaceId": null
   },
@@ -109,7 +108,6 @@
       "label": "Licensed in Florida"
     }
   ],
-  "audiences": [],
   "servicesSection": {
     "eyebrow": "Services",
     "title": "A clearer service path.",
@@ -145,29 +143,6 @@
     "eyebrow": "Available when you need help",
     "title": "Need HVAC help? Start here.",
     "body": "Book service online or call Comfort SOS directly to get the right next step for your property."
-  },
-  "whyUs": {
-    "eyebrow": "Built for local customers",
-    "title": "Make the next step obvious.",
-    "intro": "A service website should quickly answer three questions: who you are, where you work, and how to contact you.",
-    "items": [
-      {
-        "title": "Direct Contact",
-        "body": "The main phone number stays visible across desktop and mobile."
-      },
-      {
-        "title": "Local Clarity",
-        "body": "Hialeah is presented clearly so visitors understand where the business is based."
-      },
-      {
-        "title": "Simple Service Path",
-        "body": "Visitors can move from service information to a request without searching through the site."
-      },
-      {
-        "title": "Mobile First",
-        "body": "Primary actions remain easy to reach on smaller screens."
-      }
-    ]
   },
   "reviews": [],
   "process": {
