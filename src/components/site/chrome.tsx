@@ -5,6 +5,8 @@ import {
   COMPANY,
   PHONE_DISPLAY,
   PHONE_HREF,
+  PRIMARY_CONVERSION,
+  SECONDARY_CONVERSION,
   site,
   siteNavItems,
 } from "@/config/site";
@@ -134,7 +136,7 @@ export function Btn({
 export function UtilityBar({ variant }: { variant: Variant }) {
   const message =
     variant === "commercial"
-      ? "Commercial HVAC conversations"
+      ? `${site.business.vertical} commercial service`
       : `${site.business.vertical} service`;
 
   return (
@@ -156,9 +158,7 @@ export function UtilityBar({ variant }: { variant: Variant }) {
   );
 }
 
-export function SiteNav({ variant }: { variant: Variant }) {
-  const cta = variant === "residential" ? site.hero.primaryCta.label : "Request a Quote";
-
+export function SiteNav({ variant: _variant }: { variant: Variant }) {
   return (
     <header className="sticky top-0 z-40 border-b border-hairline bg-surface/95 backdrop-blur">
       <Container className="flex h-[76px] items-center justify-between gap-6">
@@ -217,8 +217,8 @@ export function SiteNav({ variant }: { variant: Variant }) {
             {PHONE_DISPLAY}
           </a>
           <div className="hidden sm:block">
-            <Btn kind="signal" href={site.hero.primaryCta.href}>
-              {cta}
+            <Btn kind="signal" href={PRIMARY_CONVERSION.href}>
+              {PRIMARY_CONVERSION.label}
             </Btn>
           </div>
         </div>
@@ -227,20 +227,20 @@ export function SiteNav({ variant }: { variant: Variant }) {
   );
 }
 
-export function MobileActionBar({ variant }: { variant: Variant }) {
+export function MobileActionBar({ variant: _variant }: { variant: Variant }) {
   return (
     <div className="fixed inset-x-0 bottom-0 z-50 grid grid-cols-2 border-t border-hairline-inverse lg:hidden">
       <a
-        href={PHONE_HREF}
+        href={SECONDARY_CONVERSION.href}
         className="bg-ink py-4 text-center font-display text-[0.8rem] font-semibold uppercase tracking-[0.12em] text-ink-foreground"
       >
-        Call Now
+        {SECONDARY_CONVERSION.label}
       </a>
       <a
-        href={variant === "residential" ? site.hero.primaryCta.href : "#contact"}
+        href={PRIMARY_CONVERSION.href}
         className="bg-signal py-4 text-center font-display text-[0.8rem] font-semibold uppercase tracking-[0.12em] text-signal-foreground"
       >
-        {variant === "residential" ? site.hero.primaryCta.label : "Request Quote"}
+        {PRIMARY_CONVERSION.label}
       </a>
     </div>
   );
@@ -300,7 +300,7 @@ export function LeadForm({ variant }: { variant: Variant }) {
         </label>
       </div>
       <Btn kind="signal" size="lg" className="mt-6 w-full" href="#contact">
-        {variant === "residential" ? site.hero.primaryCta.label : "Request a Quote"}
+        {variant === "residential" ? PRIMARY_CONVERSION.label : "Request a Quote"}
       </Btn>
       <p className="mt-3 text-xs text-muted-foreground">
         Preview form — activated when the website goes live.
@@ -318,14 +318,20 @@ export function SiteFooter({ variant }: { variant: Variant }) {
     {
       title: "Company",
       links: [
-        { label: "About", href: "#about" },
+        ...(site.features.showAbout ? [{ label: "About", href: "#about" }] : []),
         { label: "Contact", href: "#contact" },
       ],
     },
-    {
-      title: "Service Area",
-      links: site.serviceAreas.areas.slice(0, 6).map((area) => ({ label: area, href: "#areas" })),
-    },
+    ...(site.features.showServiceAreas && site.serviceAreas.areas.length > 0
+      ? [
+          {
+            title: "Service Area",
+            links: site.serviceAreas.areas
+              .slice(0, 6)
+              .map((area) => ({ label: area, href: "#areas" })),
+          },
+        ]
+      : []),
   ];
 
   return (
@@ -338,11 +344,11 @@ export function SiteFooter({ variant }: { variant: Variant }) {
               : "Have a property or project to discuss?"}
           </h2>
           <div className="flex flex-wrap gap-3">
-            <Btn kind="signal" size="lg" href={site.hero.primaryCta.href}>
-              {site.hero.primaryCta.label}
+            <Btn kind="signal" size="lg" href={PRIMARY_CONVERSION.href}>
+              {PRIMARY_CONVERSION.label}
             </Btn>
-            <Btn kind="outline-invert" size="lg" href={PHONE_HREF}>
-              Call {PHONE_DISPLAY}
+            <Btn kind="outline-invert" size="lg" href={SECONDARY_CONVERSION.href}>
+              {SECONDARY_CONVERSION.label}
             </Btn>
           </div>
         </div>
@@ -355,7 +361,9 @@ export function SiteFooter({ variant }: { variant: Variant }) {
             <dl className="mt-5 space-y-2 text-sm text-ink-foreground/70">
               <div>{PHONE_DISPLAY}</div>
               {site.business.email ? <div>{site.business.email}</div> : null}
-              <div>{site.business.city}, {site.business.region}</div>
+              <div>
+                {site.business.city}, {site.business.region}
+              </div>
               {site.footer.hours ? <div>{site.footer.hours}</div> : null}
             </dl>
           </div>
@@ -382,7 +390,7 @@ export function SiteFooter({ variant }: { variant: Variant }) {
           <p>
             © {new Date().getFullYear()} {COMPANY}. {site.footer.note ?? ""}
           </p>
-          <p>WEBINOW proposal preview</p>
+          {site.mode === "proposal" ? <p>WEBINOW proposal preview</p> : null}
         </div>
       </Container>
       <div className="h-14 lg:hidden" />
