@@ -6,11 +6,6 @@ const conversionActionSchema = z.object({
   href: z.string().min(1),
 });
 
-const contentCardSchema = z.object({
-  title: z.string().min(1),
-  body: z.string().min(1),
-});
-
 const serviceSchema = z.object({
   id: z.string().min(1),
   slug: z.string().min(1),
@@ -168,13 +163,6 @@ export const siteSchema = z.object({
     eyebrow: z.string().min(1),
     title: z.string().min(1),
     body: z.string().min(1),
-  }),
-
-  whyUs: z.object({
-    eyebrow: z.string().min(1),
-    title: z.string().min(1),
-    intro: z.string().min(1),
-    items: z.array(contentCardSchema),
   }),
 
   reviews: z.array(
