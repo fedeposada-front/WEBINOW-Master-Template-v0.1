@@ -1,6 +1,11 @@
 {
+  "schemaVersion": "0.2",
+  "templateVersion": "0.2.0",
   "id": "comfort-sos-corporation-hialeah-fl",
+  "prospectId": "comfort-sos-corporation-hialeah-fl",
   "mode": "proposal",
+  "siteArchetype": "local-service",
+  "locale": "en-US",
   "variant": "residential",
   "brand": {
     "name": "Comfort SOS Corporation",
@@ -11,22 +16,54 @@
   },
   "business": {
     "vertical": "HVAC",
+    "category": "Heating & Air Conditioning",
+    "schemaType": "HVACBusiness",
     "phoneDisplay": "(833) 302-4080",
     "phoneHref": "tel:+18333024080",
     "email": null,
     "city": "Hialeah",
     "region": "Florida",
+    "countryCode": "US",
     "serviceArea": "Hialeah, Florida",
+    "address": {
+      "streetAddress": "2345 W 80th St Unit 14",
+      "locality": "Hialeah",
+      "region": "FL",
+      "postalCode": null,
+      "countryCode": "US"
+    },
     "websiteUrl": "http://www.comfort-sos.com/",
-    "bookingUrl": "https://book.housecallpro.com/book/comfort-sos-corp/ff8ca93a80754ab6935205e239ba4f56"
+    "bookingUrl": "https://book.housecallpro.com/book/comfort-sos-corp/ff8ca93a80754ab6935205e239ba4f56",
+    "mapsUrl": null,
+    "googlePlaceId": null
   },
   "features": {
     "commercialEnabled": false,
-    "showReviews": false
+    "showReviews": false,
+    "showFaq": true,
+    "showProcess": true,
+    "showServiceAreas": true,
+    "showAbout": true,
+    "showContactForm": false
   },
+  "conversion": {
+    "primary": {
+      "type": "booking",
+      "label": "Book Service",
+      "href": "https://book.housecallpro.com/book/comfort-sos-corp/ff8ca93a80754ab6935205e239ba4f56"
+    },
+    "secondary": {
+      "type": "phone",
+      "label": "Call (833) 302-4080",
+      "href": "tel:+18333024080"
+    }
+  },
+  "featuresLegacyNote": null,
   "seo": {
     "title": "HVAC Service in Hialeah, FL | Comfort SOS Corporation",
-    "description": "Comfort SOS Corporation provides HVAC and air-conditioning services in Hialeah, Florida. Call (833) 302-4080 to discuss service needs."
+    "description": "Comfort SOS Corporation provides HVAC and air-conditioning services in Hialeah, Florida. Call (833) 302-4080 to discuss service needs.",
+    "canonicalUrl": null,
+    "ogImageUrl": null
   },
   "theme": {
     "background": "oklch(0.985 0.004 240)",
@@ -75,18 +112,26 @@
   "audiences": [],
   "services": [
     {
+      "id": "ac-repair",
+      "slug": "ac-repair",
       "title": "AC Repair",
       "body": "Get help diagnosing and repairing air-conditioning problems so you can get your home comfortable again."
     },
     {
+      "id": "ac-installation",
+      "slug": "ac-installation",
       "title": "AC Installation",
       "body": "Ask about air-conditioning installation and replacement options for your home or property."
     },
     {
+      "id": "duct-cleaning",
+      "slug": "duct-cleaning",
       "title": "Duct Cleaning",
       "body": "Professional duct cleaning for customers who need help with airflow and cleaner HVAC delivery."
     },
     {
+      "id": "hvac-service",
+      "slug": "hvac-service",
       "title": "HVAC Service",
       "body": "Heating, cooling and general HVAC service for homes and properties in the Hialeah area."
     }
