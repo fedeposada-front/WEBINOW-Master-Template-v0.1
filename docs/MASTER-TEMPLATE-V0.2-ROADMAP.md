@@ -57,15 +57,24 @@ Changing only `site.config.json` can render a different local-service business w
 
 ## v0.2C — SEO + Preview Safety
 
-Implement:
+Status: implemented and structurally reviewed on `refactor/site-config-v0.2`.
+
+Implemented:
 
 - proposal => `noindex, nofollow`
 - production => `index, follow`
 - canonical in production only
+- production config requires a canonical URL
 - Open Graph image/url support
 - locale-driven `html lang`
-- LocalBusiness JSON-LD with an allowlisted Schema.org type
-- production-ready robots/sitemap path
+- LocalBusiness JSON-LD with an allowlisted Schema.org type when a physical address is available
+- Organization JSON-LD fallback when no physical address is available
+- crawlable `robots.txt` so proposal `noindex` can be read by crawlers
+- duplicate page-level SEO metadata removed from the home route
+
+Deferred deliberately:
+
+- sitemap generation stays in the near-term backlog until production/multi-page output exists, to avoid publishing preview URLs or maintaining a premature static sitemap
 
 ## v0.2D — Cross-Vertical Validation
 
