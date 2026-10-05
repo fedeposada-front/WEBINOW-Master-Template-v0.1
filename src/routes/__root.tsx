@@ -12,7 +12,7 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import {
   CANONICAL_URL,
-  LOCAL_BUSINESS_JSON_LD,
+  STRUCTURED_DATA_JSON_LD,
   OG_IMAGE_URL,
   SEO_ROBOTS,
   SITE_LOCALE,
@@ -127,9 +127,9 @@ function RootShell({ children }: { children: ReactNode }) {
     <html lang={SITE_LOCALE}>
       <head>
         <HeadContent />
-        {LOCAL_BUSINESS_JSON_LD ? (
+        {STRUCTURED_DATA_JSON_LD ? (
           <script type="application/ld+json">
-            {JSON.stringify(LOCAL_BUSINESS_JSON_LD)}
+            {JSON.stringify(STRUCTURED_DATA_JSON_LD)}
           </script>
         ) : null}
       </head>
