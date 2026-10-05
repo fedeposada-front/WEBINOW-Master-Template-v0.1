@@ -1,52 +1,45 @@
 {
   "schemaVersion": "0.2",
   "templateVersion": "0.2.0",
-  "id": "comfort-sos-corporation-hialeah-fl",
-  "prospectId": "comfort-sos-corporation-hialeah-fl",
+  "id": "summit-roofing-demo-austin-tx",
+  "prospectId": "validation-roofing-austin-tx",
   "mode": "proposal",
   "siteArchetype": "local-service",
   "locale": "en-US",
   "variant": "residential",
   "brand": {
-    "name": "Comfort SOS Corporation",
-    "shortName": "Comfort S.O.S.",
-    "mark": "CS",
-    "logoUrl": "/brand/logo.png",
-    "logoAlt": "Comfort S.O.S. logo mark"
+    "name": "Summit Roofing Demo",
+    "shortName": "Summit Roofing",
+    "mark": "SR",
+    "logoUrl": null,
+    "logoAlt": "Summit Roofing Demo logo"
   },
   "business": {
-    "vertical": "HVAC",
-    "category": "Heating & Air Conditioning",
-    "schemaType": "HVACBusiness",
-    "phoneDisplay": "(833) 302-4080",
-    "phoneHref": "tel:+18333024080",
+    "vertical": "Roofing",
+    "category": "Roofing Contractor",
+    "schemaType": "RoofingContractor",
+    "phoneDisplay": "(512) 555-0177",
+    "phoneHref": "tel:+15125550177",
     "email": null,
-    "city": "Hialeah",
-    "region": "Florida",
+    "city": "Austin",
+    "region": "Texas",
     "countryCode": "US",
-    "serviceArea": "Hialeah, Florida",
+    "serviceArea": "Austin, Texas",
     "address": {
-      "streetAddress": "2345 W 80th St Unit 14",
-      "locality": "Hialeah",
-      "region": "FL",
+      "streetAddress": null,
+      "locality": "Austin",
+      "region": "TX",
       "postalCode": null,
       "countryCode": "US"
     },
-    "credentials": [
-      {
-        "type": "license",
-        "label": "Florida license",
-        "value": "CAC1819197",
-        "detail": "Florida Certified Air Conditioning Contractor"
-      }
-    ],
-    "websiteUrl": "http://www.comfort-sos.com/",
+    "credentials": [],
+    "websiteUrl": null,
     "mapsUrl": null,
     "googlePlaceId": null
   },
   "features": {
     "commercialEnabled": false,
-    "showTrust": true,
+    "showTrust": false,
     "showReviews": false,
     "showFaq": true,
     "showProcess": true,
@@ -57,19 +50,19 @@
   },
   "conversion": {
     "primary": {
-      "type": "booking",
-      "label": "Book Service",
-      "href": "https://book.housecallpro.com/book/comfort-sos-corp/ff8ca93a80754ab6935205e239ba4f56"
+      "type": "quote",
+      "label": "Request Estimate",
+      "href": "#contact"
     },
     "secondary": {
       "type": "phone",
-      "label": "Call (833) 302-4080",
-      "href": "tel:+18333024080"
+      "label": "Call (512) 555-0177",
+      "href": "tel:+15125550177"
     }
   },
   "seo": {
-    "title": "HVAC Service in Hialeah, FL | Comfort SOS Corporation",
-    "description": "Comfort SOS Corporation provides HVAC and air-conditioning services in Hialeah, Florida. Call (833) 302-4080 to discuss service needs.",
+    "title": "Roofing Services in Austin, TX | Summit Roofing Demo",
+    "description": "Demo roofing website configuration for Austin, Texas, used to validate WEBINOW's reusable local-service template.",
     "canonicalUrl": null,
     "ogImageUrl": null
   },
@@ -89,194 +82,165 @@
     "ring": "oklch(0.519 0.193 25.6)"
   },
   "hero": {
-    "eyebrow": "HVAC & AC Service · Hialeah, Florida",
-    "title": "HVAC help when your comfort can't wait.",
-    "body": "AC repair, installation, duct cleaning and general HVAC service in Hialeah. Book online or call Comfort SOS to get started.",
-    "proofLine": "Florida Certified Air Conditioning Contractor · License CAC1819197"
+    "eyebrow": "Roofing Services · Austin, Texas",
+    "title": "A clearer path from roof problem to estimate.",
+    "body": "Roof repair, replacement, storm-damage inspections and maintenance for homeowners in the Austin area.",
+    "proofLine": null
   },
-  "trust": [
-    {
-      "value": "4.9 ★",
-      "label": "Google rating"
-    },
-    {
-      "value": "CAC1819197",
-      "label": "Florida certified"
-    },
-    {
-      "value": "Since 2017",
-      "label": "Licensed in Florida"
-    }
-  ],
+  "trust": [],
   "servicesSection": {
     "eyebrow": "Services",
-    "title": "A clearer service path.",
-    "intro": "Choose the service that matches what you need, then book online or call Comfort SOS directly."
+    "title": "Roofing help built around the job you need done.",
+    "intro": "Choose the roofing service that matches your situation, then request an estimate or call directly."
   },
   "services": [
     {
-      "id": "ac-repair",
-      "slug": "ac-repair",
-      "title": "AC Repair",
-      "body": "Get help diagnosing and repairing air-conditioning problems so you can get your home comfortable again."
+      "id": "roof-repair",
+      "slug": "roof-repair",
+      "title": "Roof Repair",
+      "body": "Repair support for leaks, damaged shingles, flashing issues and other localized roof problems."
     },
     {
-      "id": "ac-installation",
-      "slug": "ac-installation",
-      "title": "AC Installation",
-      "body": "Ask about air-conditioning installation and replacement options for your home or property."
+      "id": "roof-replacement",
+      "slug": "roof-replacement",
+      "title": "Roof Replacement",
+      "body": "Replacement planning for aging or extensively damaged roofing systems."
     },
     {
-      "id": "duct-cleaning",
-      "slug": "duct-cleaning",
-      "title": "Duct Cleaning",
-      "body": "Professional duct cleaning for customers who need help with airflow and cleaner HVAC delivery."
+      "id": "storm-damage-inspection",
+      "slug": "storm-damage-inspection",
+      "title": "Storm Damage Inspection",
+      "body": "Inspection support after wind, hail or severe weather to understand visible roofing damage."
     },
     {
-      "id": "hvac-service",
-      "slug": "hvac-service",
-      "title": "HVAC Service",
-      "body": "Heating, cooling and general HVAC service for homes and properties in the Hialeah area."
+      "id": "roof-maintenance",
+      "slug": "roof-maintenance",
+      "title": "Roof Maintenance",
+      "body": "Routine roof checks and maintenance to identify issues before they become larger repairs."
     }
   ],
   "wideCta": {
-    "eyebrow": "Available when you need help",
-    "title": "Need HVAC help? Start here.",
-    "body": "Book service online or call Comfort SOS directly to get the right next step for your property."
+    "eyebrow": "Start with the next clear step",
+    "title": "Need someone to look at your roof?",
+    "body": "Request an estimate or call directly to explain the issue and confirm the next step."
   },
   "reviews": [],
   "process": {
     "eyebrow": "What happens next",
-    "title": "From the first call to the next step.",
-    "intro": "One clear path from the first question to the next action.",
+    "title": "From roof issue to clear next step.",
+    "intro": "A simple path for homeowners who need to understand what the roof needs and what to do next.",
     "steps": [
       {
         "number": "1",
-        "title": "Book or Call",
-        "body": "Use online booking or call Comfort SOS and tell us what you need help with."
+        "title": "Request an Estimate",
+        "body": "Share your location and the roofing issue you want reviewed."
       },
       {
         "number": "2",
-        "title": "Share the Details",
-        "body": "Tell us your location, the system involved and what is happening."
+        "title": "Review the Roof",
+        "body": "Confirm the affected area, visible damage and the appropriate inspection or service."
       },
       {
         "number": "3",
-        "title": "Confirm the Visit",
-        "body": "Comfort SOS confirms availability and the appropriate service step."
+        "title": "Confirm the Scope",
+        "body": "Move forward with the recommended repair, replacement or maintenance scope."
       }
     ]
   },
   "about": {
     "eyebrow": "About",
-    "title": "Comfort SOS Corporation.",
-    "body": "Comfort SOS Corporation is a Florida Certified Air Conditioning Contractor serving Hialeah. Florida license CAC1819197 has been active since 2017.",
+    "title": "Local roofing service, presented clearly.",
+    "body": "This validation configuration demonstrates that the same WEBINOW template can adapt from HVAC to roofing without changing React code.",
     "facts": [
       {
-        "label": "License",
-        "value": "CAC1819197"
+        "label": "Business type",
+        "value": "Roofing Contractor"
       },
       {
-        "label": "Licensed since",
-        "value": "2017"
-      },
-      {
-        "label": "Address",
-        "value": "2345 W 80th St Unit 14, Hialeah, FL"
+        "label": "Based in",
+        "value": "Austin, Texas"
       }
     ]
   },
   "serviceAreas": {
     "eyebrow": "Service area",
-    "title": "Serving Hialeah.",
-    "intro": "Comfort SOS is based in Hialeah, Florida. Call directly to confirm service availability for your address.",
+    "title": "Serving Austin.",
+    "intro": "This validation configuration uses Austin as the primary service area and can expand to verified nearby areas when real prospect data is available.",
     "areas": [
-      "Hialeah"
+      "Austin"
     ]
   },
   "faq": {
     "eyebrow": "FAQ",
-    "title": "Before you book.",
+    "title": "Before you request an estimate.",
     "items": [
       {
-        "question": "How do I request service?",
-        "answer": "Call Comfort SOS at (833) 302-4080 or use the live booking option on this page."
+        "question": "What roofing services are shown here?",
+        "answer": "Roof repair, replacement, storm-damage inspection and routine maintenance."
       },
       {
-        "question": "Where is Comfort SOS based?",
-        "answer": "Comfort SOS Corporation is based in Hialeah, Florida."
+        "question": "How do I start?",
+        "answer": "Use the Request Estimate action or call directly."
       },
       {
-        "question": "Do you serve my area?",
-        "answer": "Call directly with your address to confirm current service availability."
-      },
-      {
-        "question": "What information should I have ready?",
-        "answer": "Share your location and a short description of the heating or cooling issue you need help with."
+        "question": "Is this a real roofing company?",
+        "answer": "No. This is a validation fixture used only to test the reusable WEBINOW template."
       }
     ]
   },
   "contact": {
     "eyebrow": "Contact",
-    "title": "Need HVAC help?",
-    "body": "Use the live booking link to request service, or call Comfort SOS directly if you'd rather speak with someone.",
+    "title": "Ready to discuss the roof?",
+    "body": "Request an estimate or call directly to describe the issue and location.",
     "choiceTitle": "Choose how you want to start.",
-    "choiceBody": "Book online through Comfort SOS's existing service flow, or call directly if you'd rather speak with someone first.",
+    "choiceBody": "Send an estimate request from the page or call if you want to explain the issue first.",
     "facts": [
       {
-        "label": "Florida license",
-        "value": "CAC1819197"
+        "label": "Business type",
+        "value": "Roofing Contractor"
       },
       {
         "label": "Based in",
-        "value": "Hialeah, Florida"
+        "value": "Austin, Texas"
       }
     ],
-    "formTitle": "Request service",
+    "formTitle": "Request estimate",
     "formOptions": [
-      "Cooling",
-      "Heating",
-      "System care",
-      "Other HVAC need"
+      "Roof repair",
+      "Roof replacement",
+      "Storm damage",
+      "Maintenance"
     ]
   },
   "footer": {
-    "hours": "Open 24 hours",
+    "hours": null,
     "note": null
   },
   "dataQuality": {
     "verifiedFields": [
-      "business.name",
+      "validation.fixture",
       "business.vertical",
-      "business.phone",
-      "business.city",
-      "business.address",
-      "business.websiteUrl",
-      "business.credentials",
-      "google.rating",
-      "business.hours",
-      "business.categories",
-      "brand.logo"
+      "business.city"
     ],
     "needsReview": [
-      "client-owned photography",
-      "email",
-      "certifications beyond verified license",
-      "individual review content",
-      "warranties",
-      "pricing",
-      "service coverage beyond Hialeah"
+      "all real prospect identity data",
+      "real phone",
+      "real address",
+      "real credentials",
+      "real reviews",
+      "real media",
+      "real service coverage"
     ]
   },
   "media": {
-    "heroImageUrl": "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1600&q=85",
-    "heroImageAlt": "HVAC technician servicing an air-conditioning system",
+    "heroImageUrl": null,
+    "heroImageAlt": "Residential roofing service",
     "heroImagePosition": "center",
     "wideImageUrl": null,
-    "wideImageAlt": "Local home service professional on site",
+    "wideImageAlt": "Residential roofing project",
     "featureImageUrl": null,
-    "featureImageAlt": "Home comfort system service",
-    "wideImagePosition": "50% 28%",
+    "featureImageAlt": "Roof inspection and service",
+    "wideImagePosition": "center",
     "featureImagePosition": "center"
   }
 }
