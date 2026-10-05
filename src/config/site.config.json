@@ -242,7 +242,7 @@
   },
   "footer": {
     "hours": "Open 24 hours",
-    "note": "Website concept for proposal purposes."
+    "note": null
   },
   "dataQuality": {
     "verifiedFields": [
