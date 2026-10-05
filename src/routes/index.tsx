@@ -22,16 +22,6 @@ import {
 } from "@/config/site";
 
 export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: site.seo.title },
-      { name: "description", content: site.seo.description },
-      { property: "og:title", content: site.seo.title },
-      { property: "og:description", content: site.seo.description },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
   component: ResidentialHome,
 });
 
