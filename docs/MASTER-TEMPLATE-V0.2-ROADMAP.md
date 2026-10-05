@@ -37,7 +37,7 @@ Do not knowingly carry fixable defects forward just to keep momentum. Validation
 
 ## v0.2B — Remove Client Hardcodes
 
-Status: implemented and structurally reviewed on `refactor/site-config-v0.2`. Runtime/build verification remains the final gate before v0.2C.
+Status: implemented, structurally reviewed, type-checked, and production-built successfully on `refactor/site-config-v0.2`.
 
 Move every client-specific string or action out of React routes and into config.
 
@@ -57,7 +57,7 @@ Changing only `site.config.json` can render a different local-service business w
 
 ## v0.2C — SEO + Preview Safety
 
-Status: implemented and structurally reviewed on `refactor/site-config-v0.2`.
+Status: implemented, structurally reviewed, type-checked, and production-built successfully on `refactor/site-config-v0.2`.
 
 Implemented:
 
@@ -117,3 +117,24 @@ Every new capability must improve at least one of:
 - speed to outreach
 
 If it does not help WEBINOW reach qualified prospect -> approved preview -> outreach -> reply -> meeting -> sale, it should not block the current release.
+
+
+## Validation Record — 2026-10-05
+
+Validated locally on `refactor/site-config-v0.2`:
+
+- `npm ci` -> success
+- `npx tsc --noEmit` -> success, no TypeScript errors
+- `npm run build` -> success for client, SSR, and Nitro/Cloudflare output
+- dependency audit -> 0 vulnerabilities
+
+Non-blocking warnings observed:
+
+- `vite-tsconfig-paths` is provided by `@lovable.dev/vite-tanstack-config`; do not remove or duplicate it casually because the project wrapper owns that plugin setup
+- npm deprecation notices for transitive/current packages should be handled as maintenance, not during the sales-critical validation path
+- Nitro's `inlineDynamicImports` warning is build-system noise while code splitting is enabled; build output completed successfully
+
+Next gate:
+
+- runtime smoke test on desktop/mobile
+- config-only cross-vertical swap
