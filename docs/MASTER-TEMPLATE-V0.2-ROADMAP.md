@@ -86,6 +86,23 @@ Validate the same template using config-only changes for:
 
 No React changes should be required.
 
+### Roofing validation
+
+Status: passed visually and structurally on `validation/roofing-v0.2`.
+
+Validated:
+
+- branch differs from the master v0.2 foundation only in `src/config/site.config.json`
+- HVAC-specific copy, CTAs, services, location, and trust content were removed through config only
+- Roofing conversion changed to `Request Estimate` without React changes
+- feature flags correctly hid reviews, trust strip, and commercial variant
+- desktop layout remained stable
+
+Finding:
+
+- local fallback photography is still generic/home-service oriented and is not guaranteed to match every vertical. This does not invalidate the config architecture, but real prospect previews should provide vertical/client-specific media instead of relying on fallback assets.
+- do not solve this with more template code now; treat media sourcing as a prospect-input responsibility until automation is justified.
+
 ## Near-Term Backlog
 
 Implement after first outreach / first commercial signal unless a client requires it sooner:
