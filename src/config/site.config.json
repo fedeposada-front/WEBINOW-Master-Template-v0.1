@@ -1,52 +1,45 @@
 {
   "schemaVersion": "0.2",
   "templateVersion": "0.2.0",
-  "id": "comfort-sos-corporation-hialeah-fl",
-  "prospectId": "comfort-sos-corporation-hialeah-fl",
+  "id": "clearflow-plumbing-demo-tampa-fl",
+  "prospectId": "validation-plumbing-tampa-fl",
   "mode": "proposal",
   "siteArchetype": "local-service",
   "locale": "en-US",
   "variant": "residential",
   "brand": {
-    "name": "Comfort SOS Corporation",
-    "shortName": "Comfort S.O.S.",
-    "mark": "CS",
-    "logoUrl": "/brand/logo.png",
-    "logoAlt": "Comfort S.O.S. logo mark"
+    "name": "ClearFlow Plumbing Demo",
+    "shortName": "ClearFlow Plumbing",
+    "mark": "CP",
+    "logoUrl": null,
+    "logoAlt": "ClearFlow Plumbing Demo logo"
   },
   "business": {
-    "vertical": "HVAC",
-    "category": "Heating & Air Conditioning",
-    "schemaType": "HVACBusiness",
-    "phoneDisplay": "(833) 302-4080",
-    "phoneHref": "tel:+18333024080",
+    "vertical": "Plumbing",
+    "category": "Plumber",
+    "schemaType": "Plumber",
+    "phoneDisplay": "(813) 555-0142",
+    "phoneHref": "tel:+18135550142",
     "email": null,
-    "city": "Hialeah",
+    "city": "Tampa",
     "region": "Florida",
     "countryCode": "US",
-    "serviceArea": "Hialeah, Florida",
+    "serviceArea": "Tampa, Florida",
     "address": {
-      "streetAddress": "2345 W 80th St Unit 14",
-      "locality": "Hialeah",
+      "streetAddress": null,
+      "locality": "Tampa",
       "region": "FL",
       "postalCode": null,
       "countryCode": "US"
     },
-    "credentials": [
-      {
-        "type": "license",
-        "label": "Florida license",
-        "value": "CAC1819197",
-        "detail": "Florida Certified Air Conditioning Contractor"
-      }
-    ],
-    "websiteUrl": "http://www.comfort-sos.com/",
+    "credentials": [],
+    "websiteUrl": null,
     "mapsUrl": null,
     "googlePlaceId": null
   },
   "features": {
     "commercialEnabled": false,
-    "showTrust": true,
+    "showTrust": false,
     "showReviews": false,
     "showFaq": true,
     "showProcess": true,
@@ -58,18 +51,18 @@
   "conversion": {
     "primary": {
       "type": "booking",
-      "label": "Book Service",
-      "href": "https://book.housecallpro.com/book/comfort-sos-corp/ff8ca93a80754ab6935205e239ba4f56"
+      "label": "Request Service",
+      "href": "#contact"
     },
     "secondary": {
       "type": "phone",
-      "label": "Call (833) 302-4080",
-      "href": "tel:+18333024080"
+      "label": "Call (813) 555-0142",
+      "href": "tel:+18135550142"
     }
   },
   "seo": {
-    "title": "HVAC Service in Hialeah, FL | Comfort SOS Corporation",
-    "description": "Comfort SOS Corporation provides HVAC and air-conditioning services in Hialeah, Florida. Call (833) 302-4080 to discuss service needs.",
+    "title": "Plumbing Services in Tampa, FL | ClearFlow Plumbing Demo",
+    "description": "Demo plumbing website configuration for Tampa, Florida, used to validate WEBINOW's reusable local-service template.",
     "canonicalUrl": null,
     "ogImageUrl": null
   },
@@ -89,194 +82,165 @@
     "ring": "oklch(0.519 0.193 25.6)"
   },
   "hero": {
-    "eyebrow": "HVAC & AC Service · Hialeah, Florida",
-    "title": "HVAC help when your comfort can't wait.",
-    "body": "AC repair, installation, duct cleaning and general HVAC service in Hialeah. Book online or call Comfort SOS to get started.",
-    "proofLine": "Florida Certified Air Conditioning Contractor · License CAC1819197"
+    "eyebrow": "Plumbing Services · Tampa, Florida",
+    "title": "Plumbing help without the guesswork.",
+    "body": "Repairs, drain service, fixture replacement and water-heater support for homeowners in the Tampa area.",
+    "proofLine": null
   },
-  "trust": [
-    {
-      "value": "4.9 ★",
-      "label": "Google rating"
-    },
-    {
-      "value": "CAC1819197",
-      "label": "Florida certified"
-    },
-    {
-      "value": "Since 2017",
-      "label": "Licensed in Florida"
-    }
-  ],
+  "trust": [],
   "servicesSection": {
     "eyebrow": "Services",
-    "title": "A clearer service path.",
-    "intro": "Choose the service that matches what you need, then book online or call Comfort SOS directly."
+    "title": "Start with the plumbing problem you need solved.",
+    "intro": "Choose the service that matches what is happening, then request service or call directly."
   },
   "services": [
     {
-      "id": "ac-repair",
-      "slug": "ac-repair",
-      "title": "AC Repair",
-      "body": "Get help diagnosing and repairing air-conditioning problems so you can get your home comfortable again."
+      "id": "plumbing-repair",
+      "slug": "plumbing-repair",
+      "title": "Plumbing Repair",
+      "body": "Help with leaks, damaged fixtures, water-line issues and other common residential plumbing problems."
     },
     {
-      "id": "ac-installation",
-      "slug": "ac-installation",
-      "title": "AC Installation",
-      "body": "Ask about air-conditioning installation and replacement options for your home or property."
+      "id": "drain-service",
+      "slug": "drain-service",
+      "title": "Drain Service",
+      "body": "Support for slow, blocked or recurring drain issues that need diagnosis and clearing."
     },
     {
-      "id": "duct-cleaning",
-      "slug": "duct-cleaning",
-      "title": "Duct Cleaning",
-      "body": "Professional duct cleaning for customers who need help with airflow and cleaner HVAC delivery."
+      "id": "fixture-replacement",
+      "slug": "fixture-replacement",
+      "title": "Fixture Replacement",
+      "body": "Replacement support for faucets, toilets and other household plumbing fixtures."
     },
     {
-      "id": "hvac-service",
-      "slug": "hvac-service",
-      "title": "HVAC Service",
-      "body": "Heating, cooling and general HVAC service for homes and properties in the Hialeah area."
+      "id": "water-heater-service",
+      "slug": "water-heater-service",
+      "title": "Water Heater Service",
+      "body": "Service and replacement guidance for residential water-heating systems."
     }
   ],
   "wideCta": {
-    "eyebrow": "Available when you need help",
-    "title": "Need HVAC help? Start here.",
-    "body": "Book service online or call Comfort SOS directly to get the right next step for your property."
+    "eyebrow": "Start with the issue in front of you",
+    "title": "Need a plumber to take a look?",
+    "body": "Request service or call directly to explain the problem and confirm the next step."
   },
   "reviews": [],
   "process": {
     "eyebrow": "What happens next",
-    "title": "From the first call to the next step.",
-    "intro": "One clear path from the first question to the next action.",
+    "title": "From plumbing problem to clear next step.",
+    "intro": "A simple path for homeowners who need to understand what is happening and what should happen next.",
     "steps": [
       {
         "number": "1",
-        "title": "Book or Call",
-        "body": "Use online booking or call Comfort SOS and tell us what you need help with."
+        "title": "Request Service",
+        "body": "Share your location and a short description of the plumbing issue."
       },
       {
         "number": "2",
-        "title": "Share the Details",
-        "body": "Tell us your location, the system involved and what is happening."
+        "title": "Review the Problem",
+        "body": "Confirm the affected fixture or system and the symptoms you are seeing."
       },
       {
         "number": "3",
-        "title": "Confirm the Visit",
-        "body": "Comfort SOS confirms availability and the appropriate service step."
+        "title": "Confirm the Service",
+        "body": "Move forward with the appropriate repair, replacement or diagnostic visit."
       }
     ]
   },
   "about": {
     "eyebrow": "About",
-    "title": "Comfort SOS Corporation.",
-    "body": "Comfort SOS Corporation is a Florida Certified Air Conditioning Contractor serving Hialeah. Florida license CAC1819197 has been active since 2017.",
+    "title": "Local plumbing service, presented clearly.",
+    "body": "This validation configuration demonstrates that the same WEBINOW template can adapt from HVAC and roofing to plumbing without changing React code.",
     "facts": [
       {
-        "label": "License",
-        "value": "CAC1819197"
+        "label": "Business type",
+        "value": "Plumber"
       },
       {
-        "label": "Licensed since",
-        "value": "2017"
-      },
-      {
-        "label": "Address",
-        "value": "2345 W 80th St Unit 14, Hialeah, FL"
+        "label": "Based in",
+        "value": "Tampa, Florida"
       }
     ]
   },
   "serviceAreas": {
     "eyebrow": "Service area",
-    "title": "Serving Hialeah.",
-    "intro": "Comfort SOS is based in Hialeah, Florida. Call directly to confirm service availability for your address.",
+    "title": "Serving Tampa.",
+    "intro": "This validation configuration uses Tampa as the primary service area and can expand to verified nearby areas when real prospect data is available.",
     "areas": [
-      "Hialeah"
+      "Tampa"
     ]
   },
   "faq": {
     "eyebrow": "FAQ",
-    "title": "Before you book.",
+    "title": "Before you request service.",
     "items": [
       {
-        "question": "How do I request service?",
-        "answer": "Call Comfort SOS at (833) 302-4080 or use the live booking option on this page."
+        "question": "What plumbing services are shown here?",
+        "answer": "Plumbing repair, drain service, fixture replacement and water-heater service."
       },
       {
-        "question": "Where is Comfort SOS based?",
-        "answer": "Comfort SOS Corporation is based in Hialeah, Florida."
+        "question": "How do I start?",
+        "answer": "Use the Request Service action or call directly."
       },
       {
-        "question": "Do you serve my area?",
-        "answer": "Call directly with your address to confirm current service availability."
-      },
-      {
-        "question": "What information should I have ready?",
-        "answer": "Share your location and a short description of the heating or cooling issue you need help with."
+        "question": "Is this a real plumbing company?",
+        "answer": "No. This is a validation fixture used only to test the reusable WEBINOW template."
       }
     ]
   },
   "contact": {
     "eyebrow": "Contact",
-    "title": "Need HVAC help?",
-    "body": "Use the live booking link to request service, or call Comfort SOS directly if you'd rather speak with someone.",
+    "title": "Ready to discuss the plumbing issue?",
+    "body": "Request service or call directly to describe the issue and location.",
     "choiceTitle": "Choose how you want to start.",
-    "choiceBody": "Book online through Comfort SOS's existing service flow, or call directly if you'd rather speak with someone first.",
+    "choiceBody": "Send a service request from the page or call if you want to explain the issue first.",
     "facts": [
       {
-        "label": "Florida license",
-        "value": "CAC1819197"
+        "label": "Business type",
+        "value": "Plumber"
       },
       {
         "label": "Based in",
-        "value": "Hialeah, Florida"
+        "value": "Tampa, Florida"
       }
     ],
     "formTitle": "Request service",
     "formOptions": [
-      "Cooling",
-      "Heating",
-      "System care",
-      "Other HVAC need"
+      "Plumbing repair",
+      "Drain service",
+      "Fixture replacement",
+      "Water heater"
     ]
   },
   "footer": {
-    "hours": "Open 24 hours",
+    "hours": null,
     "note": null
   },
   "dataQuality": {
     "verifiedFields": [
-      "business.name",
+      "validation.fixture",
       "business.vertical",
-      "business.phone",
-      "business.city",
-      "business.address",
-      "business.websiteUrl",
-      "business.credentials",
-      "google.rating",
-      "business.hours",
-      "business.categories",
-      "brand.logo"
+      "business.city"
     ],
     "needsReview": [
-      "client-owned photography",
-      "email",
-      "certifications beyond verified license",
-      "individual review content",
-      "warranties",
-      "pricing",
-      "service coverage beyond Hialeah"
+      "all real prospect identity data",
+      "real phone",
+      "real address",
+      "real credentials",
+      "real reviews",
+      "real media",
+      "real service coverage"
     ]
   },
   "media": {
-    "heroImageUrl": "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1600&q=85",
-    "heroImageAlt": "HVAC technician servicing an air-conditioning system",
+    "heroImageUrl": null,
+    "heroImageAlt": "Residential plumbing service",
     "heroImagePosition": "center",
     "wideImageUrl": null,
-    "wideImageAlt": "Local home service professional on site",
+    "wideImageAlt": "Residential plumbing service visit",
     "featureImageUrl": null,
-    "featureImageAlt": "Home comfort system service",
-    "wideImagePosition": "50% 28%",
+    "featureImageAlt": "Plumbing inspection and repair",
+    "wideImagePosition": "center",
     "featureImagePosition": "center"
   }
 }
