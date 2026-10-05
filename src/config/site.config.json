@@ -274,8 +274,8 @@
     "heroImagePosition": "center",
     "wideImageUrl": null,
     "wideImageAlt": "Local home service professional on site",
-    "featureImageUrl": null,
-    "featureImageAlt": "Home comfort system service",
+    "featureImageUrl": "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1600&q=85",
+    "featureImageAlt": "HVAC technician servicing an air-conditioning system",
     "wideImagePosition": "50% 28%",
     "featureImagePosition": "center"
   }
