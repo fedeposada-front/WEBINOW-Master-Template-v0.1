@@ -43,7 +43,9 @@ const localBusinessTypeSchema = z.enum([
   "ProfessionalService",
 ]);
 
-export const siteSchema = z.object({
+const countryCodeSchema = z.string().regex(/^[A-Z]{2}$/);
+
+const baseSiteSchema = z.object({
   schemaVersion: z.literal("0.2"),
   templateVersion: z.string().min(1),
   id: z.string().min(1),
@@ -70,14 +72,14 @@ export const siteSchema = z.object({
     email: z.string().nullable(),
     city: z.string().min(1),
     region: z.string().min(1),
-    countryCode: z.string().length(2),
+    countryCode: countryCodeSchema,
     serviceArea: z.string().min(1),
     address: z.object({
       streetAddress: z.string().nullable(),
       locality: z.string().min(1),
       region: z.string().min(1),
       postalCode: z.string().nullable(),
-      countryCode: z.string().length(2),
+      countryCode: countryCodeSchema,
     }),
     credentials: z.array(credentialSchema),
     websiteUrl: z.string().nullable(),
@@ -226,6 +228,46 @@ export const siteSchema = z.object({
     verifiedFields: z.array(z.string()),
     needsReview: z.array(z.string()),
   }),
+});
+
+export const siteSchema = baseSiteSchema.superRefine((config, ctx) => {
+  if (config.business.countryCode !== config.business.address.countryCode) {
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      path: ["business", "address", "countryCode"],
+      message: "Business and address country codes must match.",
+    });
+  }
+
+  if (config.mode === "production" && !config.seo.canonicalUrl) {
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      path: ["seo", "canonicalUrl"],
+      message: "Production sites require a canonical URL.",
+    });
+  }
+
+  if (
+    config.seo.canonicalUrl &&
+    !/^https?:\/\//i.test(config.seo.canonicalUrl)
+  ) {
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      path: ["seo", "canonicalUrl"],
+      message: "Canonical URL must be an absolute http(s) URL.",
+    });
+  }
+
+  if (
+    config.seo.ogImageUrl &&
+    !/^https?:\/\//i.test(config.seo.ogImageUrl)
+  ) {
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      path: ["seo", "ogImageUrl"],
+      message: "Open Graph image must be an absolute http(s) URL.",
+    });
+  }
 });
 
 export type SiteConfig = z.infer<typeof siteSchema>;
