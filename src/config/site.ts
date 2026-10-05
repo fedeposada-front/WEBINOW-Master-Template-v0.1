@@ -20,31 +20,45 @@ export const CANONICAL_URL =
   IS_PRODUCTION && site.seo.canonicalUrl ? site.seo.canonicalUrl : null;
 export const OG_IMAGE_URL = site.seo.ogImageUrl;
 
-export const LOCAL_BUSINESS_JSON_LD = IS_PRODUCTION
-  ? {
-      "@context": "https://schema.org",
-      "@type": site.business.schemaType,
-      "@id": CANONICAL_URL ? `${CANONICAL_URL}#business` : undefined,
-      name: site.brand.name,
-      description: site.seo.description,
-      url: CANONICAL_URL ?? undefined,
-      telephone: site.business.phoneHref.replace(/^tel:/, ""),
-      email: site.business.email ?? undefined,
-      image: OG_IMAGE_URL ?? undefined,
-      hasMap: site.business.mapsUrl ?? undefined,
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: site.business.address.streetAddress ?? undefined,
-        addressLocality: site.business.address.locality,
-        addressRegion: site.business.address.region,
-        postalCode: site.business.address.postalCode ?? undefined,
-        addressCountry: site.business.address.countryCode,
-      },
-      areaServed: site.serviceAreas.areas.map((area) => ({
-        "@type": "Place",
-        name: area,
-      })),
-    }
+const hasPhysicalAddress = Boolean(site.business.address.streetAddress);
+
+export const STRUCTURED_DATA_JSON_LD = IS_PRODUCTION
+  ? hasPhysicalAddress
+    ? {
+        "@context": "https://schema.org",
+        "@type": site.business.schemaType,
+        "@id": CANONICAL_URL ? `${CANONICAL_URL}#business` : undefined,
+        name: site.brand.name,
+        description: site.seo.description,
+        url: CANONICAL_URL ?? undefined,
+        telephone: site.business.phoneHref.replace(/^tel:/, ""),
+        email: site.business.email ?? undefined,
+        image: OG_IMAGE_URL ?? undefined,
+        hasMap: site.business.mapsUrl ?? undefined,
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: site.business.address.streetAddress,
+          addressLocality: site.business.address.locality,
+          addressRegion: site.business.address.region,
+          postalCode: site.business.address.postalCode ?? undefined,
+          addressCountry: site.business.address.countryCode,
+        },
+        areaServed: site.serviceAreas.areas.map((area) => ({
+          "@type": "Place",
+          name: area,
+        })),
+      }
+    : {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "@id": CANONICAL_URL ? `${CANONICAL_URL}#organization` : undefined,
+        name: site.brand.name,
+        description: site.seo.description,
+        url: CANONICAL_URL ?? undefined,
+        telephone: site.business.phoneHref.replace(/^tel:/, ""),
+        email: site.business.email ?? undefined,
+        image: OG_IMAGE_URL ?? undefined,
+      }
   : null;
 
 export const siteThemeStyle = {
