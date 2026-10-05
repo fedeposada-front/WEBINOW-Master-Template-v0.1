@@ -37,7 +37,7 @@ Do not knowingly carry fixable defects forward just to keep momentum. Validation
 
 ## v0.2B — Remove Client Hardcodes
 
-Status: implemented, structurally reviewed, type-checked, and production-built successfully on `refactor/site-config-v0.2`.
+Status: validated on `refactor/site-config-v0.2` — structural checks, TypeScript, production build, Cloudflare/Wrangler runtime, and proposal SEO behavior all passed.
 
 Move every client-specific string or action out of React routes and into config.
 
