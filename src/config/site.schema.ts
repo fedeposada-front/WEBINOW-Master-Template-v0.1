@@ -239,6 +239,33 @@ export const siteSchema = baseSiteSchema.superRefine((config, ctx) => {
     });
   }
 
+  if (!config.business.phoneHref.startsWith("tel:")) {
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      path: ["business", "phoneHref"],
+      message: "Business phone href must use the tel: scheme.",
+    });
+  }
+
+  const serviceIds = config.services.map((service) => service.id);
+  if (new Set(serviceIds).size !== serviceIds.length) {
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      path: ["services"],
+      message: "Service IDs must be unique.",
+    });
+  }
+
+  const serviceSlugs = config.services.map((service) => service.slug);
+  if (new Set(serviceSlugs).size !== serviceSlugs.length) {
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      path: ["services"],
+      message: "Service slugs must be unique.",
+    });
+  }
+
+
   if (config.mode === "production" && !config.seo.canonicalUrl) {
     ctx.addIssue({
       code: z.ZodIssueCode.custom,
