@@ -10,7 +10,14 @@ import {
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
-import { site } from "../config/site";
+import {
+  CANONICAL_URL,
+  LOCAL_BUSINESS_JSON_LD,
+  OG_IMAGE_URL,
+  SEO_ROBOTS,
+  SITE_LOCALE,
+  site,
+} from "../config/site";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
 function NotFoundComponent() {
@@ -82,12 +89,23 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: site.seo.title },
       { name: "description", content: site.seo.description },
       { name: "author", content: site.brand.name },
+      { name: "robots", content: SEO_ROBOTS },
       { property: "og:title", content: site.seo.title },
       { property: "og:description", content: site.seo.description },
       { property: "og:type", content: "website" },
+      ...(CANONICAL_URL ? [{ property: "og:url", content: CANONICAL_URL }] : []),
+      ...(OG_IMAGE_URL
+        ? [
+            { property: "og:image", content: OG_IMAGE_URL },
+            { name: "twitter:image", content: OG_IMAGE_URL },
+          ]
+        : []),
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: site.seo.title },
+      { name: "twitter:description", content: site.seo.description },
     ],
     links: [
+      ...(CANONICAL_URL ? [{ rel: "canonical", href: CANONICAL_URL }] : []),
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
@@ -106,9 +124,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang={SITE_LOCALE}>
       <head>
         <HeadContent />
+        {LOCAL_BUSINESS_JSON_LD ? (
+          <script type="application/ld+json">
+            {JSON.stringify(LOCAL_BUSINESS_JSON_LD)}
+          </script>
+        ) : null}
       </head>
       <body>
         {children}
