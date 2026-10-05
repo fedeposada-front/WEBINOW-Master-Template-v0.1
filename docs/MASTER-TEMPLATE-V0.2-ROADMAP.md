@@ -103,6 +103,32 @@ Finding:
 - local fallback photography is still generic/home-service oriented and is not guaranteed to match every vertical. This does not invalidate the config architecture, but real prospect previews should provide vertical/client-specific media instead of relying on fallback assets.
 - do not solve this with more template code now; treat media sourcing as a prospect-input responsibility until automation is justified.
 
+### Plumbing validation
+
+Status: passed visually and structurally on `validation/plumbing-v0.2`.
+
+Validated:
+
+- branch differs from the master v0.2 foundation only in `src/config/site.config.json`
+- Roofing/HVAC-specific copy, services, CTA labels, and location were replaced through config only
+- Plumbing conversion changed to `Request Service` without React changes
+- feature flags correctly hid reviews, trust strip, and commercial variant
+- supplied full-page capture preserved hierarchy, spacing, section order, CTA behavior, and footer structure
+
+Finding:
+
+- generic fallback media remains acceptable for validation, but real prospect previews should use verified client/vertical-specific media when available.
+
+### v0.2D result
+
+Status: PASSED.
+
+The same React/template code rendered HVAC, Roofing, and Plumbing using config-only changes. No React changes were required for the two cross-vertical validation branches.
+
+Commercial implication:
+
+The reusable local-service foundation is now sufficiently validated. Further vertical fixtures are deferred; the next milestone is a real prospect preview -> visual approval -> outreach -> reply/meeting/sale.
+
 ## Near-Term Backlog
 
 Implement after first outreach / first commercial signal unless a client requires it sooner:
