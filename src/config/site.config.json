@@ -1,52 +1,45 @@
 {
   "schemaVersion": "0.2",
   "templateVersion": "0.2.0",
-  "id": "comfort-sos-corporation-hialeah-fl",
-  "prospectId": "comfort-sos-corporation-hialeah-fl",
+  "id": "llarena_service_center_llc_miami_fl",
+  "prospectId": "llarena_service_center_llc_miami_fl",
   "mode": "proposal",
   "siteArchetype": "local-service",
   "locale": "en-US",
   "variant": "residential",
   "brand": {
-    "name": "Comfort SOS Corporation",
-    "shortName": "Comfort S.O.S.",
-    "mark": "CS",
-    "logoUrl": "/brand/logo.png",
-    "logoAlt": "Comfort S.O.S. logo mark"
+    "name": "Llarena Service Center LLC",
+    "shortName": "Llarena Service",
+    "mark": "LS",
+    "logoUrl": null,
+    "logoAlt": "Llarena Service Center LLC"
   },
   "business": {
     "vertical": "HVAC",
-    "category": "Heating & Air Conditioning",
+    "category": "Air Conditioning & Heating Services",
     "schemaType": "HVACBusiness",
-    "phoneDisplay": "(833) 302-4080",
-    "phoneHref": "tel:+18333024080",
-    "email": null,
-    "city": "Hialeah",
+    "phoneDisplay": "(786) 683-9004",
+    "phoneHref": "tel:+17866839004",
+    "email": "llarenaservice@yahoo.com",
+    "city": "Miami",
     "region": "Florida",
     "countryCode": "US",
-    "serviceArea": "Hialeah, Florida",
+    "serviceArea": "Miami and surrounding South Florida communities",
     "address": {
-      "streetAddress": "2345 W 80th St Unit 14",
-      "locality": "Hialeah",
+      "streetAddress": "7945 NW 64th St",
+      "locality": "Miami",
       "region": "FL",
-      "postalCode": null,
+      "postalCode": "33166",
       "countryCode": "US"
     },
-    "credentials": [
-      {
-        "type": "license",
-        "label": "Florida license",
-        "value": "CAC1819197",
-        "detail": "Florida Certified Air Conditioning Contractor"
-      }
-    ],
-    "websiteUrl": "http://www.comfort-sos.com/",
+    "credentials": [],
+    "websiteUrl": "https://www.llarenaair.com/",
     "mapsUrl": null,
     "googlePlaceId": null
   },
   "features": {
     "commercialEnabled": false,
-    "showTrust": true,
+    "showTrust": false,
     "showReviews": false,
     "showFaq": true,
     "showProcess": true,
@@ -57,19 +50,19 @@
   },
   "conversion": {
     "primary": {
-      "type": "booking",
-      "label": "Book Service",
-      "href": "https://book.housecallpro.com/book/comfort-sos-corp/ff8ca93a80754ab6935205e239ba4f56"
+      "type": "phone",
+      "label": "Call to Request Service",
+      "href": "tel:+17866839004"
     },
     "secondary": {
-      "type": "phone",
-      "label": "Call (833) 302-4080",
-      "href": "tel:+18333024080"
+      "type": "external",
+      "label": "Contact Llarena",
+      "href": "https://www.llarenaair.com/contact-us"
     }
   },
   "seo": {
-    "title": "HVAC Service in Hialeah, FL | Comfort SOS Corporation",
-    "description": "Comfort SOS Corporation provides HVAC and air-conditioning services in Hialeah, Florida. Call (833) 302-4080 to discuss service needs.",
+    "title": "Air Conditioning & HVAC Services in Miami | Llarena Service Center LLC",
+    "description": "Llarena Service Center LLC serves Miami and surrounding communities with heating, air conditioning, indoor air quality, and new construction HVAC services.",
     "canonicalUrl": null,
     "ogImageUrl": null
   },
@@ -89,188 +82,174 @@
     "ring": "oklch(0.519 0.193 25.6)"
   },
   "hero": {
-    "eyebrow": "HVAC & AC Service · Hialeah, Florida",
-    "title": "HVAC help when your comfort can't wait.",
-    "body": "AC repair, installation, duct cleaning and general HVAC service in Hialeah. Book online or call Comfort SOS to get started.",
-    "proofLine": "Florida Certified Air Conditioning Contractor · License CAC1819197"
+    "eyebrow": "Heating · Cooling · Air Quality · South Florida",
+    "title": "Comfort starts with a clear next step.",
+    "body": "AC service, heating, indoor air quality, and HVAC solutions for local homes and businesses. Explore the right service, then reach Llarena Service Center directly.",
+    "proofLine": null
   },
-  "trust": [
-    {
-      "value": "4.9 ★",
-      "label": "Google rating"
-    },
-    {
-      "value": "CAC1819197",
-      "label": "Florida certified"
-    },
-    {
-      "value": "Since 2017",
-      "label": "Licensed in Florida"
-    }
-  ],
+  "trust": [],
   "servicesSection": {
-    "eyebrow": "Services",
-    "title": "A clearer service path.",
-    "intro": "Choose the service that matches what you need, then book online or call Comfort SOS directly."
+    "eyebrow": "What we do",
+    "title": "Find the right HVAC service, faster.",
+    "intro": "Heating, cooling, indoor air quality, and new-construction solutions—organized around what customers need."
   },
   "services": [
     {
-      "id": "ac-repair",
-      "slug": "ac-repair",
-      "title": "AC Repair",
-      "body": "Get help diagnosing and repairing air-conditioning problems so you can get your home comfortable again."
+      "id": "cooling",
+      "slug": "cooling",
+      "title": "Air Conditioning",
+      "body": "Explore air-conditioning service and repair, as well as installation or replacement options for your property."
     },
     {
-      "id": "ac-installation",
-      "slug": "ac-installation",
-      "title": "AC Installation",
-      "body": "Ask about air-conditioning installation and replacement options for your home or property."
+      "id": "heating",
+      "slug": "heating",
+      "title": "Heating & Cooling",
+      "body": "Get in touch about heating and HVAC service for a home or business."
     },
     {
-      "id": "duct-cleaning",
-      "slug": "duct-cleaning",
-      "title": "Duct Cleaning",
-      "body": "Professional duct cleaning for customers who need help with airflow and cleaner HVAC delivery."
+      "id": "air-quality",
+      "slug": "air-quality",
+      "title": "Indoor Air Quality",
+      "body": "Ask about comfort, airflow, air purification, filtration, and humidity solutions."
     },
     {
-      "id": "hvac-service",
-      "slug": "hvac-service",
-      "title": "HVAC Service",
-      "body": "Heating, cooling and general HVAC service for homes and properties in the Hialeah area."
+      "id": "new-construction",
+      "slug": "new-construction",
+      "title": "New Construction HVAC",
+      "body": "Learn about heating and cooling solutions for residential and commercial new-construction projects."
     }
   ],
   "wideCta": {
-    "eyebrow": "Available when you need help",
-    "title": "Need HVAC help? Start here.",
-    "body": "Book service online or call Comfort SOS directly to get the right next step for your property."
+    "eyebrow": "Ready to get started?",
+    "title": "Get a clearer path to HVAC help.",
+    "body": "Call Llarena Service Center or visit its current contact page to discuss your needs."
   },
   "reviews": [],
   "process": {
-    "eyebrow": "What happens next",
-    "title": "From the first call to the next step.",
-    "intro": "One clear path from the first question to the next action.",
+    "eyebrow": "How to get started",
+    "title": "From question to next step.",
+    "intro": "A simple path to the appropriate service.",
     "steps": [
       {
         "number": "1",
-        "title": "Book or Call",
-        "body": "Use online booking or call Comfort SOS and tell us what you need help with."
+        "title": "Choose your need",
+        "body": "Select the heating, cooling, air-quality, or new-construction service that fits your situation."
       },
       {
         "number": "2",
-        "title": "Share the Details",
-        "body": "Tell us your location, the system involved and what is happening."
+        "title": "Reach out",
+        "body": "Contact Llarena Service Center with your location and a short description of what you need."
       },
       {
         "number": "3",
-        "title": "Confirm the Visit",
-        "body": "Comfort SOS confirms availability and the appropriate service step."
+        "title": "Confirm details",
+        "body": "Ask the team about current availability and the next step for your property."
       }
     ]
   },
   "about": {
-    "eyebrow": "About",
-    "title": "Comfort SOS Corporation.",
-    "body": "Comfort SOS Corporation is a Florida Certified Air Conditioning Contractor serving Hialeah. Florida license CAC1819197 has been active since 2017.",
+    "eyebrow": "About Llarena",
+    "title": "Heating and cooling for South Florida.",
+    "body": "Llarena Service Center LLC presents heating, cooling, indoor air quality, and new-construction HVAC services across the Miami area.",
     "facts": [
       {
-        "label": "License",
-        "value": "CAC1819197"
+        "label": "Office",
+        "value": "7945 NW 64th St, Miami, FL 33166"
       },
       {
-        "label": "Licensed since",
-        "value": "2017"
-      },
-      {
-        "label": "Address",
-        "value": "2345 W 80th St Unit 14, Hialeah, FL"
+        "label": "Contact",
+        "value": "llarenaservice@yahoo.com"
       }
     ]
   },
   "serviceAreas": {
-    "eyebrow": "Service area",
-    "title": "Serving Hialeah.",
-    "intro": "Comfort SOS is based in Hialeah, Florida. Call directly to confirm service availability for your address.",
+    "eyebrow": "Where we work",
+    "title": "Serving Miami and nearby communities.",
+    "intro": "Llarena lists these locations among the areas it serves. Contact the team to confirm availability for a specific address.",
     "areas": [
-      "Hialeah"
+      "Miami",
+      "Hialeah",
+      "Miami Lakes",
+      "Doral",
+      "Miami Gardens",
+      "North Miami",
+      "Miami Beach",
+      "Hollywood"
     ]
   },
   "faq": {
-    "eyebrow": "FAQ",
-    "title": "Before you book.",
+    "eyebrow": "Before you contact us",
+    "title": "A few quick answers.",
     "items": [
       {
+        "question": "What services does Llarena offer?",
+        "answer": "Its website lists heating and cooling, indoor air quality and distribution, and residential/commercial new-construction HVAC work."
+      },
+      {
+        "question": "Where is the office?",
+        "answer": "The current official contact page lists 7945 NW 64th St, Miami, FL 33166."
+      },
+      {
         "question": "How do I request service?",
-        "answer": "Call Comfort SOS at (833) 302-4080 or use the live booking option on this page."
+        "answer": "Call the number on the current contact page or use the official contact form."
       },
       {
-        "question": "Where is Comfort SOS based?",
-        "answer": "Comfort SOS Corporation is based in Hialeah, Florida."
-      },
-      {
-        "question": "Do you serve my area?",
-        "answer": "Call directly with your address to confirm current service availability."
-      },
-      {
-        "question": "What information should I have ready?",
-        "answer": "Share your location and a short description of the heating or cooling issue you need help with."
+        "question": "What are the published office hours?",
+        "answer": "The official contact page lists Monday–Friday, 8 am–4 pm; Saturday, 8 am–2 pm; Sunday, closed. Confirm emergency availability directly."
       }
     ]
   },
   "contact": {
-    "eyebrow": "Contact",
-    "title": "Need HVAC help?",
-    "body": "Use the live booking link to request service, or call Comfort SOS directly if you'd rather speak with someone.",
-    "choiceTitle": "Choose how you want to start.",
-    "choiceBody": "Book online through Comfort SOS's existing service flow, or call directly if you'd rather speak with someone first.",
+    "eyebrow": "Talk to Llarena",
+    "title": "Need help with an HVAC project?",
+    "body": "Choose the contact option that works for you. This concept links to Llarena's existing contact channels.",
+    "choiceTitle": "One clear contact path.",
+    "choiceBody": "Call the published contact number or visit Llarena's current contact page.",
     "facts": [
       {
-        "label": "Florida license",
-        "value": "CAC1819197"
+        "label": "Office",
+        "value": "7945 NW 64th St, Miami, FL 33166"
       },
       {
-        "label": "Based in",
-        "value": "Hialeah, Florida"
+        "label": "Email",
+        "value": "llarenaservice@yahoo.com"
       }
     ],
     "formTitle": "Request service",
     "formOptions": [
-      "Cooling",
+      "Air conditioning",
       "Heating",
-      "System care",
-      "Other HVAC need"
+      "Air quality",
+      "New construction"
     ]
   },
   "footer": {
-    "hours": "Open 24 hours",
-    "note": null
+    "hours": "Mon–Fri 8am–4pm · Sat 8am–2pm · Sun closed",
+    "note": "Unofficial homepage concept created for review. Not Llarena's official website."
   },
   "dataQuality": {
     "verifiedFields": [
       "business.name",
-      "business.vertical",
-      "business.phone",
-      "business.city",
+      "business.category",
+      "business.contactEmail",
       "business.address",
+      "business.contactPagePhone",
       "business.websiteUrl",
-      "business.credentials",
-      "google.rating",
-      "business.hours",
-      "business.categories",
-      "brand.logo"
+      "business.services",
+      "business.serviceAreas",
+      "business.publishedHours"
     ],
     "needsReview": [
-      "client-owned photography",
-      "email",
-      "certifications beyond verified license",
-      "individual review content",
-      "warranties",
-      "pricing",
-      "service coverage beyond Hialeah"
+      "Which of the two published phone numbers is primary (786-683-9004 vs 305-494-9374)",
+      "Use of Llarena logo and photos",
+      "Emergency/24-hour availability versus published office hours",
+      "Licenses, ratings, testimonials and warranties",
+      "Final copy and service availability"
     ]
   },
   "media": {
     "heroImageUrl": "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1600&q=85",
-    "heroImageAlt": "HVAC technician servicing an air-conditioning system",
+    "heroImageAlt": "Generic HVAC service image used in a conceptual design",
     "heroImagePosition": "center",
     "wideImageUrl": null,
     "wideImageAlt": "Local home service professional on site",
