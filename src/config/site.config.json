@@ -51,12 +51,12 @@
   "conversion": {
     "primary": {
       "type": "phone",
-      "label": "Call to Request Service",
+      "label": "Call Llarena",
       "href": "tel:+17866839004"
     },
     "secondary": {
       "type": "external",
-      "label": "Contact Llarena",
+      "label": "Contact online",
       "href": "https://www.llarenaair.com/contact-us"
     }
   },
@@ -67,24 +67,24 @@
     "ogImageUrl": null
   },
   "theme": {
-    "background": "oklch(0.985 0.004 240)",
-    "foreground": "oklch(0.24 0.035 258)",
+    "background": "oklch(0.986 0.004 240)",
+    "foreground": "oklch(0.235 0.046 248)",
     "surface": "oklch(1 0 0)",
-    "surface2": "oklch(0.965 0.012 240)",
-    "ink": "oklch(0.30 0.105 253)",
-    "inkForeground": "oklch(0.97 0.005 250)",
-    "primary": "oklch(0.449 0.132 253)",
-    "accent": "oklch(0.769 0.104 228)",
-    "accentForeground": "oklch(0.22 0.06 253)",
-    "signal": "oklch(0.519 0.193 25.6)",
-    "signalForeground": "oklch(0.985 0.004 240)",
-    "border": "oklch(0.9 0.008 252)",
-    "ring": "oklch(0.519 0.193 25.6)"
+    "surface2": "oklch(0.961 0.012 234)",
+    "ink": "oklch(0.295 0.106 250)",
+    "inkForeground": "oklch(0.987 0.003 240)",
+    "primary": "oklch(0.39 0.12 248)",
+    "accent": "oklch(0.77 0.17 61)",
+    "accentForeground": "oklch(0.24 0.05 250)",
+    "signal": "oklch(0.77 0.17 61)",
+    "signalForeground": "oklch(0.23 0.05 248)",
+    "border": "oklch(0.9 0.012 244)",
+    "ring": "oklch(0.77 0.17 61)"
   },
   "hero": {
-    "eyebrow": "Heating · Cooling · Air Quality · South Florida",
-    "title": "Comfort starts with a clear next step.",
-    "body": "AC service, heating, indoor air quality, and HVAC solutions for local homes and businesses. Explore the right service, then reach Llarena Service Center directly.",
+    "eyebrow": "HEATING · COOLING · AIR QUALITY · MIAMI",
+    "title": "Heating and cooling. One clear next step.",
+    "body": "HVAC, indoor air quality, and new-construction services for Miami-area homes and businesses. Find the right service and contact Llarena directly.",
     "proofLine": null
   },
   "trust": [],
@@ -251,7 +251,7 @@
   "media": {
     "heroImageUrl": "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1600&q=85",
     "heroImageAlt": "Generic HVAC service image used in a conceptual design",
-    "heroImagePosition": "center",
+    "heroImagePosition": "54% center",
     "wideImageUrl": null,
     "wideImageAlt": "Local home service professional on site",
     "featureImageUrl": null,
