@@ -11,8 +11,8 @@
     "name": "Llarena Service Center LLC",
     "shortName": "Llarena Service",
     "mark": "LS",
-    "logoUrl": null,
-    "logoAlt": "Llarena Service Center LLC"
+    "logoUrl": "https://cdn.prod.website-files.com/6894eb46c11250a7b23fbe36/689c7170a1baa27ee0bc3aef_about%20logo.svg",
+    "logoAlt": "Llarena Service Center — original brand logo"
   },
   "business": {
     "vertical": "HVAC",
@@ -237,14 +237,15 @@
       "business.websiteUrl",
       "business.services",
       "business.serviceAreas",
-      "business.publishedHours"
+      "business.publishedHours",
+      "brand.logoSourceOfficialWebsite"
     ],
     "needsReview": [
       "Which of the two published phone numbers is primary (786-683-9004 vs 305-494-9374)",
-      "Use of Llarena logo and photos",
       "Emergency/24-hour availability versus published office hours",
       "Licenses, ratings, testimonials and warranties",
-      "Final copy and service availability"
+      "Final copy and service availability",
+      "Check presentation size of official SVG logo and verify image usage permissions before external presentation"
     ]
   },
   "media": {
