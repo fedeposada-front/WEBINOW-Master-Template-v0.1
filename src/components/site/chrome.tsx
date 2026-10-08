@@ -140,7 +140,7 @@ export function UtilityBar({ variant }: { variant: Variant }) {
       : `${site.business.vertical} service`;
 
   return (
-    <div className="bg-ink text-ink-foreground">
+    <div className="hidden bg-ink text-ink-foreground sm:block">
       <Container className="flex flex-wrap items-center justify-between gap-2 py-2.5 text-[0.74rem] tracking-wide">
         <p className="font-medium">
           {message}
@@ -168,7 +168,7 @@ export function SiteNav({ variant: _variant }: { variant: Variant }) {
               <img
                 src={site.brand.logoUrl}
                 alt={site.brand.logoAlt}
-                className="h-10 w-[68px] shrink-0 rounded-sm bg-white object-contain object-center"
+                className="h-14 w-28 shrink-0 object-contain object-left sm:w-32"
               />
               <span className="hidden truncate font-display text-sm font-bold uppercase tracking-[0.08em] sm:block sm:text-base">
                 {site.brand.shortName}
@@ -185,6 +185,8 @@ export function SiteNav({ variant: _variant }: { variant: Variant }) {
             </>
           )}
         </Link>
+
+        <a href="#services" className="ml-auto text-sm font-semibold text-foreground hover:text-signal sm:hidden">Services</a>
 
         <nav className="hidden items-center gap-6 xl:flex">
           {NAV.map((item) =>
@@ -240,7 +242,7 @@ export function MobileActionBar({ variant: _variant }: { variant: Variant }) {
         href={PRIMARY_CONVERSION.href}
         className="bg-signal py-4 text-center font-display text-[0.8rem] font-semibold uppercase tracking-[0.12em] text-signal-foreground"
       >
-        {PRIMARY_CONVERSION.label}
+        {site.conversion.primary.type === "phone" ? "Call now" : PRIMARY_CONVERSION.label}
       </a>
     </div>
   );
