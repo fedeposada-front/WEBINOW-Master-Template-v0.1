@@ -59,7 +59,7 @@ function ResidentialHome() {
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-foreground/78 sm:text-xl">
               {site.hero.body}
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="mt-8 hidden flex-wrap gap-3 sm:flex">
               <Btn kind="signal" size="lg" href={PRIMARY_CONVERSION.href}>
                 {PRIMARY_CONVERSION.label}
               </Btn>
@@ -67,6 +67,7 @@ function ResidentialHome() {
                 {SECONDARY_CONVERSION.label}
               </Btn>
             </div>
+            <a href="#services" className="mt-8 inline-flex border-b border-signal pb-2 font-display text-sm font-semibold uppercase tracking-[0.1em] text-ink-foreground sm:hidden">Explore services →</a>
             {(site.hero.proofLine || SECONDARY_CONVERSION.href) ? (
               <div className="mt-10 flex flex-wrap gap-x-7 gap-y-3 border-t border-hairline-inverse pt-5 text-sm text-ink-foreground/72">
                 {site.hero.proofLine ? <span>{site.hero.proofLine}</span> : null}
