@@ -68,12 +68,9 @@ function ResidentialHome() {
               </Btn>
             </div>
             <a href="#services" className="mt-8 inline-flex border-b border-signal pb-2 font-display text-sm font-semibold uppercase tracking-[0.1em] text-ink-foreground sm:hidden">Explore services →</a>
-            {(site.hero.proofLine || SECONDARY_CONVERSION.href) ? (
-              <div className="mt-10 flex flex-wrap gap-x-7 gap-y-3 border-t border-hairline-inverse pt-5 text-sm text-ink-foreground/72">
-                {site.hero.proofLine ? <span>{site.hero.proofLine}</span> : null}
-                <a href={SECONDARY_CONVERSION.href} className="font-semibold text-signal">
-                  {SECONDARY_CONVERSION.label}
-                </a>
+            {site.hero.proofLine ? (
+              <div className="mt-10 border-t border-hairline-inverse pt-5 text-sm text-ink-foreground/72">
+                {site.hero.proofLine}
               </div>
             ) : null}
           </div>
