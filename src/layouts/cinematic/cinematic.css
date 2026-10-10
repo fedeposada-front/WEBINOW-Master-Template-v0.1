@@ -62,6 +62,7 @@
 .ca-plus { padding:0 10px; color:var(--ca-cyan); }
 .ca-hero__eyebrow { margin-bottom:12px; color:var(--ca-mist); font-size:11px; font-weight:700; letter-spacing:.19em; text-transform:uppercase; }
 .ca-hero__title { max-width:1480px; font-family:"Archivo",sans-serif; font-size:clamp(82px,14.9vw,220px); font-stretch:62%; font-weight:800; letter-spacing:-.04em; line-height:.83; overflow-wrap:anywhere; text-transform:uppercase; }
+.ca-hero__title-line { display:block; }
 .ca-hero__title em { color:var(--ca-cyan); font-style:normal; }
 .ca-hero__foot { display:grid; grid-template-columns:minmax(0,490px) auto; align-items:end; justify-content:space-between; gap:40px; margin-top:40px; padding-top:28px; border-top:1px solid var(--ca-hair); }
 .ca-hero__lede { color:rgba(242,244,243,.88); font-size:clamp(15px,1.25vw,17px); line-height:1.65; }
