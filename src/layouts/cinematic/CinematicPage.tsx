@@ -1,7 +1,8 @@
 /**
  * Industrial Cinematic — JSX port from Figma Make Concept A.
- * No route is enabled in this gate. Content must come from the v0.3 adapter.
- * Deliberately does not display pending images or send quote requests.
+ * Uses only the v0.3 adapter. Unapproved photos appear exclusively in private
+ * local dev previews with an explicit rights-unconfirmed label.
+ * Quote requests remain unavailable until the estimate route is implemented.
  */
 import { useState, type CSSProperties } from "react";
 import type { CinematicModel, CinematicService } from "./cinematic.model";
@@ -31,7 +32,12 @@ function ServiceStage({ service, quoteLabel }: {
     <div className="ca-stage__inside">
       <div className="ca-stage__plate" aria-label={service.image ? undefined : "Illustrative asset pending verification"}>
         {service.image ? (
-          <img className="ca-stage__image" src={service.image.src} alt={service.image.alt} style={{ objectPosition: service.image.objectPosition }} />
+          <>
+            <img className="ca-stage__image" src={service.image.src} alt={service.image.alt} style={{ objectPosition: service.image.objectPosition }} />
+            {service.image.reviewOnly && (
+              <span className="ca-photo-review ca-photo-review--stage">INTERNAL IMAGE REVIEW · RIGHTS UNCONFIRMED</span>
+            )}
+          </>
         ) : (
           <>
             <span className="ca-stage__big" aria-hidden="true">{service.index}</span>
@@ -73,7 +79,12 @@ export function CinematicPage({ model }: { model: CinematicModel }) {
     <main className="ca" lang={model.locale} style={tokenStyles}>
       <section className="ca-hero" aria-labelledby="ca-title">
         {model.hero.image ? (
-          <img className="ca-hero__photo" src={model.hero.image.src} alt={model.hero.image.alt} style={{ objectPosition: model.hero.image.objectPosition }} />
+          <>
+            <img className="ca-hero__photo" src={model.hero.image.src} alt={model.hero.image.alt} style={{ objectPosition: model.hero.image.objectPosition }} />
+            {model.hero.image.reviewOnly && (
+              <span className="ca-photo-review ca-photo-review--hero">INTERNAL IMAGE REVIEW · RIGHTS UNCONFIRMED</span>
+            )}
+          </>
         ) : (
           <div className="ca-hero__photo ca-hero__photo--pending" aria-hidden="true"/>
         )}
