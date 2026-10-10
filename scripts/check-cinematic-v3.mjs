@@ -47,7 +47,21 @@ try {
   assert.equal(model.phone.href, southCoolingDraft.business.phoneHref);
   assert.deepEqual(model.services.map((service) => service.id), southCoolingDraft.services.map((service) => service.id));
   assert.equal(model.facts.length, 3);
-  assert.equal(model.hero.image, null, "Unapproved or missing media must never render as verified photography");
+  assert.equal(model.hero.image, null, "Unapproved or missing media must never render by default");
+  assert.equal(model.services[0].image, null, "Unapproved commercial image must be hidden by default");
+  assert.equal(model.services[1].image, null, "Unapproved residential image must be hidden by default");
+
+  const privatePreview = toCinematicModel(southCoolingDraft, { internalMediaPreview: true });
+  assert.deepEqual(privatePreview.hero.image, {
+    src: "/__internal-media/south-cooling/hero-fleet.webp",
+    alt: southCoolingDraft.assets["hero-fleet"].alt,
+    reviewOnly: true,
+    objectPosition: "center center",
+  });
+  assert.equal(privatePreview.services[0].image?.src, "/__internal-media/south-cooling/commercial-rooftop.webp");
+  assert.equal(privatePreview.services[0].image?.reviewOnly, true);
+  assert.equal(privatePreview.services[1].image?.src, "/__internal-media/south-cooling/technician.webp");
+  assert.equal(privatePreview.services[1].image?.reviewOnly, true);
   assert.equal(model.brand.logo, null, "Missing logo must not be invented");
   assert.equal(model.estimate.href, null, "Broken /estimate route must not be exposed");
   assert.equal(model.estimate.enabled, false);
@@ -81,8 +95,11 @@ try {
     src: "/sites/south-cooling/fleet.webp",
     alt: "Company fleet",
   });
+  const withApprovedMedia = toCinematicModel(withMedia, { internalMediaPreview: true });
+  assert.equal(withApprovedMedia.hero.image?.reviewOnly, undefined, "Approved media must not carry the review label");
+  assert.equal(withApprovedMedia.hero.image?.src, "/sites/south-cooling/fleet.webp");
 
-  console.log("PASS: Industrial Cinematic v0.3 model — shared data, N services, proof toggle, image gate and disabled quote");
+  console.log("PASS: Industrial Cinematic v0.3 model — private media preview opt-in, unapproved hidden by default, N services and quote disabled");
 } finally {
   rmSync(temp, { recursive: true, force: true });
 }
