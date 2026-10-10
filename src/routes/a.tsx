@@ -29,6 +29,10 @@ export const Route = createFileRoute("/a")({
 });
 
 function ConceptARoute() {
-  const model = toCinematicModel(activeProspectV3);
+  // Only vite dev can request unapproved photos through the private loopback media plugin.
+  // Production SSR and build have no media files and never render these references.
+  const model = toCinematicModel(activeProspectV3, {
+    internalMediaPreview: import.meta.env.DEV,
+  });
   return <CinematicPage model={model} />;
 }
