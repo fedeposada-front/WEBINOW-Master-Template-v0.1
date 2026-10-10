@@ -120,6 +120,20 @@
   .ca-services__index { padding-left:var(--ca-gutter); }
   .ca-stage__copy { grid-template-columns:1fr; }
 }
+/* Tablet: avoid a cramped two-column service selector at 768px.
+   Switch only this module to stacked layout; preserve tablet hero and header. */
+@media (max-width:900px) {
+  .ca-services { display:block; min-height:0; }
+  .ca-services__index { padding:66px var(--ca-gutter) 42px; }
+  .ca-picker { margin-top:34px; }
+  .ca-pick { grid-template-columns:50px minmax(0,1fr) 28px; }
+  .ca-pick__title, .ca-pick--featured .ca-pick__title {
+    font-size:clamp(32px,6.5vw,58px);
+    overflow-wrap:normal;
+  }
+  .ca-stage { border-left:0; border-top:1px solid var(--ca-hair); }
+  .ca-stage__plate, .ca-stage__image { min-height:360px; }
+}
 @media (max-width:760px) {
   .ca-hero { min-height:780px; }
   .ca-nav { min-height:80px; grid-template-columns:auto 1fr; gap:12px; padding-right:var(--ca-gutter); }
