@@ -112,7 +112,7 @@ export const southCoolingDraft = {
         eyebrow: "PRECISION COOLING / SOUTH FLORIDA",
         headline: "Commercial cold. Residential calm.",
         supporting: "Refrigeration for businesses and A/C care for homes, with a simpler path to service.",
-        imageAssetId: null,
+        imageAssetId: "hero-fleet",
       },
       featuredServiceId: "commercial-refrigeration",
     },
