@@ -45,7 +45,13 @@ export function internalMediaPreviewPlugin(): Plugin {
           return;
         }
 
-        const [, namespace, filename] = match;
+        const namespace = match[1];
+        const filename = match[2];
+        if (!namespace || !filename) {
+          res.writeHead(404, { "Cache-Control": "no-store" });
+          res.end("Private media path not found.");
+          return;
+        }
         const filePath = resolve(root, namespace, filename);
         let size: number;
         try {
