@@ -7,9 +7,10 @@
 import assert from "node:assert/strict";
 import { readFileSync, writeFileSync, mkdtempSync, rmSync } from "node:fs";
 import { resolve, join } from "node:path";
+import { fileURLToPath, pathToFileURL } from "node:url";
 import ts from "typescript";
 
-const root = resolve(import.meta.dirname, "..");
+const root = resolve(fileURLToPath(new URL("..", import.meta.url)));
 const temp = mkdtempSync(join(root, ".v3-check-"));
 
 function makeModule(source, filename) {
@@ -29,8 +30,8 @@ function makeModule(source, filename) {
 try {
   const schemaPath = makeModule("src/core/config/v3/prospect.schema.ts", "schema.mjs");
   const configPath = makeModule("src/sites/south-cooling/config.ts", "config.mjs");
-  const { prospectSchema } = await import(schemaPath);
-  const { southCoolingDraft } = await import(configPath);
+  const { prospectSchema } = await import(pathToFileURL(schemaPath).href);
+  const { southCoolingDraft } = await import(pathToFileURL(configPath).href);
   const valid = prospectSchema.safeParse(southCoolingDraft);
   assert.equal(valid.success, true, valid.success ? "" : JSON.stringify(valid.error.issues));
 
