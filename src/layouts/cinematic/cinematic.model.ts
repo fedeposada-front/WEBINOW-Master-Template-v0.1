@@ -4,8 +4,9 @@
  * Intentionally has NO route, no global CSS, no site-v0.2 imports and no
  * network access. Gate 2A: validate the content contract before porting JSX.
  *
- * Images must have approved rights to appear; existence of local files is
- * checked separately at the publishing gate. Null is a deliberate placeholder.
+ * By default unapproved images NEVER render. A deliberately opt-in dev-only
+ * preview mode can point to the loopback-only private media server, and flags
+ * every image with unconfirmed rights. No media files are committed or bundled.
  */
 import type { ProspectConfig } from "../../core/config/v3/prospect.schema.ts";
 
@@ -13,6 +14,8 @@ export interface CinematicImage {
   src: string;
   alt: string;
   objectPosition?: string;
+  /** Must be displayed as rights-unconfirmed in the local-only concept QA. */
+  reviewOnly?: true;
 }
 
 export interface CinematicService {
@@ -58,14 +61,22 @@ export interface CinematicModel {
   disclaimer: string;
 }
 
-export function toCinematicModel(site: ProspectConfig): CinematicModel {
+export function toCinematicModel(
+  site: ProspectConfig,
+  options: { internalMediaPreview?: boolean } = {},
+): CinematicModel {
   const image = (assetId?: string | null): CinematicImage | null => {
     if (!assetId) return null;
     const asset = site.assets[assetId];
-    if (!asset || asset.rights !== "approved" || asset.provenance === "placeholder") {
-      return null;
-    }
-    const result: CinematicImage = { src: asset.src, alt: asset.alt };
+    if (!asset || asset.provenance === "placeholder") return null;
+    const reviewOnly = asset.rights !== "approved";
+    if (reviewOnly && !options.internalMediaPreview) return null;
+    // Only the dev Vite plugin serves this private URL, and only on loopback.
+    const src = reviewOnly
+      ? asset.src.replace(/^\/sites\//, "/__internal-media/")
+      : asset.src;
+    const result: CinematicImage = { src, alt: asset.alt };
+    if (reviewOnly) result.reviewOnly = true;
     if (asset.objectPosition) result.objectPosition = asset.objectPosition;
     return result;
   };
