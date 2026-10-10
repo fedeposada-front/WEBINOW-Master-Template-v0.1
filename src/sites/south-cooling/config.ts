@@ -1,7 +1,8 @@
 /**
  * South Cooling — DRAFT content data for the v0.3 pilot.
  * Phone, services and claims are sourced from the company's public website.
- * Asset IDs remain null until edited originals and permissions are reviewed.
+ * Selected photos are mapped for PRIVATE localhost design review only.
+ * Their usage rights remain unconfirmed; no media is packaged in GitHub or production.
  * This file does NOT affect any existing v0.2 route or SEO metadata.
  */
 import type { ProspectConfigInput } from "../../core/config/v3/prospect.schema.ts";
@@ -43,6 +44,7 @@ export const southCoolingDraft = {
       description: "Walk-in coolers, freezers and ice machines; installation, repair and maintenance.",
       category: "commercial",
       prominence: "primary",
+      assetId: "commercial-rooftop",
     },
     {
       id: "residential-ac",
@@ -50,6 +52,7 @@ export const southCoolingDraft = {
       description: "Air-conditioning installation, repairs and preventive maintenance for homeowners.",
       category: "residential",
       prominence: "standard",
+      assetId: "technician",
     },
   ],
   facts: [
@@ -57,8 +60,36 @@ export const southCoolingDraft = {
     { id: "local-coverage", text: "Miami-Dade, Broward and Palm Beach", evidence: "company_stated", sourceUrl: "https://southcooling.com/" },
     { id: "license", text: "Florida Contractor License CAC-1818770", evidence: "company_stated", sourceUrl: "https://southcooling.com/" },
   ],
-  /** Deliberately empty: do not claim external photos are packaged or approved yet. */
-  assets: {},
+  // These are local *references*, not files tracked in Git.
+  // No rights approval is asserted. Public builds continue hiding them.
+  assets: {
+    "hero-fleet": {
+      src: "/sites/south-cooling/hero-fleet.webp",
+      alt: "South Cooling service vehicles parked outside a commercial facility",
+      sourceUrl: "https://southcooling.com/",
+      provenance: "official_site",
+      edited: true,
+      rights: "unconfirmed",
+      objectPosition: "center center",
+    },
+    "commercial-rooftop": {
+      src: "/sites/south-cooling/commercial-rooftop.webp",
+      alt: "Commercial rooftop HVAC and ventilation equipment",
+      sourceUrl: "https://southcooling.com/",
+      provenance: "official_site",
+      edited: true,
+      rights: "unconfirmed",
+    },
+    technician: {
+      src: "/sites/south-cooling/technician.webp",
+      alt: "HVAC technician servicing an indoor cooling system",
+      sourceUrl: "https://southcooling.com/",
+      provenance: "official_site",
+      edited: true,
+      rights: "unconfirmed",
+      objectPosition: "center center",
+    },
+  },
   page: {
     sections: [
       { id: "trust", type: "proof", enabled: true, factIds: ["since-2011", "local-coverage", "license"] },
@@ -72,7 +103,7 @@ export const southCoolingDraft = {
         eyebrow: "SOUTH FLORIDA / SINCE 2011",
         headline: "BUILT FOR THE HEAT.",
         supporting: "Commercial refrigeration and residential A/C services across South Florida.",
-        imageAssetId: null,
+        imageAssetId: "hero-fleet",
       },
       featuredServiceId: "commercial-refrigeration",
     },
