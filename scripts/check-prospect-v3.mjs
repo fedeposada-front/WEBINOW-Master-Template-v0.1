@@ -16,7 +16,8 @@ const temp = mkdtempSync(join(root, ".v3-check-"));
 function makeModule(source, filename) {
   const input = readFileSync(resolve(root, source), "utf8");
   const result = ts.transpileModule(input, {
-    fileName: filename,
+    // Parse as TypeScript; filename is the emitted .mjs target, not the input language.
+    fileName: source,
     compilerOptions: { target: ts.ScriptTarget.ES2022, module: ts.ModuleKind.ESNext },
     reportDiagnostics: true,
   });
