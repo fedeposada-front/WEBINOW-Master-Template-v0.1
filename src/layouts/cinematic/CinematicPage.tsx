@@ -57,8 +57,13 @@ export function CinematicPage({ model }: { model: CinematicModel }) {
   const [chosen, setChosen] = useState<string | null>(null);
   const services = model.services;
   const active = services.find((service) => service.id === chosen) ?? services[0] ?? null;
-  const headline = model.hero.headline.trim().split(/\s+/);
-  const lastWord = headline.pop() ?? "";
+  // Keep the deliberate two-line cinematic composition regardless of viewport.
+  // Split by word count, not by prospect-specific words or line break hacks.
+  const headlineWords = model.hero.headline.trim().split(/\s+/);
+  const splitAt = headlineWords.length > 1 ? Math.ceil(headlineWords.length / 2) : 0;
+  const firstLine = headlineWords.slice(0, splitAt).join(" ");
+  const secondLead = headlineWords.slice(splitAt, -1).join(" ");
+  const lastWord = headlineWords.at(-1) ?? "";
   const tokenStyles = {
     "--ca-navy": model.brand.colors.dark,
     "--ca-cyan": model.brand.colors.accent,
@@ -101,7 +106,10 @@ export function CinematicPage({ model }: { model: CinematicModel }) {
             ))}
           </p>
           {model.hero.eyebrow && <p className="ca-hero__eyebrow">{model.hero.eyebrow}</p>}
-          <h1 id="ca-title" className="ca-hero__title">{headline.join(" ")} <em>{lastWord}</em></h1>
+          <h1 id="ca-title" className="ca-hero__title">
+            {firstLine && <span className="ca-hero__title-line">{firstLine}</span>}
+            <span className="ca-hero__title-line">{secondLead && <>{secondLead} </>}<em>{lastWord}</em></span>
+          </h1>
           <div className="ca-hero__foot">
             <p className="ca-hero__lede">{model.hero.supporting}</p>
             <div className="ca-hero__ctas">
