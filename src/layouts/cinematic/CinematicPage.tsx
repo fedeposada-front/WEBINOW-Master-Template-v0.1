@@ -23,10 +23,9 @@ function PhoneIcon() {
   );
 }
 
-function ServiceStage({ service, quoteLabel, quoteEnabled }: {
+function ServiceStage({ service, quoteLabel }: {
   service: CinematicService;
   quoteLabel: string;
-  quoteEnabled: boolean;
 }) {
   return (
     <div className="ca-stage__inside">
@@ -46,13 +45,9 @@ function ServiceStage({ service, quoteLabel, quoteEnabled }: {
       </div>
       <div className="ca-stage__copy">
         <p>{service.description}</p>
-        {quoteEnabled ? (
-          <span className="ca-btn ca-btn--primary" aria-label={quoteLabel}>{quoteLabel}<ArrowIcon /></span>
-        ) : (
-          <button className="ca-btn ca-btn--primary" disabled type="button" title="Estimate demo under development">
-            {quoteLabel} <span aria-hidden="true">· Coming soon</span>
-          </button>
-        )}
+        <button className="ca-btn ca-btn--primary" disabled type="button" title="Estimate demo under development">
+          {quoteLabel} <span aria-hidden="true">· Coming soon</span>
+        </button>
       </div>
     </div>
   );
@@ -110,13 +105,9 @@ export function CinematicPage({ model }: { model: CinematicModel }) {
           <div className="ca-hero__foot">
             <p className="ca-hero__lede">{model.hero.supporting}</p>
             <div className="ca-hero__ctas">
-              {model.estimate.enabled ? (
-                <span className="ca-btn ca-btn--primary" aria-label={model.estimate.label}>{model.estimate.label}</span>
-              ) : (
-                <button type="button" className="ca-btn ca-btn--primary" disabled title="Estimate demo under development">
-                  {model.estimate.label} <span aria-hidden="true">· Coming soon</span>
-                </button>
-              )}
+              <button type="button" className="ca-btn ca-btn--primary" disabled title="Estimate demo under development">
+                {model.estimate.label} <span aria-hidden="true">· Coming soon</span>
+              </button>
               <a className="ca-btn ca-btn--ghost" href={model.phone.href}>
                 <PhoneIcon /> Call {model.phone.display}
               </a>
@@ -187,7 +178,7 @@ export function CinematicPage({ model }: { model: CinematicModel }) {
             </div>
           </div>
           <div className="ca-stage" id="ca-panel" role="tabpanel" aria-labelledby={"ca-tab-" + active.id}>
-            <ServiceStage service={active} quoteLabel={model.estimate.label} quoteEnabled={model.estimate.enabled} />
+            <ServiceStage service={active} quoteLabel={model.estimate.label} />
           </div>
         </section>
       )}
