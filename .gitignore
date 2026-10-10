@@ -16,6 +16,9 @@ dist-ssr
 .nitro
 *.local
 
+# Local-only prospect photo previews — rights unconfirmed, never commit
+.webinow-private/
+
 # Wrangler / Cloudflare
 .wrangler/
 .dev.vars
