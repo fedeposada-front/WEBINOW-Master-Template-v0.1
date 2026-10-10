@@ -59,7 +59,8 @@ try {
   assert.equal(preview.services[0].image?.reviewOnly, true);
   assert.equal(preview.services[1].image?.src, "/__internal-media/south-cooling/technician.webp");
   assert.equal(preview.services[1].image?.reviewOnly, true);
-  assert.equal(preview.hero.image, null, "No B hero image selected yet");
+  assert.equal(preview.hero.image?.src, "/__internal-media/south-cooling/hero-fleet.webp", "B hero must use private fleet image only in localhost preview");
+  assert.equal(preview.hero.image?.reviewOnly, true, "B hero must retain the unconfirmed-rights label");
 
   const variant = structuredClone(southCoolingDraft);
   variant.id = "another_service_company";
