@@ -33,6 +33,7 @@ function ConceptARoute() {
   // Production SSR and build have no media files and never render these references.
   const model = toCinematicModel(activeProspectV3, {
     internalMediaPreview: import.meta.env.DEV,
+    enableEstimateDemo: import.meta.env.DEV,
   });
   return <CinematicPage model={model} />;
 }
