@@ -17,12 +17,12 @@ const description =
 
 export const Route = createFileRoute("/estimate")({
   validateSearch: (search: Record<string, unknown>) => ({
-    design: search.design === "b" ? "b" : "a",
+    design: search["design"] === "b" ? "b" : "a",
     service:
-      typeof search.service === "string" &&
-      search.service.length <= 80 &&
-      /^[a-z0-9][a-z0-9_-]*$/.test(search.service)
-        ? search.service
+      typeof search["service"] === "string" &&
+      search["service"].length <= 80 &&
+      /^[a-z0-9][a-z0-9_-]*$/.test(search["service"])
+        ? search["service"]
         : undefined,
   }),
   head: () => ({
