@@ -65,6 +65,13 @@ try {
   assert.equal(model.brand.logo, null, "Missing logo must not be invented");
   assert.equal(model.estimate.href, null, "Broken /estimate route must not be exposed");
   assert.equal(model.estimate.enabled, false);
+  const demoA = toCinematicModel(southCoolingDraft, { enableEstimateDemo: true });
+  assert.deepEqual(demoA.estimate, {
+    label: southCoolingDraft.conversion.primary.label,
+    href: "/estimate?design=a",
+    enabled: true,
+  }, "Explicit local review must link to Concept A only");
+  assert.equal(privatePreview.estimate.enabled, false, "Photo preview does not implicitly enable quote demo");
 
   const another = structuredClone(southCoolingDraft);
   another.id = "another_service_company";
