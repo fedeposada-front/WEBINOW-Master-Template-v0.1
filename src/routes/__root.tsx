@@ -10,14 +10,7 @@ import {
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
-import {
-  CANONICAL_URL,
-  STRUCTURED_DATA_JSON_LD,
-  OG_IMAGE_URL,
-  SEO_ROBOTS,
-  SITE_LOCALE,
-  site,
-} from "../config/site";
+import { activeProspectV3 } from "../core/config/v3/prospect";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
 function NotFoundComponent() {
@@ -86,26 +79,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: site.seo.title },
-      { name: "description", content: site.seo.description },
-      { name: "author", content: site.brand.name },
-      { name: "robots", content: SEO_ROBOTS },
-      { property: "og:title", content: site.seo.title },
-      { property: "og:description", content: site.seo.description },
+      { title: activeProspectV3.seo.title },
+      { name: "description", content: activeProspectV3.seo.description },
+      { name: "author", content: "WEBINOW Labs" },
+      { name: "robots", content: "noindex, nofollow, noarchive" },
+      { property: "og:title", content: activeProspectV3.seo.title },
+      { property: "og:description", content: activeProspectV3.seo.description },
       { property: "og:type", content: "website" },
-      ...(CANONICAL_URL ? [{ property: "og:url", content: CANONICAL_URL }] : []),
-      ...(OG_IMAGE_URL
-        ? [
-            { property: "og:image", content: OG_IMAGE_URL },
-            { name: "twitter:image", content: OG_IMAGE_URL },
-          ]
-        : []),
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: site.seo.title },
-      { name: "twitter:description", content: site.seo.description },
+      { name: "twitter:card", content: "summary" },
     ],
     links: [
-      ...(CANONICAL_URL ? [{ rel: "canonical", href: CANONICAL_URL }] : []),
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
@@ -113,7 +96,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: "https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap",
       },
       { rel: "stylesheet", href: appCss },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
     ],
   }),
   shellComponent: RootShell,
@@ -124,14 +106,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang={SITE_LOCALE}>
+    <html lang={activeProspectV3.locale}>
       <head>
         <HeadContent />
-        {STRUCTURED_DATA_JSON_LD ? (
-          <script type="application/ld+json">
-            {JSON.stringify(STRUCTURED_DATA_JSON_LD)}
-          </script>
-        ) : null}
       </head>
       <body>
         {children}
