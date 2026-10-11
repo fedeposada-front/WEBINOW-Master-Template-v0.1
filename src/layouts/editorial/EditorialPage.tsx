@@ -1,7 +1,7 @@
 /**
  * Editorial Precision — Concept B React port from the original Figma Make export.
  * Only data from the v0.3 EditorialModel; never v0.2 global site config.
- * Route /b is NOT enabled in this gate. The estimate demo is NOT functional.
+ * Estimate links activate only for explicitly enabled local previews.
  * Media is explicitly labeled whenever rights are unconfirmed.
  */
 import type { CSSProperties } from "react";
@@ -16,9 +16,15 @@ function ArrowRight() {
   );
 }
 
-function DisabledEstimate({ label, compact = false }: { label: string; compact?: boolean }) {
-  return (
-    <button type="button" disabled className={"cb-btn" + (compact ? " cb-btn--sm" : "")} title="Estimate demo under development">
+function EstimateAction({ label, href, compact = false }: { label: string; href: string | null; compact?: boolean }) {
+  const className = "cb-btn" + (compact ? " cb-btn--sm" : "");
+  return href ? (
+    <a className={className} href={href}>
+      <span>{label} <small>· Interactive demo</small></span>
+      <ArrowRight />
+    </a>
+  ) : (
+    <button type="button" disabled className={className} title="Estimate demo available only during local review">
       <span>{label} <small>· Coming soon</small></span>
       <ArrowRight />
     </button>
@@ -73,10 +79,11 @@ function Headline({ text }: { text: string }) {
   );
 }
 
-function ServiceCard({ service, index, estimateLabel }: {
+function ServiceCard({ service, index, estimateLabel, estimateHref }: {
   service: EditorialService;
   index: number;
   estimateLabel: string;
+  estimateHref: string | null;
 }) {
   const featured = service.featured;
   return (
@@ -88,7 +95,7 @@ function ServiceCard({ service, index, estimateLabel }: {
         {featured && <span className="cb-svc__badge cb-mono">Featured service</span>}
         <p>{service.description}</p>
         {service.category && <span className="cb-svc__category cb-mono">{service.category}</span>}
-        <DisabledEstimate compact={!featured} label={estimateLabel}/>
+        <EstimateAction compact={!featured} label={estimateLabel} href={estimateHref ? estimateHref + "&service=" + encodeURIComponent(service.id) : null}/>
       </div>
     </article>
   );
@@ -138,7 +145,7 @@ export function EditorialPage({ model }: { model: EditorialModel }) {
         </nav>
         <div className="cb-nav__actions">
           {model.contact.enabled && <a className="cb-phone" href={model.contact.phone.href}><span className="cb-mono">Call</span>{model.contact.phone.display}</a>}
-          <DisabledEstimate compact label={model.estimate.label}/>
+          <EstimateAction compact label={model.estimate.label} href={model.estimate.href}/>
         </div>
       </header>
 
@@ -149,7 +156,7 @@ export function EditorialPage({ model }: { model: EditorialModel }) {
           <div className="cb-hero__intro">
             <p>{model.hero.supporting}</p>
             <div className="cb-hero__ctas">
-              <DisabledEstimate label={model.estimate.label}/>
+              <EstimateAction label={model.estimate.label} href={model.estimate.href}/>
               {model.contact.enabled && <a className="cb-textlink" href={model.contact.phone.href}>or call {model.contact.phone.display}</a>}
             </div>
             <p className="cb-mono cb-hero__fine">Unofficial design proposal · No requests collected</p>
@@ -202,7 +209,7 @@ export function EditorialPage({ model }: { model: EditorialModel }) {
             <h2 id="cb-services-title">{model.services.length === 2 ? "Two disciplines." : model.services.length + " services."}<br/><span>Choose where to start.</span></h2>
           </header>
           {model.services.map((service, index) => (
-            <ServiceCard key={service.id} service={service} index={index} estimateLabel={model.estimate.label}/>
+            <ServiceCard key={service.id} service={service} index={index} estimateLabel={model.estimate.label} estimateHref={model.estimate.href}/>
           ))}
         </section>
       )}
