@@ -54,16 +54,16 @@ export interface CinematicModel {
   facts: CinematicFact[];
   estimate: {
     label: string;
-    /** Remains null until the shared /estimate route is implemented and tested. */
-    href: null;
-    enabled: false;
+    /** Active only for explicitly enabled localhost demonstration. */
+    href: string | null;
+    enabled: boolean;
   };
   disclaimer: string;
 }
 
 export function toCinematicModel(
   site: ProspectConfig,
-  options: { internalMediaPreview?: boolean } = {},
+  options: { internalMediaPreview?: boolean; enableEstimateDemo?: boolean } = {},
 ): CinematicModel {
   const image = (assetId?: string | null): CinematicImage | null => {
     if (!assetId) return null;
@@ -140,8 +140,8 @@ export function toCinematicModel(
     facts,
     estimate: {
       label: site.conversion.primary.label,
-      href: null,
-      enabled: false,
+      href: options.enableEstimateDemo ? "/estimate?design=a" : null,
+      enabled: options.enableEstimateDemo === true,
     },
     disclaimer: "Unofficial design proposal by WEBINOW — Not the company's official website.",
   };
