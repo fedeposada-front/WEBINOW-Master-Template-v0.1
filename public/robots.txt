@@ -1,14 +1,4 @@
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: Twitterbot
-Allow: /
-
-User-agent: facebookexternalhit
-Allow: /
-
+# WEBINOW proposal preview — not an official company website.
+# All crawlers must avoid indexing this unpublished, unapproved demo.
 User-agent: *
-Allow: /
+Disallow: /
