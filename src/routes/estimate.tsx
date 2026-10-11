@@ -44,6 +44,9 @@ export const Route = createFileRoute("/estimate")({
 
 function EstimateRoute() {
   const search = Route.useSearch();
-  const model = toEstimateDemoModel(activeProspectV3, search);
+  const model = toEstimateDemoModel(activeProspectV3, {
+    design: search.design,
+    service: search.service ?? null,
+  });
   return <EstimateDemoPage model={model} />;
 }
