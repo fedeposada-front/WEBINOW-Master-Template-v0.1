@@ -2,7 +2,7 @@
  * Industrial Cinematic — JSX port from Figma Make Concept A.
  * Uses only the v0.3 adapter. Unapproved photos appear exclusively in private
  * local dev previews with an explicit rights-unconfirmed label.
- * Quote requests remain unavailable until the estimate route is implemented.
+ * Estimate links are explicitly enabled for localhost previews only; no requests are submitted.
  */
 import { useState, type CSSProperties } from "react";
 import type { CinematicModel, CinematicService } from "./cinematic.model";
@@ -24,9 +24,10 @@ function PhoneIcon() {
   );
 }
 
-function ServiceStage({ service, quoteLabel }: {
+function ServiceStage({ service, quoteLabel, estimateHref }: {
   service: CinematicService;
   quoteLabel: string;
+  estimateHref: string | null;
 }) {
   return (
     <div className="ca-stage__inside">
@@ -51,9 +52,15 @@ function ServiceStage({ service, quoteLabel }: {
       </div>
       <div className="ca-stage__copy">
         <p>{service.description}</p>
-        <button className="ca-btn ca-btn--primary" disabled type="button" title="Estimate demo under development">
-          {quoteLabel} <span aria-hidden="true">· Coming soon</span>
-        </button>
+        {estimateHref ? (
+          <a className="ca-btn ca-btn--primary" href={estimateHref + "&service=" + encodeURIComponent(service.id)}>
+            {quoteLabel} <span aria-hidden="true">· Interactive demo</span>
+          </a>
+        ) : (
+          <button className="ca-btn ca-btn--primary" disabled type="button" title="Estimate demo available only during local review">
+            {quoteLabel} <span aria-hidden="true">· Coming soon</span>
+          </button>
+        )}
       </div>
     </div>
   );
@@ -124,9 +131,15 @@ export function CinematicPage({ model }: { model: CinematicModel }) {
           <div className="ca-hero__foot">
             <p className="ca-hero__lede">{model.hero.supporting}</p>
             <div className="ca-hero__ctas">
-              <button type="button" className="ca-btn ca-btn--primary" disabled title="Estimate demo under development">
-                {model.estimate.label} <span aria-hidden="true">· Coming soon</span>
-              </button>
+              {model.estimate.href ? (
+                <a className="ca-btn ca-btn--primary" href={model.estimate.href + (active ? "&service=" + encodeURIComponent(active.id) : "")}>
+                  {model.estimate.label} <span aria-hidden="true">· Interactive demo</span>
+                </a>
+              ) : (
+                <button type="button" className="ca-btn ca-btn--primary" disabled title="Estimate demo available only during local review">
+                  {model.estimate.label} <span aria-hidden="true">· Coming soon</span>
+                </button>
+              )}
               <a className="ca-btn ca-btn--ghost" href={model.phone.href}>
                 <PhoneIcon /> Call {model.phone.display}
               </a>
@@ -197,7 +210,7 @@ export function CinematicPage({ model }: { model: CinematicModel }) {
             </div>
           </div>
           <div className="ca-stage" id="ca-panel" role="tabpanel" aria-labelledby={"ca-tab-" + active.id}>
-            <ServiceStage service={active} quoteLabel={model.estimate.label} />
+            <ServiceStage service={active} quoteLabel={model.estimate.label} estimateHref={model.estimate.href} />
           </div>
         </section>
       )}
