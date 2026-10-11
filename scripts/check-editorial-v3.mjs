@@ -54,7 +54,15 @@ try {
     label: southCoolingDraft.conversion.primary.label, href: null, enabled: false,
   }, "Incomplete estimate form must remain disabled");
 
+  const demoB = toEditorialModel(southCoolingDraft, { enableEstimateDemo: true });
+  assert.deepEqual(demoB.estimate, {
+    label: southCoolingDraft.conversion.primary.label,
+    href: "/estimate?design=b",
+    enabled: true,
+  }, "Explicit local review must link to Concept B only");
+
   const preview = toEditorialModel(southCoolingDraft, { internalMediaPreview: true });
+  assert.equal(preview.estimate.enabled, false, "Photo preview does not implicitly enable quote demo");
   assert.equal(preview.services[0].image?.src, "/__internal-media/south-cooling/commercial-rooftop.webp");
   assert.equal(preview.services[0].image?.reviewOnly, true);
   assert.equal(preview.services[1].image?.src, "/__internal-media/south-cooling/technician.webp");
