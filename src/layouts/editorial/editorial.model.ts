@@ -53,15 +53,15 @@ export interface EditorialModel {
   };
   estimate: {
     label: string;
-    enabled: false;
-    href: null;
+    enabled: boolean;
+    href: string | null;
   };
   disclaimer: string;
 }
 
 export function toEditorialModel(
   site: ProspectConfig,
-  options: { internalMediaPreview?: boolean } = {},
+  options: { internalMediaPreview?: boolean; enableEstimateDemo?: boolean } = {},
 ): EditorialModel {
   const image = (assetId?: string | null): EditorialImage | null => {
     if (!assetId) return null;
@@ -134,8 +134,8 @@ export function toEditorialModel(
     },
     estimate: {
       label: site.conversion.primary.label,
-      href: null,
-      enabled: false,
+      href: options.enableEstimateDemo ? "/estimate?design=b" : null,
+      enabled: options.enableEstimateDemo === true,
     },
     disclaimer: "Unofficial design proposal by WEBINOW — Not the company's official website.",
   };
