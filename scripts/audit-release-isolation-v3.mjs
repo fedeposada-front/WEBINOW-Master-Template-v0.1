@@ -91,6 +91,15 @@ for (const filename of previewAssets) {
     "Build photo differs from the approved original: " + filename);
 }
 
+const sourceWrangler = read("wrangler.json");
+try {
+  const sourceConfig = JSON.parse(sourceWrangler);
+  check(sourceConfig.preview_urls === false,
+    "Preview URLs must be explicitly disabled in the source wrangler.json");
+} catch (error) {
+  errors.push("Source wrangler.json is missing or invalid: " + error.message);
+}
+
 check(existsSync(join(output, "server/index.mjs")), "Cloudflare output missing; run npm run build first.");
 check(existsSync(join(output, "public")), "Public output missing; run npm run build first.");
 
@@ -103,6 +112,8 @@ if (!existsSync(wranglerPath)) {
     const expected = "webinow-south-cooling-proposal-v03";
     check(config.name === expected,
       "Cloudflare Worker name must be unique: expected " + expected + ", found " + String(config.name));
+    check(config.preview_urls === false,
+      "Generated Worker config must disable preview_urls; run npm run build after updating wrangler.json");
   } catch (error) {
     errors.push("Generated wrangler.json cannot be parsed: " + error.message);
   }
@@ -128,6 +139,6 @@ if (errors.length) {
   console.error("DO NOT DEPLOY. No files were changed by this audit.");
   process.exitCode = 1;
 } else {
-  console.log("PASS: release isolation — no legacy content, 3 authorized photos staged and verified, noindex robots, unique Worker");
-  console.log("NOT DEPLOYED: public access/security configuration, full publication and outreach remain separate gates.");
+  console.log("PASS: release isolation — no legacy content, 3 authorized photos verified, noindex robots, unique Worker, preview URLs disabled");
+  console.log("NOT VALIDATED BY THIS SCRIPT: remote Cloudflare Access rules, live access tests, or prospect outreach approval.");
 }
