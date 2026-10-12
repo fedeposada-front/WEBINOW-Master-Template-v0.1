@@ -48,8 +48,12 @@ try {
   assert.equal(model.services.filter((service) => service.featured).length, 1);
   assert.equal(model.facts.length, 3);
   assert.equal(model.brand.logo, null, "No placeholder logo may be invented");
-  assert.ok(model.services.every((service) => service.image === null), "Unapproved photos remain hidden by default");
-  assert.equal(model.hero.image, null, "Unapproved hero must remain hidden by default");
+  assert.deepEqual(model.services.map((service) => service.image?.src), [
+    "/sites/south-cooling/commercial-rooftop.webp",
+    "/sites/south-cooling/technician.webp",
+  ], "Authorized proposal images use the staged public paths");
+  assert.equal(model.hero.image?.src, "/sites/south-cooling/hero-fleet.webp");
+  assert.equal(model.hero.image?.reviewOnly, undefined);
   assert.deepEqual(model.estimate, {
     label: southCoolingDraft.conversion.primary.label, href: null, enabled: false,
   }, "Incomplete estimate form must remain disabled");
@@ -64,17 +68,18 @@ try {
   const preview = toEditorialModel(southCoolingDraft, { internalMediaPreview: true });
   assert.equal(preview.estimate.enabled, false, "Photo preview does not implicitly enable quote demo");
   assert.equal(preview.services[0].image?.src, "/__internal-media/south-cooling/commercial-rooftop.webp");
-  assert.equal(preview.services[0].image?.reviewOnly, true);
+  assert.equal(preview.services[0].image?.reviewOnly, undefined);
   assert.equal(preview.services[1].image?.src, "/__internal-media/south-cooling/technician.webp");
-  assert.equal(preview.services[1].image?.reviewOnly, true);
+  assert.equal(preview.services[1].image?.reviewOnly, undefined);
   assert.equal(preview.hero.image?.src, "/__internal-media/south-cooling/hero-fleet.webp", "B hero must use private fleet image only in localhost preview");
-  assert.equal(preview.hero.image?.reviewOnly, true, "B hero must retain the unconfirmed-rights label");
+  assert.equal(preview.hero.image?.reviewOnly, undefined, "Authorized limited demo should not show an unconfirmed-rights label");
 
   const variant = structuredClone(southCoolingDraft);
   variant.id = "another_service_company";
   variant.brand.name = "Another Service Company";
   variant.presentations.b.hero.headline = "EDITORIAL ALTERNATIVE";
   variant.presentations.b.hero.imageAssetId = "hero-fleet";
+  variant.assets["hero-fleet"].rights = "unconfirmed"; // Deliberate negative-rights variant.
   variant.services.push({
     id: "duct-repair", title: "Duct Repair", description: "Inspection and repair",
     prominence: "standard",
@@ -101,7 +106,7 @@ try {
   assert.equal(disabled.services.length, 0, "Disabled service section must hide all services");
   assert.equal(disabled.contact.enabled, false, "Disabled contact section must be respected");
 
-  console.log("PASS: Editorial Precision v0.3 model — shared schema, Concept B copy, variable services, section toggles, image rights and quote disabled");
+  console.log("PASS: Editorial Precision release — authorized staged URLs, local private media, unapproved hidden, N services and quote gating");
 } finally {
   rmSync(temp, { recursive: true, force: true });
 }
