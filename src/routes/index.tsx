@@ -1,58 +1,141 @@
 /**
- * South Cooling release — neutral index for two WEBINOW design concepts.
- * No old v0.2 customer content, no form and no contact submission.
+ * WEBINOW preview index — two visual directions, one intuitive comparison.
+ * Scope: homepage only. /a, /b and /estimate remain independent.
+ * All data and authorized imagery come from the active v0.3 prospect contract.
+ * Accessible native range allows pointer, touch and keyboard comparison.
  */
+import { useState, type CSSProperties } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { activeProspectV3 } from "@/core/config/v3/prospect";
+import { toCinematicModel } from "@/layouts/cinematic/cinematic.model";
+import { toEditorialModel } from "@/layouts/editorial/editorial.model";
+import "./index.css";
+
+const conceptA = toCinematicModel(activeProspectV3, {
+  internalMediaPreview: import.meta.env.DEV,
+});
+const conceptB = toEditorialModel(activeProspectV3, {
+  internalMediaPreview: import.meta.env.DEV,
+});
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: activeProspectV3.brand.name + " — Design Proposals | WEBINOW Labs" },
-      { name: "description", content: "Two unofficial WEBINOW website design proposals. No requests are collected." },
+      { title: activeProspectV3.brand.name + " — Compare Design Concepts | WEBINOW Labs" },
+      { name: "description", content: "Compare two unofficial WEBINOW website design directions. Interactive visual preview only; no requests are collected." },
       { name: "robots", content: "noindex, nofollow, noarchive" },
     ],
   }),
-  component: ProposalIndex,
+  component: ComparisonHome,
 });
 
-function ProposalIndex() {
+function ComparisonHome() {
+  const [split, setSplit] = useState(50);
+  const splitStyle = { "--sc-split": split + "%" } as CSSProperties;
+
   return (
-    <main style={{
-      minHeight: "100svh",
-      background: "#071b2d",
-      color: "#f3f7f8",
-      fontFamily: "Inter, system-ui, sans-serif",
-      padding: "clamp(24px, 6vw, 96px)",
-    }}>
-      <p style={{ fontSize: 11, textTransform: "uppercase", letterSpacing: "0.12em", color: "#76c9de" }}>
-        WEBINOW LABS / UNOFFICIAL DESIGN PROPOSAL
-      </p>
-      <h1 style={{ fontSize: "clamp(38px, 7vw, 98px)", letterSpacing: "-0.065em", lineHeight: 1.05, maxWidth: 1000, margin: "36px 0 24px" }}>
-        Two directions.<br/>One brand.
-      </h1>
-      <p style={{ maxWidth: 560, fontSize: 17, lineHeight: 1.6, color: "#b5cbd5", marginBottom: 45 }}>
-        Design explorations for {activeProspectV3.brand.name}. Select a concept to review its presentation and interactive estimate demonstration.
-      </p>
-      <div style={{ display: "flex", flexWrap: "wrap", gap: 20 }}>
-        <a href="/a" style={{
-          flex: "1 1 260px", maxWidth: 460, padding: "30px 25px", border: "1px solid #76c9de", textDecoration: "none", color: "inherit",
-        }}>
-          <span style={{ display: "block", fontSize: 11, color: "#76c9de", letterSpacing: ".1em" }}>CONCEPT 01</span>
-          <strong style={{ display: "block", fontSize: 28, margin: "12px 0" }}>Industrial Cinematic</strong>
-          <span style={{ display: "block", fontSize: 14 }}>View Concept A →</span>
-        </a>
-        <a href="/b" style={{
-          flex: "1 1 260px", maxWidth: 460, padding: "30px 25px", border: "1px solid #7898a8", textDecoration: "none", color: "inherit",
-        }}>
-          <span style={{ display: "block", fontSize: 11, color: "#76c9de", letterSpacing: ".1em" }}>CONCEPT 02</span>
-          <strong style={{ display: "block", fontSize: 28, margin: "12px 0" }}>Editorial Precision</strong>
-          <span style={{ display: "block", fontSize: 14 }}>View Concept B →</span>
-        </a>
+    <main className="sc-compare" lang={activeProspectV3.locale}>
+      <div className="sc-compare__shell">
+        <header className="sc-compare__top">
+          <a className="sc-compare__wordmark" href="/" aria-label="WEBINOW — compare concepts">WEBINOW <span>LABS</span></a>
+          <span className="sc-compare__top-note">Private design review <span aria-hidden="true">/</span> {activeProspectV3.brand.name}</span>
+        </header>
+
+        <div className="sc-compare__intro">
+          <p className="sc-compare__eyebrow"><span className="sc-compare__status" aria-hidden="true"/> 02 DESIGN DIRECTIONS</p>
+          <h1>One brand. <em>Two directions.</em></h1>
+          <p>Move the divider to compare the visual styles, then open the design you want to explore.</p>
+        </div>
+
+        <section className="sc-compare__comparison" aria-label="Compare Concept A and Concept B">
+          <div className="sc-compare__names" aria-hidden="true">
+            <span><b>A</b> Industrial Cinematic</span>
+            <span>Editorial Precision <b>B</b></span>
+          </div>
+
+          <div className="sc-compare__stage" style={splitStyle}>
+            <div className="sc-compare__design sc-compare__design--a" aria-hidden="true">
+              {conceptA.hero.image && (
+                <img className="sc-compare__image sc-compare__image--a"
+                  src={conceptA.hero.image.src} alt="" draggable={false}/>
+              )}
+              <div className="sc-compare__a-top">
+                <span className="sc-compare__a-logo">{conceptA.company}</span>
+                <span className="sc-compare__a-meta">SOUTH FLORIDA / DESIGN A</span>
+              </div>
+              <div className="sc-compare__a-copy">
+                <span className="sc-compare__a-eyebrow">{conceptA.hero.eyebrow}</span>
+                <h2>{conceptA.hero.headline}</h2>
+                <p>{conceptA.hero.supporting}</p>
+              </div>
+              <span className="sc-compare__a-bottom">01 — INDUSTRIAL CINEMATIC</span>
+            </div>
+
+            <div className="sc-compare__design sc-compare__design--b" aria-hidden="true">
+              <div className="sc-compare__b-rules"/>
+              <div className="sc-compare__b-meta">EDITORIAL PRECISION <span> / DESIGN B</span></div>
+              <div className="sc-compare__b-top">
+                <span className="sc-compare__b-logo">{conceptB.company}</span>
+                <span className="sc-compare__b-count">02 / 02</span>
+              </div>
+              <div className="sc-compare__b-content">
+                <span className="sc-compare__b-eyebrow">{conceptB.hero.eyebrow}</span>
+                <h2>{conceptB.hero.headline}</h2>
+                <p>{conceptB.hero.supporting}</p>
+              </div>
+              <div className="sc-compare__b-photo">
+                {conceptB.hero.image && (
+                  <img className="sc-compare__image sc-compare__image--b"
+                    src={conceptB.hero.image.src} alt="" draggable={false}/>
+                )}
+                <span>FIG. 01 / SOUTH COOLING</span>
+              </div>
+              <span className="sc-compare__b-bottom">02 — EDITORIAL PRECISION</span>
+            </div>
+
+            <div className="sc-compare__divider" aria-hidden="true"/>
+            <div className="sc-compare__handle" aria-hidden="true">
+              <span className="sc-compare__chevron sc-compare__chevron--left">‹</span>
+              <span className="sc-compare__handle-line"/>
+              <span className="sc-compare__chevron sc-compare__chevron--right">›</span>
+            </div>
+            <input
+              className="sc-compare__slider"
+              type="range"
+              min="0"
+              max="100"
+              step="1"
+              value={split}
+              onChange={(event) => setSplit(Number(event.currentTarget.value))}
+              aria-label="Reveal more of Concept A or Concept B"
+              aria-valuetext={split + "% Concept A, " + (100 - split) + "% Concept B"}
+              aria-describedby="sc-compare-instructions"
+            />
+          </div>
+          <p className="sc-compare__hint" id="sc-compare-instructions">
+            <span className="sc-compare__hint-icon" aria-hidden="true">↔</span>
+            Drag the center handle to compare. You can also use the arrow keys.
+          </p>
+        </section>
+
+        <nav className="sc-compare__choices" aria-label="Explore a complete design">
+          <a className="sc-compare__choice sc-compare__choice--a" href="/a">
+            <span className="sc-compare__choice-label">01 / CONCEPT A</span>
+            <span className="sc-compare__choice-name">Industrial Cinematic</span>
+            <span className="sc-compare__choice-action">Explore Design A <span aria-hidden="true">↗</span></span>
+          </a>
+          <a className="sc-compare__choice sc-compare__choice--b" href="/b">
+            <span className="sc-compare__choice-label">02 / CONCEPT B</span>
+            <span className="sc-compare__choice-name">Editorial Precision</span>
+            <span className="sc-compare__choice-action">Explore Design B <span aria-hidden="true">↗</span></span>
+          </a>
+        </nav>
+
+        <footer className="sc-compare__footer">
+          <span>Unofficial design proposal by WEBINOW. Not the company's official website.</span>
+          <span>Interactive estimate is a demo — no requests are submitted.</span>
+        </footer>
       </div>
-      <p style={{ maxWidth: 800, marginTop: 55, fontSize: 12, lineHeight: 1.6, color: "#b5cbd5" }}>
-        This is a design proposal, not the company's official website. Selected imagery is available for internal review only until usage rights are confirmed. No quote requests are submitted.
-      </p>
     </main>
   );
 }
