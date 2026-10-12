@@ -33,7 +33,7 @@ function ConceptARoute() {
   // Production SSR and build have no media files and never render these references.
   const model = toCinematicModel(activeProspectV3, {
     internalMediaPreview: import.meta.env.DEV,
-    enableEstimateDemo: import.meta.env.DEV,
+    enableEstimateDemo: true, // Proposal-only route; this demo never sends a request.
   });
   return <CinematicPage model={model} />;
 }
