@@ -30,14 +30,14 @@ function CompareDesigns() {
   const [split, setSplit] = useState(50);
   const splitStyle = { "--sc-split": split + "%" } as CSSProperties;
 
-  const setFromPointer = (event: ReactPointerEvent<HTMLDivElement>) => {
+  const setFromPointer = (event: ReactPointerEvent<HTMLElement>) => {
     const bounds = event.currentTarget.getBoundingClientRect();
     if (bounds.width <= 0) return;
     const ratio = (event.clientX - bounds.left) / bounds.width;
     setSplit(Math.round(Math.min(100, Math.max(0, ratio * 100))));
   };
 
-  const endDrag = (event: ReactPointerEvent<HTMLDivElement>) => {
+  const endDrag = (event: ReactPointerEvent<HTMLElement>) => {
     if (event.currentTarget.hasPointerCapture(event.pointerId)) {
       event.currentTarget.releasePointerCapture(event.pointerId);
     }
