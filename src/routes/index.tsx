@@ -28,6 +28,7 @@ export const Route = createFileRoute("/")({
 
 function CompareDesigns() {
   const [split, setSplit] = useState(50);
+  const [hasCompared, setHasCompared] = useState(false);
   const splitStyle = { "--sc-split": split + "%" } as CSSProperties;
 
   const setFromPointer = (event: ReactPointerEvent<HTMLElement>) => {
@@ -53,6 +54,7 @@ function CompareDesigns() {
           if (event.button !== 0) return;
           event.currentTarget.setPointerCapture(event.pointerId);
           setFromPointer(event);
+          setHasCompared(true);
         }}
         onPointerMove={(event) => {
           if (event.currentTarget.hasPointerCapture(event.pointerId)) {
@@ -69,6 +71,7 @@ function CompareDesigns() {
             title="Concept A — Industrial Cinematic, full website preview"
             tabIndex={-1}
             loading="eager"
+            scrolling="no"
           />
         </div>
         <div className="sc-compare__layer sc-compare__layer--b" aria-hidden="true" inert>
@@ -78,6 +81,7 @@ function CompareDesigns() {
             title="Concept B — Editorial Precision, full website preview"
             tabIndex={-1}
             loading="eager"
+            scrolling="no"
           />
         </div>
         <div className="sc-compare__divider" aria-hidden="true" />
@@ -86,7 +90,7 @@ function CompareDesigns() {
           <span className="sc-compare__handle-rule" />
           <span className="sc-compare__chevron sc-compare__chevron--right">›</span>
         </div>
-        <span className="sc-compare__drag-hint" aria-hidden="true">DRAG TO COMPARE</span>
+        {!hasCompared && <span className="sc-compare__drag-hint" aria-hidden="true">DRAG TO COMPARE</span>}
         <input
           type="range"
           className="sc-compare__keyboard"
@@ -94,18 +98,16 @@ function CompareDesigns() {
           max={100}
           step={1}
           value={split}
-          onChange={(event) => setSplit(Number(event.currentTarget.value))}
+          onChange={(event) => {
+            setSplit(Number(event.currentTarget.value));
+            setHasCompared(true);
+          }}
           aria-label="Compare Concept A and Concept B"
           aria-valuetext={split + "% Concept A, " + (100 - split) + "% Concept B"}
           aria-describedby="sc-compare-help"
         />
       </section>
       <div className="sc-compare__overlay">
-        <div className="sc-compare__top" aria-hidden="true">
-          <span className="sc-compare__tag"><b>A</b><span>Industrial Cinematic</span></span>
-          <span className="sc-compare__tag"><span>Editorial Precision</span><b>B</b></span>
-        </div>
-
         <nav className="sc-compare__bottom" aria-label="Open a full design">
           <a className="sc-compare__link sc-compare__link--a" href="/a">
             <span><strong>Open A</strong><small>Industrial Cinematic</small></span>
