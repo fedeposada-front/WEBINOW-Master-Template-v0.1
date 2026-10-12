@@ -1,9 +1,11 @@
 /**
  * South Cooling — DRAFT content data for the v0.3 pilot.
  * Phone, services and claims are sourced from the company's public website.
- * Selected photos are mapped for PRIVATE localhost design review only.
- * Their usage rights remain unconfirmed; no media is packaged in GitHub or production.
- * This file does NOT affect any existing v0.2 route or SEO metadata.
+ * The three selected photos are authorized for a limited WEBINOW preview
+ * shared with Gonzalo, as confirmed by the user on 2026-10-12.
+ * This is not a general marketing/content license or outreach approval.
+ * Photo binaries stay Git-ignored and are staged only into .output/public.
+ * This release branch does NOT modify the shared v0.2 or feature branches.
  */
 import type { ProspectConfigInput } from "../../core/config/v3/prospect.schema.ts";
 
@@ -60,8 +62,9 @@ export const southCoolingDraft = {
     { id: "local-coverage", text: "Miami-Dade, Broward and Palm Beach", evidence: "company_stated", sourceUrl: "https://southcooling.com/" },
     { id: "license", text: "Florida Contractor License CAC-1818770", evidence: "company_stated", sourceUrl: "https://southcooling.com/" },
   ],
-  // These are local *references*, not files tracked in Git.
-  // No rights approval is asserted. Public builds continue hiding them.
+  // Preview-only permission: render selected photos in the Gonzalo demo build.
+  // References are committed, but actual WebPs remain Git-ignored on the user's PC.
+  // Rights approved here ONLY for that limited preview, not wider use.
   assets: {
     "hero-fleet": {
       src: "/sites/south-cooling/hero-fleet.webp",
@@ -69,7 +72,7 @@ export const southCoolingDraft = {
       sourceUrl: "https://southcooling.com/",
       provenance: "official_site",
       edited: true,
-      rights: "unconfirmed",
+      rights: "approved",
       objectPosition: "center center",
     },
     "commercial-rooftop": {
@@ -78,7 +81,7 @@ export const southCoolingDraft = {
       sourceUrl: "https://southcooling.com/",
       provenance: "official_site",
       edited: true,
-      rights: "unconfirmed",
+      rights: "approved",
     },
     technician: {
       src: "/sites/south-cooling/technician.webp",
@@ -86,7 +89,7 @@ export const southCoolingDraft = {
       sourceUrl: "https://southcooling.com/",
       provenance: "official_site",
       edited: true,
-      rights: "unconfirmed",
+      rights: "approved",
       objectPosition: "center center",
     },
   },
