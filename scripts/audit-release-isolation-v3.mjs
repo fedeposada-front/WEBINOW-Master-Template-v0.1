@@ -50,7 +50,7 @@ for (const path of ["public/brand/logo.png", "public/favicon.ico"]) {
   check(!existsSync(join(root, path)), "Old public brand asset remains: " + path);
 }
 const robots = read("public/robots.txt");
-check(/Disallow:\s*\/(?:\r?\n|$)/i.test(robots) && !/Allow:\s*\/(?:\r?\n|$)/i.test(robots),
+check(/^[ \t]*Disallow:[ \t]*\/[ \t]*$/mi.test(robots) && !/^[ \t]*Allow:[ \t]*\/[ \t]*$/mi.test(robots),
   "The proposal robots.txt must disallow crawling; no Allow: /.");
 
 check(existsSync(join(output, "server/index.mjs")), "Cloudflare output missing; run npm run build first.");
