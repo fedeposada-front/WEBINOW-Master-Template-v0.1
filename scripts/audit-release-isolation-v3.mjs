@@ -8,7 +8,8 @@
  * This audit does not approve asset licensing, business claims, public
  * deployment, prospect outreach, or the accuracy of an existing Worker.
  */
-import { existsSync, readFileSync, readdirSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync, lstatSync } from "node:fs";
+import { createHash } from "node:crypto";
 import { join, resolve, relative, basename, extname } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -53,6 +54,43 @@ const robots = read("public/robots.txt");
 check(/^[ \t]*Disallow:[ \t]*\/[ \t]*$/mi.test(robots) && !/^[ \t]*Allow:[ \t]*\/[ \t]*$/mi.test(robots),
   "The proposal robots.txt must disallow crawling; no Allow: /.");
 
+// Permission is scoped to sharing these three images with Gonzalo.
+// Source images must never be tracked under public/; only the .output
+// copy used for the reviewed build may contain them.
+const previewAssets = ["hero-fleet.webp", "commercial-rooftop.webp", "technician.webp"];
+const siteConfig = read("src/sites/south-cooling/config.ts");
+check((siteConfig.match(/rights: "approved"/g) ?? []).length === previewAssets.length,
+  "Expected exactly 3 South Cooling photos approved for this limited demo");
+check(/^\.output(?:\/|$)/m.test(read(".gitignore")) && /^\.webinow-private\/$/m.test(read(".gitignore")),
+  "Both private source and build output must remain Git-ignored");
+
+for (const filename of previewAssets) {
+  const source = join(root, ".webinow-private", "sites", "south-cooling", filename);
+  const staged = join(root, ".output", "public", "sites", "south-cooling", filename);
+  const publicSource = join(root, "public", "sites", "south-cooling", filename);
+  check(!existsSync(publicSource), "Do not track authorized images in public/: " + filename);
+  if (!existsSync(source)) {
+    errors.push("Missing approved private image: " + filename);
+    continue;
+  }
+  if (!existsSync(staged)) {
+    errors.push("Approved image missing from the build: " + filename + " — run the staging script after building");
+    continue;
+  }
+  if (!lstatSync(source).isFile() || lstatSync(source).isSymbolicLink() ||
+      !lstatSync(staged).isFile() || lstatSync(staged).isSymbolicLink()) {
+    errors.push("Unsafe photo type (symlink/non-file): " + filename);
+    continue;
+  }
+  const original = readFileSync(source);
+  const emitted = readFileSync(staged);
+  const hash = (bytes) => createHash("sha256").update(bytes).digest("hex");
+  check(original.toString("ascii", 0, 4) === "RIFF" && original.toString("ascii", 8, 12) === "WEBP",
+    "Source file is not WebP: " + filename);
+  check(hash(original) === hash(emitted),
+    "Build photo differs from the approved original: " + filename);
+}
+
 check(existsSync(join(output, "server/index.mjs")), "Cloudflare output missing; run npm run build first.");
 check(existsSync(join(output, "public")), "Public output missing; run npm run build first.");
 
@@ -90,6 +128,6 @@ if (errors.length) {
   console.error("DO NOT DEPLOY. No files were changed by this audit.");
   process.exitCode = 1;
 } else {
-  console.log("PASS: release isolation — no known legacy routes/assets/text, proposal robots set, unique Worker name");
-  console.log("NOT APPROVED: image licensing, business claims, actual public deployment or outreach still require separate gates.");
+  console.log("PASS: release isolation — no legacy content, 3 authorized photos staged and verified, noindex robots, unique Worker");
+  console.log("NOT DEPLOYED: public access/security configuration, full publication and outreach remain separate gates.");
 }
