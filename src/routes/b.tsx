@@ -36,7 +36,7 @@ export const Route = createFileRoute("/b")({
 function ConceptBRoute() {
   const model = toEditorialModel(activeProspectV3, {
     internalMediaPreview: import.meta.env.DEV,
-    enableEstimateDemo: import.meta.env.DEV,
+    enableEstimateDemo: true, // Proposal-only route; this demo never sends a request.
   });
   return <EditorialPage model={model} />;
 }
