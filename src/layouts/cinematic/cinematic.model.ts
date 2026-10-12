@@ -72,7 +72,9 @@ export function toCinematicModel(
     const reviewOnly = asset.rights !== "approved";
     if (reviewOnly && !options.internalMediaPreview) return null;
     // Only the dev Vite plugin serves this private URL, and only on loopback.
-    const src = reviewOnly
+    // Local QA always uses the loopback-only private media middleware.
+    // The built preview uses /sites/ URLs staged into Git-ignored .output/public.
+    const src = options.internalMediaPreview
       ? asset.src.replace(/^\/sites\//, "/__internal-media/")
       : asset.src;
     const result: CinematicImage = { src, alt: asset.alt };
