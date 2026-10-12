@@ -37,7 +37,7 @@ function ComparisonHome() {
     <main className="sc-compare" lang={activeProspectV3.locale}>
       <div className="sc-compare__shell">
         <header className="sc-compare__top">
-          <a className="sc-compare__wordmark" href="/" aria-label="WEBINOW — compare concepts">WEBINOW <span>LABS</span></a>
+          <span className="sc-compare__wordmark">DESIGN EXPLORER <span>01 / 02</span></span>
           <span className="sc-compare__top-note">Private design review <span aria-hidden="true">/</span> {activeProspectV3.brand.name}</span>
         </header>
 
@@ -61,7 +61,7 @@ function ComparisonHome() {
               )}
               <div className="sc-compare__a-top">
                 <span className="sc-compare__a-logo">{conceptA.company}</span>
-                <span className="sc-compare__a-meta">SOUTH FLORIDA / DESIGN A</span>
+                <span className="sc-compare__a-meta">DESIGN A / {conceptA.serviceAreas.join(" · ")}</span>
               </div>
               <div className="sc-compare__a-copy">
                 <span className="sc-compare__a-eyebrow">{conceptA.hero.eyebrow}</span>
@@ -88,7 +88,7 @@ function ComparisonHome() {
                   <img className="sc-compare__image sc-compare__image--b"
                     src={conceptB.hero.image.src} alt="" draggable={false}/>
                 )}
-                <span>FIG. 01 / SOUTH COOLING</span>
+                <span>FIG. 01 / {conceptB.company.toUpperCase()}</span>
               </div>
               <span className="sc-compare__b-bottom">02 — EDITORIAL PRECISION</span>
             </div>
